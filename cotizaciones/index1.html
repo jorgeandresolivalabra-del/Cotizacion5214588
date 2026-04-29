@@ -1,1 +1,481 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Cotización | Sistema de Pedidos de Almuerzo · Dualtec E.I.R.L</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
+    body {
+      background: linear-gradient(145deg, #eef2f8 0%, #e0e8f2 100%);
+      font-family: 'Inter', sans-serif;
+      padding: 2rem 1rem;
+      color: #1a2c3e;
+    }
+
+    .quote-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 2rem;
+      box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.25);
+      overflow: hidden;
+    }
+
+    .quote-header {
+      background: #0b2b3b;
+      background-image: linear-gradient(135deg, #0f2f3f 0%, #154757 100%);
+      padding: 1.8rem 2rem;
+      color: white;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+
+    .brand h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    .brand .company-details {
+      font-size: 0.8rem;
+      opacity: 0.85;
+      margin-top: 0.3rem;
+    }
+
+    .quote-badge {
+      text-align: right;
+    }
+
+    .badge {
+      background: rgba(255,255,255,0.15);
+      padding: 0.4rem 1rem;
+      border-radius: 60px;
+      font-weight: 600;
+      font-size: 0.8rem;
+    }
+
+    .quote-number {
+      font-size: 0.7rem;
+      margin-top: 0.5rem;
+      opacity: 0.8;
+    }
+
+    .quote-body {
+      padding: 2rem;
+    }
+
+    .info-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      background: #f8fafd;
+      padding: 1rem 1.5rem;
+      border-radius: 1.2rem;
+      margin-bottom: 1.8rem;
+      border: 1px solid #e6edf4;
+    }
+
+    .info-card {
+      flex: 1;
+    }
+
+    .info-card .label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: #54708f;
+    }
+
+    .info-card .value {
+      font-weight: 700;
+      font-size: 1rem;
+    }
+
+    .section-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin: 1.8rem 0 1rem;
+      color: #0b2b3b;
+      border-left: 5px solid #1e6f5c;
+      padding-left: 1rem;
+    }
+
+    .grid-2col {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      margin: 1rem 0;
+    }
+
+    .card {
+      background: #f8fafc;
+      border-radius: 1rem;
+      padding: 1rem;
+      flex: 1;
+      border: 1px solid #e2edf7;
+    }
+
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      border-radius: 1rem;
+      overflow: hidden;
+      margin: 1rem 0;
+      font-size: 0.85rem;
+    }
+
+    .comparison-table th, .comparison-table td {
+      border: 1px solid #e2edf7;
+      padding: 0.8rem;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .comparison-table th {
+      background: #eef2f9;
+      font-weight: 700;
+    }
+
+    .price-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+    }
+
+    .price-table td, .price-table th {
+      padding: 0.8rem 0.5rem;
+      border-bottom: 1px solid #eef2f7;
+      text-align: left;
+    }
+
+    .price-table th:last-child, .price-table td:last-child {
+      text-align: right;
+    }
+
+    .total-box {
+      background: #eef2fa;
+      padding: 1rem;
+      border-radius: 1rem;
+      text-align: right;
+      margin: 1rem 0;
+    }
+
+    .investment-option {
+      background: #f9fafc;
+      border-radius: 1rem;
+      padding: 1rem;
+      margin: 1rem 0;
+      border-left: 4px solid #1e6f5c;
+    }
+
+    .roi-badge {
+      background: #e0f2e9;
+      color: #1e6f5c;
+      font-weight: 700;
+      padding: 0.2rem 0.8rem;
+      border-radius: 40px;
+      display: inline-block;
+    }
+
+    .alert-info {
+      background: #fff8e7;
+      border-left: 4px solid #f5a623;
+      padding: 0.8rem 1rem;
+      border-radius: 0.8rem;
+      margin: 1rem 0;
+      font-size: 0.8rem;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 0.6rem 1.5rem;
+      border-radius: 2rem;
+      font-weight: 500;
+      font-size: 0.85rem;
+      cursor: pointer;
+      border: none;
+      font-family: inherit;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: 0.2s;
+    }
+
+    .btn-primary {
+      background: #1e6f5c;
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #0e5a49;
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      border: 1px solid #bdd3e8;
+      background: white;
+    }
+
+    footer {
+      background: #f4f8fe;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.7rem;
+      color: #5b7895;
+    }
+
+    @media (max-width: 750px) {
+      body { padding: 1rem; }
+      .quote-header, .quote-body { padding: 1rem; }
+      .comparison-table th, .comparison-table td { font-size: 0.7rem; }
+      .section-title { font-size: 1.2rem; }
+    }
+
+    @media print {
+      body { background: white; padding: 0; }
+      .buttons { display: none; }
+    }
+  </style>
+</head>
+<body>
+<div class="quote-container">
+  <div class="quote-header">
+    <div class="brand">
+      <h1>DUALTEC E.I.R.L</h1>
+      <div class="company-details">
+        <i class="fas fa-chart-line"></i> Automatización & Ventas Digitales<br>
+        <i class="fas fa-envelope"></i> contacto@dualtec.cl · <i class="fab fa-whatsapp"></i> +56 9 6357 1251
+      </div>
+    </div>
+    <div class="quote-badge">
+      <div class="badge"><i class="fas fa-file-invoice-dollar"></i> COTIZACIÓN COMERCIAL</div>
+      <div class="quote-number">Folio: DTC-ALM-0426 · CLP · 29 Abril 2026</div>
+    </div>
+  </div>
+
+  <div class="quote-body">
+    <div class="info-row">
+      <div class="info-card"><div class="label">CLIENTE</div><div class="value">Maca Lama</div><div class="sub">Nueva Dominica</div></div>
+      <div class="info-card"><div class="label">PROYECTO</div><div class="value">Sistema de Pedidos de Almuerzo Automatizado</div><div class="sub">Con pago online y control en Google Sheets</div></div>
+      <div class="info-card"><div class="label">MONEDA</div><div class="value">CLP</div><div class="sub">IVA incluido en opciones</div></div>
+    </div>
+
+    <!-- Resumen ejecutivo -->
+    <div class="section-title">📌 Resumen ejecutivo</div>
+    <p>Este sistema convierte tu negocio de almuerzos en un canal de ventas <strong>automático 24/7</strong>. Los clientes eligen, pagan online y tú recibes cada pedido en un simple <strong>Google Sheets</strong> (como un Excel compartido). Sin complicaciones técnicas, sin inversión enorme, y con todo el control en tus manos.</p>
+    <p><strong>✅ Resultado:</strong> Más ventas, menos trabajo operativo, y la capacidad de escalar tu negocio sin estrés.</p>
+
+    <!-- Alcance del servicio -->
+    <div class="section-title">🎯 Alcance del servicio</div>
+    <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
+      <li><strong>🍽️ Landing + Cotizador inteligente</strong> – Menú dinámico, cálculo automático del total, diseño mobile-first.</li>
+      <li><strong>💳 Integración de pago online</strong> – Conexión con MercadoPago (pago en un par de clics).</li>
+      <li><strong>📊 Registro automático en Google Sheets</strong> – Cada pedido se guarda con nombre, teléfono, pedido, total y fecha.</li>
+      <li><strong>🤖 Automatización con Chatwoot + WhatsApp</strong> – Confirmación automática al cliente, bandeja centralizada.</li>
+      <li><strong>⏱️ Corte automático a las 20:00 hrs</strong> – Sin pedidos fuera de horario, mensaje de cierre integrado.</li>
+      <li><strong>📢 Optimizada para publicidad</strong> – Estructura lista para Meta Ads, flujo directo a venta.</li>
+    </ul>
+
+    <!-- Cómo funciona (flujo) -->
+    <div class="section-title">⚙️ Cómo funciona</div>
+    <div class="grid-2col">
+      <div class="card"><i class="fas fa-mobile-alt" style="color:#1e6f5c;"></i> <strong>1. Cliente elige su almuerzo</strong><br>Desde el celular, sin necesidad de llamar.</div>
+      <div class="card"><i class="fas fa-credit-card"></i> <strong>2. Paga online</strong><br>MercadoPago – seguro y rápido.</div>
+      <div class="card"><i class="fas fa-table"></i> <strong>3. Pedido se registra automáticamente</strong><br>Aparece en tu Google Sheets en tiempo real.</div>
+      <div class="card"><i class="fab fa-whatsapp"></i> <strong>4. Confirmación automática</strong><br>WhatsApp al cliente + aviso a tu equipo.</div>
+    </div>
+
+    <!-- Beneficios clave -->
+    <div class="section-title">🔥 Beneficios clave</div>
+    <ul>
+      <li>✔️ <strong>Control total en Google Sheets</strong> – Como un Excel, pero automático. Sabes quién pidió, qué pagó y cuándo.</li>
+      <li>✔️ <strong>Sin necesidad de programador</strong> – Usamos herramientas inteligentes, no código complejo.</li>
+      <li>✔️ <strong>Pago online integrado</strong> – Aumenta la conversión (la gente paga al instante).</li>
+      <li>✔️ <strong>Bajo costo de entrada</strong> – Desde <strong>$297.000 CLP</strong> con opción de pago mensual.</li>
+      <li>✔️ <strong>Preparado para escalar</strong> – Mañana puedes sumar más menús o más comunas.</li>
+    </ul>
+
+    <!-- Comparación de soluciones (obligatorio) -->
+    <div class="section-title">📊 Comparación de soluciones</div>
+    <table class="comparison-table">
+      <thead><tr><th></th><th>Dualtec (esta solución)</th><th>GoHighLevel</th><th>Desarrollo a medida</th></tr></thead>
+      <tbody>
+        <tr><td>💰 Costo inicial</td><td><strong>$297.000 – $497.000</strong></td><td>~$250.000 + suscripción</td><td>$2.500.000+</td></tr>
+        <tr><td>💵 Costo mensual</td><td>Desde $49.000 (opcional)</td><td>USD 97 (~$95.000) fijo</td><td>$80.000 – $200.000</td></tr>
+        <tr><td>⏱️ Tiempo implementación</td><td><strong>5 – 7 días</strong></td><td>1 – 2 semanas</td><td>6 – 10 semanas</td></tr>
+        <tr><td>⚙️ Complejidad</td><td>Baja / lista para usar</td><td>Media (curva)</td><td>Alta (requiere programador)</td></tr>
+        <tr><td>📈 Control vía Google Sheets</td><td>✅ Sí, nativo</td><td>Limitado (exportaciones)</td><td>Depende del desarrollo</td></tr>
+        <tr><td>🎯 Recomendado para</td><td><strong>Empezar a vender ya, validar, bajo riesgo</strong></td><td>Negocios con mayor presupuesto mensual</td><td>Proyectos muy específicos o gran escala</td></tr>
+      </tbody>
+    </table>
+    <div class="alert-info">
+      <i class="fas fa-lightbulb"></i> <strong>Conclusión inteligente:</strong> Esta solución es el punto de entrada ideal. Con una inversión mínima obtienes un sistema funcional hoy. Si el negocio explota, puedes migrar después sin perder datos.
+    </div>
+
+    <!-- Modelo de inversión (obligatorio) -->
+    <div class="section-title">💰 Modelo de inversión</div>
+    <div class="investment-option">
+      <strong>OPCIÓN 1 – Pago único (recomendada para presupuesto ajustado)</strong><br>
+      <strong>$497.000 CLP</strong> (IVA incluido) – Implementación completa, sin mensualidades. Soporte 30 días gratis.
+    </div>
+    <div class="investment-option">
+      <strong>OPCIÓN 2 – Setup reducido + mensualidad (RECOMENDADA)</strong><br>
+      <strong>Setup inicial: $297.000 CLP</strong> + <strong>$79.000 CLP / mes</strong><br>
+      La mensualidad incluye: soporte continuo, ajustes menores, optimización de conversión y monitoreo básico de la operación.
+    </div>
+    <p><em>¿Por qué la mensualidad? Porque así siempre tendrás el sistema actualizado y funcionando sin preocuparte por cambios en APIs o necesidades nuevas.</em></p>
+
+    <!-- Tabla de precios detallada (opción 1) -->
+    <div class="section-title">📋 Tabla de precios (opción pago único)</div>
+    <table class="price-table">
+      <tr><th>Concepto</th><th>Valor CLP</th></tr>
+      <tr><td>Landing + cotizador menú</td><td>$180.000</td></tr>
+      <tr><td>Integración MercadoPago + flujo de pago</td><td>$120.000</td></tr>
+      <tr><td>Registro automático en Google Sheets</td><td>$70.000</td></tr>
+      <tr><td>Automatización Chatwoot + WhatsApp API</td><td>$90.000</td></tr>
+      <tr><td>Corte horario + mensajes automáticos</td><td>$40.000</td></tr>
+      <tr><td>Optimización para anuncios</td><td>$50.000</td></tr>
+      <tr style="background:#f0f6fa;"><td><strong>Subtotal</strong></td><td>$550.000</td></tr>
+      <tr><td>Descuento lanzamiento</td><td>-$53.000</td></tr>
+      <tr><td><strong>Total (incluye IVA)</strong></td><td><strong>$497.000 CLP</strong></td></tr>
+    </table>
+
+    <!-- Retorno de inversión ROI -->
+    <div class="section-title">📈 Retorno de inversión (ROI)</div>
+    <div class="roi-badge">Ejemplo real</div>
+    <ul style="margin-top: 0.8rem;">
+      <li>Precio promedio de almuerzo: <strong>$6.000 CLP</strong></li>
+      <li>Ventas diarias con el sistema: <strong>5 almuerzos</strong> → $30.000 diarios</li>
+      <li>Ventas mensuales (20 días): <strong>$600.000 CLP</strong></li>
+      <li>Costo del sistema: <strong>$497.000 CLP</strong></li>
+    </ul>
+    <p><strong>📢 En menos de un mes, el sistema se paga solo.</strong> A partir del día 31, todo es ganancia adicional automatizada.</p>
+
+    <!-- Entregables -->
+    <div class="section-title">📦 Entregables</div>
+    <ul>
+      <li>Landing page funcional con cotizador (dominio .github.io o dominio propio).</li>
+      <li>Conexión operativa con MercadoPago (botón de pago).</li>
+      <li>Google Sheets en vivo con cada pedido registrado.</li>
+      <li>Chatwoot + WhatsApp API configurados y probados.</li>
+      <li>Manual básico para manejar pedidos desde el Sheets.</li>
+      <li>1 hora de capacitación remota.</li>
+    </ul>
+
+    <!-- Costos operativos y servicios de terceros -->
+    <div class="section-title">💳 Costos operativos (no incluidos)</div>
+    <div class="alert-info">
+      <ul style="margin-left: 1rem;">
+        <li><strong>Chatwoot (CRM de WhatsApp):</strong> USD $20 / usuario / mes (opcional, pero muy útil).</li>
+        <li><strong>WhatsApp Business API:</strong> cobro por conversación (aprox USD $0.005 por conversación iniciada por negocio). Primeras 1000/mes pueden ser gratuitas.</li>
+        <li><strong>MercadoPago:</strong> comisión por transacción ~3% + fijo.</li>
+        <li><strong>Publicidad (Meta/Google):</strong> sugerido $4.000 – $10.000 CLP diarios para obtener resultados rápidos.</li>
+        <li><strong>Dominio .cl (opcional):</strong> ~$12.000 CLP / año.</li>
+        <li><strong>Herramientas automatización extra (Make/Zapier):</strong> desde USD $20/mes si se requieren integraciones adicionales.</li>
+      </ul>
+      <p><i class="fas fa-info-circle"></i> El cliente administra directamente estos costos. Nosotros ayudamos en la configuración sin cargo adicional.</p>
+    </div>
+
+    <!-- Limitaciones (transparencia) -->
+    <div class="section-title">⚠️ Limitaciones de esta versión</div>
+    <ul>
+      <li>No incluye sistema de inventario ni base de datos relacional (los pedidos están en Google Sheets).</li>
+      <li>Automatización de estado de pedido (enviado, entregado) es manual o vía etiquetas en Chatwoot.</li>
+      <li>Ideal para negocios de tamaño pequeño/mediano (hasta 100 pedidos/día).</li>
+    </ul>
+
+    <!-- Escalabilidad futura -->
+    <div class="section-title">🚀 Escalabilidad futura</div>
+    <p>Cuando tu negocio crezca, podemos:</p>
+    <ul>
+      <li>Sumar más menús o días de la semana sin costo adicional grande.</li>
+      <li>Integrar con sistema de fidelización.</li>
+      <li>Migrar a una versión con base de datos (Next.js + Supabase) solo si lo necesitas.</li>
+    </ul>
+
+    <!-- Cierre persuasivo + urgencia -->
+    <div class="section-title">✅ ¿Por qué decidir ahora?</div>
+    <p>Este sistema no es solo una página web: es una <strong>máquina de ventas automatizada</strong> que trabaja para ti mientras duermes. Con el modelo de pago único o la mensualidad baja, no hay excusa para seguir perdiendo ventas por no tener un sistema digital.</p>
+    <p><strong>🎯 Cupos limitados para implementación en Mayo 2026:</strong> Solo 5 proyectos con precio promocional.</p>
+    <p style="margin-top: 1rem;">Atentamente,<br>Jorge Oliva – Director Dualtec E.I.R.L<br><i class="fab fa-whatsapp"></i> +56 9 6357 1251</p>
+
+    <!-- Botones de acción -->
+    <div class="buttons">
+      <button class="btn btn-outline" id="copyLinkBtn"><i class="fas fa-link"></i> Copiar enlace</button>
+      <button class="btn btn-outline" id="printBtn"><i class="fas fa-print"></i> Imprimir / PDF</button>
+      <button class="btn btn-primary" id="shareBtn"><i class="fab fa-whatsapp"></i> Compartir cotización</button>
+    </div>
+    <div id="toastMessage" style="position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: #1e6f5c; color: white; padding: 8px 24px; border-radius: 40px; font-size: 0.8rem; opacity: 0; transition: opacity 0.2s; pointer-events: none; z-index: 1000;"></div>
+  </div>
+  <footer>
+    Dualtec E.I.R.L · Automatización de ventas · Cotización válida por 10 días · Precios pueden variar por disponibilidad.
+  </footer>
+</div>
+
+<script>
+  const copyBtn = document.getElementById('copyLinkBtn');
+  const printBtn = document.getElementById('printBtn');
+  const shareBtn = document.getElementById('shareBtn');
+  const toast = document.getElementById('toastMessage');
+
+  function showMessage(text, isError = false) {
+    toast.style.backgroundColor = isError ? '#b13e3e' : '#1e6f5c';
+    toast.textContent = text;
+    toast.style.opacity = '1';
+    setTimeout(() => { toast.style.opacity = '0'; }, 2800);
+  }
+
+  copyBtn.addEventListener('click', () => {
+    const url = window.location.href;
+    if (url.startsWith('file://')) {
+      showMessage('⚠️ Vista local. Sube a un hosting para compartir enlace.', true);
+      navigator.clipboard.writeText(url).catch(() => {});
+    } else {
+      navigator.clipboard.writeText(url).then(() => showMessage('✅ Enlace copiado, listo para enviar'));
+    }
+  });
+
+  printBtn.addEventListener('click', () => window.print());
+
+  shareBtn.addEventListener('click', async () => {
+    if (navigator.share && !window.location.href.startsWith('file://')) {
+      try {
+        await navigator.share({
+          title: 'Cotización Dualtec - Sistema de Pedidos de Almuerzo',
+          text: 'Maca Lama, tu cotización para el sistema automatizado de pedidos de almuerzo con pago online. Desde $297.000 CLP.',
+          url: window.location.href,
+        });
+        showMessage('Compartido correctamente');
+      } catch (e) { if(e.name !== 'AbortError') showMessage('No se pudo compartir', true); }
+    } else {
+      navigator.clipboard.writeText(window.location.href).then(() => showMessage('Enlace copiado, compártelo manualmente', false));
+    }
+  });
+
+  if (window.location.href.startsWith('file://')) {
+    setTimeout(() => showMessage('📁 Vista local. Para enviar un link público, súbela a Netlify/Vercel.', false), 1000);
+  }
+</script>
+</body>
+</html>
