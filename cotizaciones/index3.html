@@ -16,25 +16,53 @@
     }
 
     body {
-      background: linear-gradient(145deg, #eef2f7 0%, #e0e6ef 100%);
+      background: linear-gradient(135deg, #fdf4f0 0%, #ffe6df 50%, #fce8e0 100%);
+      background-attachment: fixed;
       font-family: 'Inter', sans-serif;
       padding: 2rem 1.5rem;
-      color: #1a2c3e;
+      color: #2d2a2a;
+      animation: gradientShift 15s ease infinite;
+      background-size: 200% 200%;
+    }
+
+    @keyframes gradientShift {
+      0% {
+        background-position: 0% 0%;
+      }
+      50% {
+        background-position: 100% 100%;
+      }
+      100% {
+        background-position: 0% 0%;
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .quote-container {
       max-width: 1300px;
       margin: 0 auto;
-      background: white;
+      background: rgba(255, 248, 245, 0.92);
+      backdrop-filter: blur(10px);
       border-radius: 2rem;
-      box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.2), 0 8px 18px rgba(0, 0, 0, 0.05);
+      box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.25), 0 8px 18px rgba(0, 0, 0, 0.05);
       overflow: hidden;
+      border: 1px solid rgba(255, 215, 200, 0.6);
+      animation: fadeInUp 0.7s ease-out;
     }
 
-    /* Header corporativo */
     .quote-header {
-      background: #0b2b3b;
-      background-image: linear-gradient(135deg, #0f2f3f 0%, #154757 100%);
+      background: #b23c1c;
+      background-image: linear-gradient(135deg, #c24b2a 0%, #a13215 100%);
       padding: 1.8rem 2.5rem;
       color: white;
       display: flex;
@@ -69,13 +97,14 @@
     }
 
     .badge {
-      background: rgba(255,255,255,0.15);
+      background: rgba(255, 255, 255, 0.2);
       backdrop-filter: blur(4px);
       padding: 0.5rem 1.2rem;
       border-radius: 60px;
       font-weight: 600;
       font-size: 0.9rem;
       display: inline-block;
+      border: 1px solid rgba(255, 255, 255, 0.3);
     }
 
     .quote-number {
@@ -84,22 +113,28 @@
       opacity: 0.8;
     }
 
-    /* cuerpo */
     .quote-body {
       padding: 2rem 2.5rem;
     }
 
-    /* fila de datos cliente/emisor */
     .info-row {
       display: flex;
       flex-wrap: wrap;
       gap: 1.8rem;
       justify-content: space-between;
-      background: #f8fafd;
+      background: rgba(255, 245, 240, 0.7);
+      backdrop-filter: blur(5px);
       padding: 1.2rem 1.5rem;
       border-radius: 1.5rem;
       margin-bottom: 2rem;
-      border: 1px solid #e6edf4;
+      border: 1px solid rgba(255, 200, 180, 0.5);
+      transition: all 0.3s ease;
+    }
+
+    .info-row:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+      background: rgba(255, 245, 240, 0.9);
     }
 
     .info-card {
@@ -112,33 +147,34 @@
       text-transform: uppercase;
       letter-spacing: 0.5px;
       font-weight: 700;
-      color: #54708f;
+      color: #b23c1c;
       margin-bottom: 0.5rem;
     }
 
     .info-card .value {
       font-size: 1rem;
       font-weight: 600;
-      color: #0b2b3b;
+      color: #2d2a2a;
       word-break: break-word;
     }
 
     .info-card .sub {
       font-size: 0.8rem;
-      color: #4a6f8f;
+      color: #7a5a4a;
       margin-top: 0.2rem;
     }
 
     .info-card a {
-      color: #1e6f5c;
+      color: #b23c1c;
       text-decoration: none;
+      transition: color 0.2s;
     }
 
     .info-card a:hover {
+      color: #8b2e12;
       text-decoration: underline;
     }
 
-    /* tabla items */
     .services-table {
       width: 100%;
       border-collapse: collapse;
@@ -152,29 +188,30 @@
       font-size: 0.8rem;
       text-transform: uppercase;
       letter-spacing: 0.5px;
-      color: #4f6f8f;
-      border-bottom: 2px solid #e2e8f0;
+      color: #b23c1c;
+      border-bottom: 2px solid rgba(200, 120, 80, 0.3);
     }
 
     .services-table td {
       padding: 1rem 0.5rem 1rem 0;
-      border-bottom: 1px solid #eef3fa;
+      border-bottom: 1px solid rgba(200, 120, 80, 0.2);
       vertical-align: top;
     }
 
-    .services-table th:last-child, .services-table td:last-child {
+    .services-table th:last-child,
+    .services-table td:last-child {
       text-align: right;
     }
 
     .service-name {
       font-weight: 700;
       font-size: 0.95rem;
-      color: #1e3b4c;
+      color: #3a2a24;
     }
 
     .service-detail {
       font-size: 0.7rem;
-      color: #5e7e9e;
+      color: #8a6a5a;
       font-weight: 400;
       margin-top: 0.2rem;
       line-height: 1.3;
@@ -182,8 +219,13 @@
 
     .amount-cell {
       font-weight: 700;
-      color: #1a4e6b;
+      color: #b23c1c;
       white-space: nowrap;
+    }
+
+    .hours-cell {
+      font-weight: 600;
+      color: #8a6a5a;
     }
 
     .totals {
@@ -192,7 +234,7 @@
       align-items: flex-end;
       margin: 1rem 0 1.5rem;
       padding-top: 0.8rem;
-      border-top: 2px dashed #cbdde9;
+      border-top: 2px dashed rgba(200, 120, 80, 0.4);
     }
 
     .total-line {
@@ -207,55 +249,278 @@
 
     .total-line span:first-child {
       font-weight: 500;
-      color: #2c4a6e;
+      color: #5a3a2a;
     }
 
     .total-line.grand-total {
       font-size: 1.25rem;
       font-weight: 800;
-      color: #0b2b3b;
+      color: #2d2a2a;
       margin-top: 0.5rem;
       padding-top: 0.6rem;
-      border-top: 2px solid #cad9e8;
+      border-top: 2px solid rgba(178, 60, 28, 0.6);
     }
 
     .grand-total span:last-child {
-      color: #126e5e;
+      color: #b23c1c;
       font-size: 1.35rem;
+      background: linear-gradient(135deg, #b23c1c, #e07a5a);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
     }
 
     .proposal-text {
-      background: #fefce8;
-      border-left: 5px solid #e0b043;
+      background: linear-gradient(135deg, rgba(255, 240, 230, 0.9), rgba(255, 245, 235, 0.8));
+      border-left: 5px solid #e07a5a;
       padding: 1rem 1.5rem;
       border-radius: 1rem;
       margin: 1.8rem 0 1rem;
       font-size: 0.85rem;
-      color: #5f4c2c;
+      color: #5a3a2a;
       line-height: 1.45;
+      backdrop-filter: blur(4px);
+      transition: all 0.3s ease;
     }
 
+    .proposal-text:hover {
+      transform: translateX(5px);
+    }
+
+    /* Alcance mejorado con descripciones detalladas */
     .scope-box {
-      background: #f7f9fc;
+      background: rgba(255, 245, 240, 0.7);
+      backdrop-filter: blur(5px);
       border-radius: 1rem;
       padding: 1rem 1.5rem;
       margin: 1rem 0;
       font-size: 0.8rem;
-      border: 1px solid #e2edf7;
+      border: 1px solid rgba(224, 122, 90, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .scope-box:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+      background: rgba(255, 245, 240, 0.9);
     }
 
     .scope-title {
       font-weight: 700;
       margin-bottom: 0.6rem;
-      color: #1e6f5c;
+      color: #b23c1c;
       font-size: 0.85rem;
+    }
+
+    .scope-detailed-list {
+      list-style: none;
+      margin-left: 0;
+    }
+
+    .scope-detailed-list li {
+      margin-bottom: 1rem;
+      line-height: 1.5;
+    }
+
+    .scope-detailed-list strong {
+      color: #b23c1c;
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+
+    .scope-detailed-list ul {
+      margin-left: 1.2rem;
+      list-style: disc;
+      color: #5a3a2a;
+    }
+
+    .scope-detailed-list li ul li {
+      margin-bottom: 0.2rem;
+    }
+
+    .mockup-highlight {
+      background: linear-gradient(145deg, rgba(255, 235, 225, 0.95), rgba(255, 240, 230, 0.9));
+      backdrop-filter: blur(8px);
+      border-radius: 1.5rem;
+      padding: 1rem 1.8rem;
+      margin: 1.5rem 0;
+      border: 1px solid rgba(224, 122, 90, 0.5);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .mockup-highlight:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 15px 30px rgba(178, 60, 28, 0.15);
+      border-color: #e07a5a;
+    }
+
+    .mockup-text {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .mockup-text i {
+      font-size: 2rem;
+      color: #b23c1c;
+      animation: softPulse 2s infinite;
+    }
+
+    @keyframes softPulse {
+      0% {
+        text-shadow: 0 0 0px rgba(178, 60, 28, 0);
+      }
+      50% {
+        text-shadow: 0 0 10px rgba(178, 60, 28, 0.5);
+      }
+      100% {
+        text-shadow: 0 0 0px rgba(178, 60, 28, 0);
+      }
+    }
+
+    .mockup-text span {
+      font-weight: 800;
+      color: #2d2a2a;
+    }
+
+    .mockup-link {
+      background: linear-gradient(135deg, #b23c1c, #e07a5a);
+      padding: 0.6rem 1.5rem;
+      border-radius: 2rem;
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .mockup-link:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px rgba(224, 122, 90, 0.6);
+      background: linear-gradient(135deg, #c24b2a, #f08a6a);
+    }
+
+    .complementary-details {
+      background: rgba(255, 245, 240, 0.7);
+      backdrop-filter: blur(5px);
+      border-radius: 1rem;
+      padding: 1rem 1.5rem;
+      margin: 1.5rem 0 1rem;
+      border: 1px solid rgba(224, 122, 90, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .complementary-details:hover {
+      background: rgba(255, 245, 240, 0.9);
+      transform: translateY(-2px);
+    }
+
+    .complementary-details .title {
+      font-weight: 800;
+      font-size: 0.9rem;
+      color: #b23c1c;
+      margin-bottom: 0.8rem;
+      border-left: 4px solid #e07a5a;
+      padding-left: 0.7rem;
+      letter-spacing: -0.2px;
+    }
+
+    .details-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: space-between;
+    }
+
+    .detail-block {
+      flex: 1;
+      min-width: 210px;
+      background: rgba(255, 250, 245, 0.8);
+      padding: 0.6rem 0.8rem;
+      border-radius: 1rem;
+      border: 1px solid rgba(224, 122, 90, 0.2);
+      transition: all 0.3s ease;
+    }
+
+    .detail-block:hover {
+      transform: translateY(-2px);
+      background: rgba(255, 250, 245, 1);
+      border-color: rgba(224, 122, 90, 0.5);
+    }
+
+    .detail-block i {
+      color: #b23c1c;
+      width: 1.4rem;
+      font-size: 0.9rem;
+    }
+
+    .detail-block strong {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #b23c1c;
+      display: inline-block;
+      margin-bottom: 0.2rem;
+    }
+
+    .detail-block p,
+    .detail-block li {
+      font-size: 0.73rem;
+      line-height: 1.4;
+      color: #5a3a2a;
+      margin-left: 1.4rem;
+    }
+
+    .detail-block ul {
+      margin-left: 0.5rem;
+      list-style: none;
+    }
+
+    .detail-block li::before {
+      content: "•";
+      color: #e07a5a;
+      font-weight: bold;
+      display: inline-block;
+      width: 1rem;
+      margin-left: -1rem;
+    }
+
+    .accept-row {
+      background: linear-gradient(135deg, rgba(224, 122, 90, 0.15), rgba(178, 60, 28, 0.1));
+      margin-top: 1.2rem;
+      padding: 0.8rem 1rem;
+      border-radius: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.75rem;
+      gap: 0.8rem;
+      border: 1px solid rgba(224, 122, 90, 0.3);
+    }
+
+    .accept-text {
+      font-weight: 500;
+      color: #b23c1c;
+    }
+
+    .accept-text i {
+      margin-right: 6px;
     }
 
     .terms {
       margin-top: 1.8rem;
       font-size: 0.73rem;
-      color: #5b7895;
-      border-top: 1px solid #e2edf7;
+      color: #8a6a5a;
+      border-top: 1px solid rgba(200, 120, 80, 0.3);
       padding-top: 1.2rem;
       display: flex;
       flex-wrap: wrap;
@@ -264,17 +529,10 @@
       gap: 0.8rem;
     }
 
-    .hours-badge {
-      background: #eef2fa;
-      padding: 0.2rem 0.8rem;
-      border-radius: 40px;
-      font-weight: 500;
-    }
-
     .buttons {
       display: flex;
       gap: 1rem;
-      margin-top: 2rem;
+      margin-top: 1.2rem;
       justify-content: flex-end;
     }
 
@@ -284,59 +542,93 @@
       font-weight: 500;
       font-size: 0.85rem;
       cursor: pointer;
-      transition: 0.2s;
+      transition: all 0.3s ease;
       border: none;
-      background: white;
       font-family: inherit;
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      background: rgba(255, 250, 245, 0.9);
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(224, 122, 90, 0.4);
+      color: #b23c1c;
     }
 
     .btn-primary {
-      background: #1e6f5c;
+      background: linear-gradient(135deg, #b23c1c, #e07a5a);
       color: white;
-      border: 1px solid #1e6f5c;
+      border: none;
+      box-shadow: 0 4px 12px rgba(178, 60, 28, 0.3);
     }
 
     .btn-primary:hover {
-      background: #0e5a49;
-      transform: translateY(-2px);
-    }
-
-    .btn-outline {
-      border: 1px solid #bdd3e8;
-      background: white;
-      color: #2c5a74;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(178, 60, 28, 0.4);
+      filter: brightness(1.05);
     }
 
     .btn-outline:hover {
-      background: #eef4fa;
+      transform: translateY(-2px);
+      background: rgba(224, 122, 90, 0.2);
+      border-color: #e07a5a;
     }
 
     footer {
-      background: #f4f8fe;
+      background: linear-gradient(145deg, rgba(255, 240, 230, 0.9), rgba(255, 235, 225, 0.8));
       text-align: center;
       padding: 1rem;
       font-size: 0.7rem;
-      color: #6b8bad;
+      color: #8a6a5a;
+      backdrop-filter: blur(4px);
     }
 
     @media (max-width: 750px) {
-      body { padding: 1rem; }
-      .quote-header, .quote-body { padding: 1.2rem; }
-      .info-row { flex-direction: column; gap: 0.8rem; }
-      .services-table th, .services-table td { font-size: 0.75rem; }
-      .total-line { max-width: 100%; }
-      .buttons { flex-direction: column; align-items: stretch; }
-      .btn { justify-content: center; }
+      body {
+        padding: 1rem;
+      }
+      .quote-header,
+      .quote-body {
+        padding: 1.2rem;
+      }
+      .info-row {
+        flex-direction: column;
+        gap: 0.8rem;
+      }
+      .services-table th,
+      .services-table td {
+        font-size: 0.75rem;
+      }
+      .total-line {
+        max-width: 100%;
+      }
+      .buttons {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .btn {
+        justify-content: center;
+      }
+      .details-grid {
+        flex-direction: column;
+      }
+      .mockup-highlight {
+        flex-direction: column;
+        text-align: center;
+      }
     }
 
     @media print {
-      body { background: white; padding: 0; }
-      .quote-container { box-shadow: none; border-radius: 0; }
-      .buttons { display: none; }
+      body {
+        background: white;
+        padding: 0;
+      }
+      .quote-container {
+        box-shadow: none;
+        border-radius: 0;
+      }
+      .buttons {
+        display: none;
+      }
     }
   </style>
 </head>
@@ -364,7 +656,7 @@
       <div class="info-card">
         <div class="label"><i class="fas fa-building"></i> SOLICITADA POR</div>
         <div class="value">Nueva Dominica</div>
-        <div class="sub">TERCERA TRANSVERSAL 6189</div>
+        <div class="sub">Comuna de Las Condes</div>
         <div class="sub"><i class="fas fa-globe"></i> <a href="https://gsdeliveryomega.vercel.app/" target="_blank">gsdeliveryomega.vercel.app</a></div>
       </div>
       <div class="info-card">
@@ -381,63 +673,199 @@
       </div>
     </div>
 
-    <!-- Tabla de ítems exactos -->
+    <!-- SECCIÓN DESTACADA: MOCKUP LINK -->
+    <div class="mockup-highlight">
+      <div class="mockup-text">
+        <i class="fas fa-desktop"></i>
+        <div>
+          <span>✨ Vista previa del proyecto (DEMO FUNCIONAL)</span><br>
+          <small style="color: #8a6a5a;">Explora el sistema en acción: menú dinámico, carrito y flujo de pedido</small>
+        </div>
+      </div>
+      <a href="https://gsdelivery-omega.vercel.app/" target="_blank" class="mockup-link">
+        <i class="fas fa-external-link-alt"></i> Ver Mockup Online
+      </a>
+    </div>
+
+    <!-- Tabla de ítems con horas -->
     <table class="services-table">
       <thead>
-        <tr><th>Ítem / Servicio</th><th>Cant.</th><th>Precio unitario</th><th>Total</th></tr>
+        <tr><th>Ítem / Servicio</th><th>Cant.</th><th>Horas de trabajo</th><th>Total</th></tr>
       </thead>
       <tbody>
-        <tr><td><div class="service-name">🍱 Menú dinámico con precios, categorías e imágenes</div><div class="service-detail">Configurable desde panel, soporte de imágenes en Supabase Storage.</div></td><td>1</td><td>$120.000</td><td class="amount-cell">$120.000</td></tr>
-        <tr><td><div class="service-name">🗄️ Sistema de pedidos + Supabase (esquema, RLS, lógica de estado)</div><div class="service-detail">PostgreSQL, relaciones, seguridad a nivel fila, export a Google Sheets opcional.</div></td><td>1</td><td>$160.000</td><td class="amount-cell">$160.000</td></tr>
-        <tr><td><div class="service-name">💳 Integración MercadoPago + webhooks de confirmación de pago</div><div class="service-detail">API oficial, webhook que actualiza estado del pedido automáticamente.</div></td><td>1</td><td>$190.000</td><td class="amount-cell">$190.000</td></tr>
-        <tr><td><div class="service-name">⏱️ Corte automático 8 PM + validación de horario en backend</div><div class="service-detail">Validación en Next.js API Routes, horario configurable desde panel.</div></td><td>1</td><td>$95.000</td><td class="amount-cell">$95.000</td></tr>
-        <tr><td><div class="service-name">📋 Panel de administración (pedidos, producción, menú, resumen)</div><div class="service-detail">Vista de pedidos, estado en tiempo real, gestión de platillos, resumen diario.</div></td><td>1</td><td>$190.000</td><td class="amount-cell">$190.000</td></tr>
-        <tr><td><div class="service-name">🔐 Autenticación y roles (Supabase Auth + middleware Next.js)</div><div class="service-detail">Login email/password, roles Admin/Usuario, rutas protegidas.</div></td><td>1</td><td>$79.000</td><td class="amount-cell">$79.000</td></tr>
-        <tr><td><div class="service-name">🚀 Despliegue Vercel + documentación + repositorio privado</div><div class="service-detail">Dominio, variables de entorno, CI/CD, entrega de código en GitHub.</div></td><td>1</td><td>$87.000</td><td class="amount-cell">$87.000</td></tr>
+        <tr><td><div class="service-name">🍱 Menú dinámico con precios, categorías e imágenes</div><div class="service-detail">Configurable desde panel, soporte de imágenes en Supabase Storage.</div></td>
+          <td>1</td><td class="hours-cell">6 h</td><td class="amount-cell">$119.688</td>
+        </tr>
+        <tr><td><div class="service-name">🗄️ Sistema de pedidos + Supabase (esquema, RLS, lógica de estado)</div><div class="service-detail">PostgreSQL, relaciones, seguridad a nivel fila, export a Google Sheets opcional.</div></td>
+          <td>1</td><td class="hours-cell">7 h</td><td class="amount-cell">$143.625</td>
+        </tr>
+        <tr><td><div class="service-name">💳 Integración MercadoPago + webhooks de confirmación de pago</div><div class="service-detail">API oficial, webhook que actualiza estado del pedido automáticamente.</div></td>
+          <td>1</td><td class="hours-cell">8 h</td><td class="amount-cell">$167.563</td>
+        </tr>
+        <tr><td><div class="service-name">⏱️ Corte automático 8 PM + validación de horario en backend</div><div class="service-detail">Validación en Next.js API Routes, horario configurable desde panel.</div></td>
+          <td>1</td><td class="hours-cell">5 h</td><td class="amount-cell">$87.750</td>
+        </tr>
+        <tr><td><div class="service-name">📋 Panel de administración (pedidos, producción, menú, resumen)</div><div class="service-detail">Vista de pedidos, estado en tiempo real, gestión de platillos, resumen diario.</div></td>
+          <td>1</td><td class="hours-cell">9 h</td><td class="amount-cell">$167.563</td>
+        </tr>
+        <tr><td><div class="service-name">🔐 Autenticación y roles (Supabase Auth + middleware Next.js)</div><div class="service-detail">Login email/password, roles Admin/Usuario, rutas protegidas.</div></td>
+          <td>1</td><td class="hours-cell">6 h</td><td class="amount-cell">$71.812</td>
+        </tr>
+        <tr><td><div class="service-name">🚀 Despliegue Vercel + documentación + repositorio privado</div><div class="service-detail">Dominio, variables de entorno, CI/CD, entrega de código en GitHub.</div></td>
+          <td>1</td><td class="hours-cell">7 h</td><td class="amount-cell">$79.815</td>
+        </tr>
       </tbody>
     </table>
 
-    <!-- Totales exactos -->
+    <!-- Totales -->
     <div class="totals">
-      <div class="total-line"><span>Subtotal (servicios)</span><span>$921.000</span></div>
-      <div class="total-line"><span>IVA (19%)</span><span>$174.990</span></div>
-      <div class="total-line grand-total"><span>TOTAL COTIZACIÓN</span><span>$1.095.990</span></div>
+      <div class="total-line"><span>Subtotal (servicios)</span><span>$837.816</span></div>
+      <div class="total-line"><span>IVA (19%)</span><span>$159.184</span></div>
+      <div class="total-line grand-total"><span>TOTAL COTIZACIÓN</span><span>$997.000</span></div>
     </div>
 
-    <!-- Notas + descripción detallada del proyecto -->
+    <!-- Notas generales -->
     <div class="proposal-text">
       <i class="fas fa-lightbulb" style="margin-right: 6px;"></i> <strong>Propuesta general:</strong> Se propone el desarrollo de un sistema completo de pedidos de almuerzo diseñado como una pequeña plataforma SaaS con lógica de negocio real. El sistema permite a los usuarios seleccionar su almuerzo desde un menú dinámico con precios, pagar en línea, y recibir confirmación automática tras el pago. Incluye backend con Next.js API Routes, Supabase (PostgreSQL), lógica de corte a las 20:00 hrs, webhooks de MercadoPago y panel de administración. Opcionalmente, los pedidos se exportan a Google Sheets en tiempo real.
     </div>
 
-    <!-- Alcance detallado (layer-group) -->
+    <!-- ALCANCE DEL PROYECTO - VERSIÓN MEJORADA CON DETALLE -->
     <div class="scope-box">
       <div class="scope-title"><i class="fas fa-cubes"></i> Alcance del proyecto — Módulos incluidos</div>
-      <ul style="margin-left: 1.2rem; display: flex; flex-wrap: wrap; gap: 0.4rem; flex-direction: column;">
-        <li><strong>1. Menú dinámico</strong> – configurable por día, imágenes, activación/desactivación desde panel.</li>
-        <li><strong>2. Pedidos + Supabase</strong> – esquema relacional, RLS, exportación opcional a Google Sheets.</li>
-        <li><strong>3. MercadoPago</strong> – integración oficial + webhook de confirmación y actualización de estados.</li>
-        <li><strong>4. Corte automático 8 PM</strong> – validación en servidor, horario configurable.</li>
-        <li><strong>5. Panel Admin</strong> – gestión de pedidos (pendiente/pagado/preparación/entregado), resumen diario, edición de menú, Supabase Realtime.</li>
-        <li><strong>6. Autenticación y roles</strong> – Supabase Auth, middleware Next.js, roles usuario/administrador.</li>
-        <li><strong>7. Despliegue Vercel</strong> – dominio, variables de entorno, repositorio privado y documentación completa.</li>
+      <ul class="scope-detailed-list">
+        <li>
+          <strong>1. Menú Dinámico con Precios y Categorías</strong>
+          <ul>
+            <li>Menú configurable por día con platillos, precios y categorías.</li>
+            <li>Activación/desactivación de ítems desde el panel de administración sin tocar código.</li>
+            <li>Imágenes opcionales por platillo almacenadas en Supabase Storage.</li>
+            <li>Vista de usuario clara, rápida y optimizada para dispositivos móviles.</li>
+          </ul>
+        </li>
+        <li>
+          <strong>2. Sistema de Pedidos + Base de Datos Supabase</strong>
+          <ul>
+            <li>Flujo completo: selección de platillo → pedido → pago → confirmación automática.</li>
+            <li>Almacenamiento en Supabase (PostgreSQL) con esquema relacional optimizado.</li>
+            <li>Row Level Security (RLS) para que cada usuario solo vea sus propios pedidos.</li>
+            <li>Exportación opcional a Google Sheets en tiempo real vía Google Sheets API.</li>
+          </ul>
+        </li>
+        <li>
+          <strong>3. Integración de Pagos — MercadoPago</strong>
+          <ul>
+            <li>Integración con la API oficial de MercadoPago para pagos en línea.</li>
+            <li>Confirmación automática de pago vía webhook procesado en el servidor.</li>
+            <li>Actualización del estado del pedido en la base de datos al recibir confirmación.</li>
+            <li>Historial de transacciones por usuario con estado visible en su perfil.</li>
+          </ul>
+        </li>
+        <li>
+          <strong>4. Corte Automático de Pedidos a las 8 PM (Lógica de Backend)</strong>
+          <ul>
+            <li>Validación en el servidor (Next.js API Routes) que rechaza pedidos fuera de horario.</li>
+            <li>El sistema se cierra automáticamente a las 8 PM sin intervención manual.</li>
+            <li>Mensaje de estado claro al usuario cuando el sistema está fuera de horario.</li>
+            <li>Hora de corte configurable por el administrador desde el panel, sin cambiar código.</li>
+          </ul>
+        </li>
+        <li>
+          <strong>5. Panel de Administración (Pedidos y Producción)</strong>
+          <ul>
+            <li>Vista de pedidos del día ordenados por estado: pendiente, pagado, en preparación, entregado.</li>
+            <li>Panel de producción para cocina con actualización de estado en tiempo real (Supabase Realtime).</li>
+            <li>Gestión completa del menú: agregar, editar, activar o desactivar platillos.</li>
+            <li>Resumen diario de ventas, totales por platillo e ingresos del día.</li>
+          </ul>
+        </li>
+        <li>
+          <strong>6. Autenticación y Roles (Supabase Auth)</strong>
+          <ul>
+            <li>Autenticación segura vía Supabase Auth (email/password o magic link).</li>
+            <li>Roles diferenciados: usuario final para hacer pedidos y administrador para el panel.</li>
+            <li>Rutas protegidas en Next.js con middleware de sesión del lado del servidor.</li>
+            <li>Registro simplificado para usuarios habituales del sistema.</li>
+          </ul>
+        </li>
+        <li>
+          <strong>7. Despliegue, Documentación y Entrega</strong>
+          <ul>
+            <li>Despliegue en Vercel con dominio propio, SSL y CI/CD automático desde GitHub.</li>
+            <li>Variables de entorno seguras para tokens de pago, claves de Supabase y Google.</li>
+            <li>Documentación técnica de uso del sistema y del panel de administración.</li>
+            <li>Repositorio privado en GitHub entregado al cliente al completar el pago.</li>
+          </ul>
+        </li>
       </ul>
       <div style="margin-top: 0.7rem;"><i class="far fa-clock"></i> <strong>Horas estimadas de trabajo:</strong> 58 horas.</div>
     </div>
 
-    <!-- Condiciones generales -->
+    <!-- Detalles clave y condiciones complementarias -->
+    <div class="complementary-details">
+      <div class="title"><i class="fas fa-file-contract"></i> Detalles clave y condiciones complementarias</div>
+      <div class="details-grid">
+        <div class="detail-block">
+          <i class="fas fa-tasks"></i> <strong>Hitos de pago</strong>
+          <ul>
+            <li>50% anticipo → arranque del proyecto</li>
+            <li>25% al entregar demo funcional (entorno pruebas, flujo completo)</li>
+            <li>25% al poner en producción + código fuente en repositorio privado</li>
+          </ul>
+        </div>
+        <div class="detail-block">
+          <i class="fas fa-bug"></i> <strong>Garantía (90 días)</strong>
+          <ul>
+            <li>Cubre bugs que impidan funcionalidad declarada</li>
+            <li>No incluye soporte por caídas de hosting (Vercel / Supabase)</li>
+            <li>Respuesta en ≤ 48 horas hábiles</li>
+          </ul>
+        </div>
+        <div class="detail-block">
+          <i class="fas fa-external-link-alt"></i> <strong>Exclusiones explícitas</strong>
+          <ul>
+            <li>Diseño de logo, creación de contenido (textos/fotos menú)</li>
+            <li>Dominio, planes de hospedaje (Vercel Pro, Supabase)</li>
+            <li>Mantenimiento continuo de datos (backups por cuenta del cliente)</li>
+            <li>Integraciones adicionales no listadas (SMS, emails masivos)</li>
+          </ul>
+        </div>
+        <div class="detail-block">
+          <i class="fas fa-code-branch"></i> <strong>Propiedad y confidencialidad</strong>
+          <ul>
+            <li>Código cedido al pago total (repositorio privado GitHub)</li>
+            <li>Dualtec no reutilizará el código en otros proyectos sin permiso</li>
+            <li>Acuerdo de confidencialidad implícito sobre la operación del cliente</li>
+          </ul>
+        </div>
+        <div class="detail-block">
+          <i class="fas fa-hourglass-half"></i> <strong>Plazos y demoras</strong>
+          <ul>
+            <li>Demo funcional: 3 semanas desde el anticipo</li>
+            <li>Producción: 2 semanas adicionales (total 5 semanas)</li>
+            <li>Si el cliente demora feedback o credenciales, el plazo se pausa</li>
+          </ul>
+        </div>
+      </div>
+      <div class="accept-row">
+        <span class="accept-text"><i class="fas fa-check-circle"></i> Para aceptar esta cotización, responder este correo con “Acepto” o firmar documento adjunto. El proyecto comenzará una vez recibido el primer pago.</span>
+        <span class="accept-text"><i class="far fa-clock"></i> Oferta válida hasta el 14 de mayo de 2026</span>
+      </div>
+    </div>
+
+    <!-- Condiciones generales resumidas -->
     <div class="terms">
       <div><i class="fas fa-file-signature"></i> <strong>Condiciones:</strong> Validez 15 días hábiles · Pago: 50% anticipo, 25% demo, 25% final · Plazo 4-6 semanas desde el anticipo</div>
       <div><i class="fas fa-check-circle"></i> Prueba: 5 días hábiles para aceptación · Garantía 90 días por bugs · Código cedido al pago total</div>
       <div><i class="fas fa-ban"></i> Cancelación: anticipo no reembolsable · Cambios fuera de alcance cotizan aparte · Hospedaje / dominio por cuenta del cliente · Soporte: 1 mes gratis, luego opcional.</div>
     </div>
 
-    <!-- Botones de acción (enlace, impresión, compartir) -->
+    <!-- Botones -->
     <div class="buttons">
       <button class="btn btn-outline" id="copyLinkBtn"><i class="fas fa-link"></i> Copiar enlace</button>
       <button class="btn btn-outline" id="printBtn"><i class="fas fa-print"></i> Imprimir / PDF</button>
       <button class="btn btn-primary" id="shareBtn"><i class="fas fa-share-alt"></i> Compartir cotización</button>
     </div>
-    <div id="toastMessage" style="position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: #1e6f5c; color: white; padding: 8px 24px; border-radius: 40px; font-size: 0.8rem; z-index: 1000; opacity: 0; transition: opacity 0.2s; pointer-events: none;"></div>
+    <div id="toastMessage" style="position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: #b23c1c; color: white; padding: 8px 24px; border-radius: 40px; font-size: 0.8rem; z-index: 1000; opacity: 0; transition: opacity 0.2s; pointer-events: none; box-shadow: 0 4px 12px rgba(0,0,0,0.2);"></div>
   </div>
 
   <footer>
@@ -452,10 +880,12 @@
   const toast = document.getElementById('toastMessage');
 
   function showMessage(text, isError = false) {
-    toast.style.backgroundColor = isError ? '#b13e3e' : '#1e6f5c';
+    toast.style.backgroundColor = isError ? '#b13e3e' : '#b23c1c';
     toast.textContent = text;
     toast.style.opacity = '1';
-    setTimeout(() => { toast.style.opacity = '0'; }, 2800);
+    setTimeout(() => {
+      toast.style.opacity = '0';
+    }, 2800);
   }
 
   copyBtn.addEventListener('click', () => {
@@ -464,17 +894,18 @@
       showMessage('⚠️ Vista local. Para compartir el link, súbela a un hosting (Netlify/GitHub Pages) o envía el archivo HTML.', true);
       navigator.clipboard.writeText(currentUrl).catch(() => showMessage('No se pudo copiar', true));
     } else {
-      navigator.clipboard.writeText(currentUrl).then(() => showMessage('✅ Enlace copiado. ¡Puedes enviarlo por WhatsApp o email!', false))
-        .catch(() => showMessage('Error al copiar', true));
+      navigator.clipboard.writeText(currentUrl).then(() => showMessage('✅ Enlace copiado. ¡Puedes enviarlo por WhatsApp o email!', false)).catch(() => showMessage('Error al copiar', true));
     }
   });
 
-  printBtn.addEventListener('click', () => { window.print(); });
+  printBtn.addEventListener('click', () => {
+    window.print();
+  });
 
   shareBtn.addEventListener('click', async () => {
     const shareData = {
       title: 'Cotización Dualtec N°01251 - Sistema de Pedidos de Almuerzo',
-      text: 'Maca Lamas, tu cotización para el proyecto SaaS de pedidos de almuerzo (Next.js + Supabase + MercadoPago) ya está disponible.',
+      text: 'Maca Lamas, tu cotización para el proyecto SaaS de pedidos de almuerzo (Next.js + Supabase + MercadoPago) ya está disponible con un total de $997.000 CLP. Incluye condiciones detalladas.',
       url: window.location.href,
     };
     if (navigator.share && !window.location.href.startsWith('file://')) {
@@ -488,8 +919,7 @@
       if (window.location.href.startsWith('file://')) {
         showMessage('Para compartir, sube el archivo a un hosting (Vercel/Netlify) o envía el .html', true);
       } else {
-        navigator.clipboard.writeText(window.location.href).then(() => showMessage('Enlace copiado al portapapeles, listo para compartir', false))
-          .catch(() => showMessage('Error al copiar', true));
+        navigator.clipboard.writeText(window.location.href).then(() => showMessage('Enlace copiado al portapapeles, listo para compartir', false)).catch(() => showMessage('Error al copiar', true));
       }
     }
   });
