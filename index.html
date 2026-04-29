@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Dualtec · Sistema de Pedidos de Almuerzo Automatizado</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #ffffff;
+      color: #1e2a3a;
+      line-height: 1.4;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* HEADER / HERO */
+    .hero {
+      text-align: center;
+      padding: 4rem 1rem 3rem;
+      background: linear-gradient(145deg, #ffffff 0%, #fef9e6 100%);
+    }
+
+    .hero h1 {
+      font-size: 2.6rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #1e2a3a, #f5b042);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      margin-bottom: 1rem;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero .sub {
+      font-size: 1.3rem;
+      font-weight: 500;
+      color: #2c4c6c;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero p {
+      font-size: 1rem;
+      color: #4a627a;
+      max-width: 600px;
+      margin: 0.5rem auto 1.5rem;
+    }
+
+    .btn-scroll {
+      background: #1e6f5c;
+      color: white;
+      padding: 0.7rem 1.8rem;
+      border-radius: 40px;
+      border: none;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      box-shadow: 0 4px 12px rgba(30,111,92,0.3);
+    }
+
+    .btn-scroll:hover {
+      background: #0e5a49;
+      transform: translateY(-2px);
+    }
+
+    /* Sección planes */
+    .plans-section {
+      padding: 3rem 1rem 5rem;
+      background: white;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .section-header h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #0b2b3b;
+    }
+
+    .section-header p {
+      color: #5b7895;
+      margin-top: 0.5rem;
+    }
+
+    .cards-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+    }
+
+    /* Tarjetas */
+    .card {
+      background: white;
+      border-radius: 2rem;
+      padding: 1.8rem;
+      width: 100%;
+      max-width: 360px;
+      transition: all 0.25s ease;
+      box-shadow: 0 15px 35px -12px rgba(0, 0, 0, 0.08);
+      border: 1px solid #edf2f7;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 25px 40px -12px rgba(0, 0, 0, 0.15);
+      border-color: #f5b04240;
+    }
+
+    .card-popular {
+      border: 2px solid #f5b042;
+      background: #ffffff;
+      box-shadow: 0 20px 35px -10px rgba(245,176,66,0.2);
+      transform: scale(1.02);
+    }
+
+    .badge-popular {
+      position: absolute;
+      top: -12px;
+      left: 20px;
+      background: #f5b042;
+      color: #1e2a3a;
+      padding: 0.3rem 1rem;
+      border-radius: 40px;
+      font-size: 0.7rem;
+      font-weight: 800;
+      z-index: 2;
+    }
+
+    .card h3 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 0.2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+    }
+
+    .price {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #1e6f5c;
+    }
+
+    .price small {
+      font-size: 0.7rem;
+      font-weight: 400;
+      color: #6c86a3;
+    }
+
+    .card-desc {
+      color: #4b6b8a;
+      margin: 1rem 0;
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+
+    .features {
+      list-style: none;
+      margin: 1rem 0 1.5rem;
+      flex-grow: 1;
+    }
+
+    .features li {
+      margin-bottom: 0.7rem;
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: #2c3e50;
+    }
+
+    .features i {
+      width: 1.2rem;
+      color: #f5b042;
+    }
+
+    .recurrent-cost {
+      background: #f8fafc;
+      border-radius: 0.8rem;
+      padding: 0.6rem;
+      margin: 0.8rem 0;
+      font-size: 0.7rem;
+      color: #2c5a74;
+      text-align: center;
+    }
+
+    .btn-plan {
+      background: #f1f5f9;
+      border: none;
+      padding: 0.8rem;
+      border-radius: 2rem;
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: 0.2s;
+      text-align: center;
+      text-decoration: none;
+      display: block;
+      color: #1e2a3a;
+      margin-top: auto;
+    }
+
+    .btn-plan:hover {
+      background: #1e6f5c;
+      color: white;
+    }
+
+    .btn-primary-plan {
+      background: #1e6f5c;
+      color: white;
+    }
+
+    .btn-primary-plan:hover {
+      background: #0e5a49;
+    }
+
+    .microcopy {
+      text-align: center;
+      margin-top: 2.5rem;
+      font-size: 0.85rem;
+      color: #7c5e2e;
+      background: #fef5e8;
+      display: inline-block;
+      padding: 0.5rem 1.5rem;
+      border-radius: 40px;
+      width: auto;
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #25D366;
+      color: white;
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      transition: 0.2s;
+      z-index: 100;
+      text-decoration: none;
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.05);
+      background: #20b859;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background: #f8fafc;
+      font-size: 0.75rem;
+      color: #6b8bad;
+      border-top: 1px solid #ecf3f9;
+    }
+
+    @media (max-width: 750px) {
+      .hero h1 { font-size: 1.8rem; }
+      .hero .sub { font-size: 1.1rem; }
+      .cards-grid { gap: 1.5rem; }
+      .card { max-width: 100%; }
+      .card-popular { transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <h1>Automatiza tus pedidos de almuerzo y vende todos los días sin desorden</h1>
+    <div class="sub">Sistema completo con pedidos, pago online y control en tiempo real</div>
+    <p>Elige la opción que mejor se adapte a tu negocio. Desde pago único hasta desarrollo a medida.</p>
+    <button class="btn-scroll" id="scrollToPlans"><i class="fas fa-arrow-down"></i> Ver opciones</button>
+  </div>
+</section>
+
+<!-- SECCIÓN DE PLANES CON PRECIOS REALES -->
+<section class="plans-section" id="plans">
+  <div class="container">
+    <div class="section-header">
+      <h2>Planes pensados para vender más</h2>
+      <p>Soluciones 100% funcionales, sin letra chica</p>
+    </div>
+
+    <div class="cards-grid">
+      
+      <!-- PLAN BÁSICO: Solución optimizada (Google Sheets + Chatwoot) -->
+      <div class="card">
+        <h3>Básico <span class="price">$497k <small>+ IVA</small></span></h3>
+        <div class="card-desc">Ideal para empezar con pedidos online y control en Excel automático.</div>
+        <ul class="features">
+          <li><i class="fas fa-check-circle"></i> Landing + cotizador inteligente</li>
+          <li><i class="fas fa-check-circle"></i> Pago online con MercadoPago</li>
+          <li><i class="fas fa-check-circle"></i> <strong>Registro automático en Google Sheets</strong></li>
+          <li><i class="fas fa-check-circle"></i> WhatsApp + Chatwoot (bandeja CRM)</li>
+          <li><i class="fas fa-check-circle"></i> Corte horario a las 20:00 hrs</li>
+          <li><i class="fas fa-check-circle"></i> Soporte 30 días gratis</li>
+        </ul>
+        <div class="recurrent-cost">
+          <i class="fas fa-info-circle"></i> Pago único · Sin mensualidades obligatorias
+        </div>
+        <a href="/basico.html" class="btn-plan">Ver detalle →</a>
+      </div>
+
+      <!-- PLAN PRO (RECOMENDADO): GoHighLevel -->
+      <div class="card card-popular">
+        <div class="badge-popular">⭐ RECOMENDADO</div>
+        <h3>Pro <span class="price">$821k <small>+ IVA</small></span></h3>
+        <div class="card-desc">Automatización avanzada con GoHighLevel, CRM y flujos inteligentes.</div>
+        <ul class="features">
+          <li><i class="fas fa-check-circle"></i> Landing + cotizador dinámico</li>
+          <li><i class="fas fa-check-circle"></i> Pago online + flujo automatizado</li>
+          <li><i class="fas fa-check-circle"></i> Pipeline de pedidos (oportunidades)</li>
+          <li><i class="fas fa-check-circle"></i> Automatizaciones WhatsApp / email</li>
+          <li><i class="fas fa-check-circle"></i> Corte horario simulado + restricción</li>
+          <li><i class="fas fa-check-circle"></i> Exportación a Google Sheets (Zapier)</li>
+        </ul>
+        <div class="recurrent-cost">
+          <i class="fas fa-chart-line"></i> Implementación única <strong>$821.100</strong> + <strong>USD 97/mes</strong> (GHL) + WhatsApp API (~$15/mes)
+        </div>
+        <a href="/pro.html" class="btn-plan btn-primary-plan">Ver detalle →</a>
+      </div>
+
+      <!-- PLAN PREMIUM: Desarrollo a medida (Next.js + Supabase) -->
+      <div class="card">
+        <h3>Premium <span class="price">$1.095k <small>+ IVA</small></span></h3>
+        <div class="card-desc">Sistema completo a medida, panel propio, base de datos y escalabilidad total.</div>
+        <ul class="features">
+          <li><i class="fas fa-check-circle"></i> Backend con Next.js + Supabase</li>
+          <li><i class="fas fa-check-circle"></i> Panel de administración personalizado</li>
+          <li><i class="fas fa-check-circle"></i> Webhooks MercadoPago + confirmación real</li>
+          <li><i class="fas fa-check-circle"></i> Autenticación y roles (Admin/Usuario)</li>
+          <li><i class="fas fa-check-circle"></i> Corte automático real (backend)</li>
+          <li><i class="fas fa-check-circle"></i> Código fuente entregado · Repositorio privado</li>
+        </ul>
+        <div class="recurrent-cost">
+          <i class="fas fa-crown"></i> 58 horas de desarrollo · Hospedaje por cuenta del cliente · Soporte 90 días
+        </div>
+        <a href="/premium.html" class="btn-plan">Ver detalle →</a>
+      </div>
+    </div>
+
+    <!-- microcopy persuasivo -->
+    <div style="display: flex; justify-content: center; margin-top: 2rem;">
+      <div class="microcopy">
+        <i class="fas fa-chart-line"></i> La mayoría de nuestros clientes elige el plan PRO por su equilibrio entre costo, velocidad y automatización.
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Dualtec E.I.R.L · Automatización & Desarrollo Digital · Tercera Transversal 6189 · contacto@goclientes.com · +56 9 6357 1251
+</footer>
+
+<!-- WhatsApp flotante -->
+<a href="https://wa.me/56963571251?text=Hola%2C%20quiero%20más%20información%20sobre%20los%20planes%20de%20pedidos%20de%20almuerzo" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<script>
+  const scrollBtn = document.getElementById('scrollToPlans');
+  const plansSection = document.getElementById('plans');
+  if (scrollBtn && plansSection) {
+    scrollBtn.addEventListener('click', () => {
+      plansSection.scrollIntoView({ behavior: 'smooth' });
+    });
+  }
+</script>
+</body>
+</html>
