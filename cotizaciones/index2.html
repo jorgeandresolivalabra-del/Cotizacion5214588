@@ -1,1 +1,488 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Cotización GHL | Dualtec · Sistema de Pedidos de Almuerzo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
+    body {
+      background: linear-gradient(145deg, #eef2f8 0%, #e0e8f2 100%);
+      font-family: 'Inter', sans-serif;
+      padding: 2rem 1.5rem;
+      color: #1a2c3e;
+    }
+
+    .quote-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 2rem;
+      box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.25), 0 8px 18px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+    }
+
+    /* Header corporativo */
+    .quote-header {
+      background: #0b2b3b;
+      background-image: linear-gradient(135deg, #0f2f3f 0%, #154757 100%);
+      padding: 1.8rem 2.5rem;
+      color: white;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1.2rem;
+    }
+
+    .brand h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 0.2rem;
+    }
+
+    .brand .company-details {
+      font-size: 0.8rem;
+      opacity: 0.85;
+      line-height: 1.4;
+      margin-top: 0.3rem;
+    }
+
+    .brand .company-details i {
+      width: 1.2rem;
+      margin-right: 0.2rem;
+    }
+
+    .quote-badge {
+      text-align: right;
+    }
+
+    .badge {
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(4px);
+      padding: 0.5rem 1.2rem;
+      border-radius: 60px;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    .quote-number {
+      font-size: 0.8rem;
+      margin-top: 0.6rem;
+      opacity: 0.8;
+    }
+
+    /* cuerpo */
+    .quote-body {
+      padding: 2rem 2.5rem;
+    }
+
+    /* fila datos cliente */
+    .info-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.8rem;
+      justify-content: space-between;
+      background: #f8fafd;
+      padding: 1.2rem 1.5rem;
+      border-radius: 1.5rem;
+      margin-bottom: 2rem;
+      border: 1px solid #e6edf4;
+    }
+
+    .info-card {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .info-card .label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-weight: 700;
+      color: #54708f;
+      margin-bottom: 0.5rem;
+    }
+
+    .info-card .value {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #0b2b3b;
+    }
+    .info-card .sub {
+      font-size: 0.8rem;
+      color: #4a6f8f;
+      margin-top: 0.2rem;
+    }
+
+    /* tabla items */
+    .services-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 1.8rem;
+    }
+
+    .services-table th {
+      text-align: left;
+      padding: 0.8rem 0.5rem 0.7rem 0;
+      font-weight: 700;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      color: #4f6f8f;
+      border-bottom: 2px solid #e2e8f0;
+    }
+
+    .services-table td {
+      padding: 1rem 0.5rem 1rem 0;
+      border-bottom: 1px solid #eef3fa;
+      vertical-align: top;
+    }
+
+    .services-table th:last-child, .services-table td:last-child {
+      text-align: right;
+    }
+
+    .service-name {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: #1e3b4c;
+    }
+
+    .amount-cell {
+      font-weight: 800;
+      color: #1a4e6b;
+      white-space: nowrap;
+    }
+
+    .totals {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      margin: 1rem 0 1.5rem;
+      padding-top: 0.8rem;
+      border-top: 2px dashed #cbdde9;
+    }
+
+    .total-line {
+      display: flex;
+      gap: 2rem;
+      justify-content: flex-end;
+      width: 100%;
+      max-width: 300px;
+      margin-bottom: 0.4rem;
+      font-size: 0.95rem;
+    }
+
+    .total-line.grand-total {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: #0b2b3b;
+      margin-top: 0.5rem;
+      padding-top: 0.5rem;
+      border-top: 2px solid #cad9e8;
+    }
+    .grand-total span:last-child {
+      color: #126e5e;
+    }
+
+    .proposal-text {
+      background: #fefce8;
+      border-left: 5px solid #e0b043;
+      padding: 1rem 1.5rem;
+      border-radius: 1rem;
+      margin: 1.8rem 0 1rem;
+      font-size: 0.85rem;
+      color: #5f4c2c;
+      line-height: 1.45;
+    }
+
+    .scope-box, .limit-box, .value-box, .recurrent-box {
+      background: #f7f9fc;
+      border-radius: 1rem;
+      padding: 1rem 1.5rem;
+      margin: 1rem 0;
+      font-size: 0.8rem;
+      border: 1px solid #e2edf7;
+    }
+    .scope-title, .limit-title, .value-title, .recurrent-title {
+      font-weight: 800;
+      margin-bottom: 0.6rem;
+      color: #1e6f5c;
+      font-size: 0.85rem;
+    }
+    .limit-box {
+      background: #fff5f0;
+      border-left: 4px solid #e67e22;
+    }
+    .value-box {
+      background: #eafaf5;
+      border-left: 4px solid #2ecc71;
+    }
+    .recurrent-box {
+      background: #eef2fa;
+      border-left: 4px solid #3b82f6;
+    }
+    .hours-badge {
+      background: #e0e7ff;
+      display: inline-block;
+      padding: 0.2rem 0.8rem;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 0.75rem;
+      margin-left: 0.5rem;
+    }
+    .terms {
+      margin-top: 1.8rem;
+      font-size: 0.73rem;
+      color: #5b7895;
+      border-top: 1px solid #e2edf7;
+      padding-top: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.8rem;
+    }
+    .buttons {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+      justify-content: flex-end;
+    }
+    .btn {
+      padding: 0.6rem 1.5rem;
+      border-radius: 2rem;
+      font-weight: 500;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: 0.2s;
+      border: none;
+      background: white;
+      font-family: inherit;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+    .btn-primary {
+      background: #1e6f5c;
+      color: white;
+      border: 1px solid #1e6f5c;
+    }
+    .btn-primary:hover {
+      background: #0e5a49;
+      transform: translateY(-2px);
+    }
+    .btn-outline {
+      border: 1px solid #bdd3e8;
+      background: white;
+      color: #2c5a74;
+    }
+    .btn-outline:hover {
+      background: #eef4fa;
+    }
+    footer {
+      background: #f4f8fe;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.7rem;
+      color: #6b8bad;
+    }
+    @media (max-width: 750px) {
+      body { padding: 1rem; }
+      .quote-header, .quote-body { padding: 1.2rem; }
+      .info-row { flex-direction: column; gap: 0.8rem; }
+      .services-table th, .services-table td { font-size: 0.75rem; }
+      .total-line { max-width: 100%; }
+      .buttons { flex-direction: column; align-items: stretch; }
+      .btn { justify-content: center; }
+    }
+    @media print {
+      body { background: white; padding: 0; }
+      .quote-container { box-shadow: none; border-radius: 0; }
+      .buttons { display: none; }
+    }
+  </style>
+</head>
+<body>
+<div class="quote-container">
+  <div class="quote-header">
+    <div class="brand">
+      <h1>DUALTEC E.I.R.L</h1>
+      <div class="company-details">
+        <i class="fas fa-cogs"></i> Automatización & Desarrollo Digital<br>
+        <i class="fas fa-envelope"></i> contacto@goclientes.com · <i class="fas fa-phone-alt"></i> +56 9 6357 1251
+      </div>
+    </div>
+    <div class="quote-badge">
+      <div class="badge"><i class="fas fa-file-invoice-dollar"></i> COTIZACIÓN DE SERVICIOS</div>
+      <div class="quote-number">Folio: cot-jv-2026-010 · Moneda: CLP · 29 abril 2026</div>
+    </div>
+  </div>
+
+  <div class="quote-body">
+    <!-- Datos cliente -->
+    <div class="info-row">
+      <div class="info-card"><div class="label">CLIENTE</div><div class="value">Maca Lama</div><div class="sub">Empresa: Nueva Dominica</div></div>
+      <div class="info-card"><div class="label">PROYECTO</div><div class="value">Sistema de Pedidos de Almuerzo</div><div class="sub">Implementado con GoHighLevel (GHL)</div></div>
+      <div class="info-card"><div class="label">VIGENCIA</div><div class="value">Fecha: 29 abril 2026</div><div class="sub">Validez oferta: 15 días hábiles</div></div>
+    </div>
+
+    <!-- Propuesta general + horas -->
+    <div class="proposal-text">
+      <i class="fas fa-bullhorn" style="margin-right: 8px;"></i> <strong>🧩 Propuesta General</strong><br>
+      Se propone el desarrollo de un sistema de pedidos de almuerzo utilizando la plataforma <strong>GoHighLevel</strong>, enfocado en automatización, captación de pedidos y gestión eficiente sin necesidad de desarrollo backend complejo. El sistema permitirá a los usuarios seleccionar su almuerzo desde una landing optimizada, registrar sus datos, realizar pedidos y recibir confirmaciones automáticas mediante flujos inteligentes. A diferencia de un desarrollo a medida, esta solución prioriza rapidez de implementación, escalabilidad comercial y automatización de procesos.
+      <div style="margin-top: 10px; background: #e9ecef; border-radius: 40px; display: inline-block; padding: 0.2rem 1rem;"><i class="far fa-clock"></i> Carga de trabajo estimada: <strong>58 horas profesionales</strong> <span class="hours-badge">implementación + configuración + pruebas</span></div>
+    </div>
+
+    <!-- Tabla de items (costos únicos) -->
+    <table class="services-table">
+      <thead><tr><th>Módulo / Servicio</th><th>Precio</th></tr></thead>
+      <tbody>
+        <tr><td><div class="service-name">🚀 Landing Page + Diseño UI / Cotizador de Almuerzos</div><div class="service-detail">Página optimizada para conversión, selección de menú (4 opciones), precios dinámicos, diseño mobile-first.</div></td><td class="amount-cell">$120.000</td></tr>
+        <tr><td><div class="service-name">📋 Sistema de Pedido (Formulario Inteligente + CRM)</div><div class="service-detail">Formulario avanzado con selección de productos, captura automática, etiquetado de clientes según pedido.</div></td><td class="amount-cell">$150.000</td></tr>
+        <tr><td><div class="service-name">💳 Integración de Pagos (link de pago + flujo)</div><div class="service-detail">Integración con MercadoPago vía link de pago, redirección o botón, automatización posterior al pago.</div></td><td class="amount-cell">$90.000</td></tr>
+        <tr><td><div class="service-name">✉️ Automatizaciones (email/WhatsApp)</div><div class="service-detail">Confirmación automática por email o WhatsApp, mensaje de pedido recibido, flujo post-compra.</div></td><td class="amount-cell">$120.000</td></tr>
+        <tr><td><div class="service-name">⏱️ Corte horario simulado + restricción de pedidos</div><div class="service-detail">Restricción mediante horarios del formulario y automatizaciones, mensaje de cierre después de las 20:00 hrs.</div></td><td class="amount-cell">$50.000</td></tr>
+        <tr><td><div class="service-name">📊 Panel de Gestión (Pipeline CRM GHL)</div><div class="service-detail">Visualización como oportunidades: Pendiente → Pagado → En preparación → Entregado, gestión sin desarrollo.</div></td><td class="amount-cell">$90.000</td></tr>
+        <tr><td><div class="service-name">📎 Integración Google Sheets (webhook/Zapier)</div><div class="service-detail">Exportación automática de pedidos diarios a Google Sheets.</div></td><td class="amount-cell">$70.000</td></tr>
+      </tbody>
+    </table>
+
+    <!-- Totales (solo implementación) -->
+    <div class="totals">
+      <div class="total-line"><span>Subtotal servicios</span><span>$690.000</span></div>
+      <div class="total-line"><span>IVA (19%)</span><span>$131.100</span></div>
+      <div class="total-line grand-total"><span>TOTAL IMPLEMENTACIÓN (incluido IVA)</span><span>$821.100</span></div>
+      <div style="font-size:0.7rem; margin-top:6px;">* Valores expresados en pesos chilenos (CLP). Pago único por puesta en marcha.</div>
+    </div>
+
+    <!-- NUEVO BLOQUE: Gastos recurrentes mensuales (GHL + WhatsApp) -->
+    <div class="recurrent-box">
+      <div class="recurrent-title"><i class="fas fa-calendar-alt"></i> 💰 Gastos operacionales recurrentes (mensuales) - No incluidos en el proyecto</div>
+      <p>Para el correcto funcionamiento del sistema, se requiere mantener activa una suscripción a GoHighLevel y, opcionalmente, un canal oficial de WhatsApp Business. Estos costos son asumidos directamente por el cliente y no forman parte de la cotización de implementación.</p>
+      <ul style="margin-left: 1.2rem; margin-top: 0.5rem;">
+        <li><strong>Cuenta GoHighLevel (plan Starter o Superior):</strong> USD 97 / mes + impuestos aplicables en Chile (IVA 19% si aplica según facturación). Valor aproximado en CLP: <strong>$95.000 + IVA</strong> (considerando tipo de cambio referencial 1 USD = 980 CLP).</li>
+        <li><strong>WhatsApp Business API (canal oficial o proveedor):</strong> desde USD 15 / mes (aproximadamente $14.700 CLP + IVA) dependiendo del uso y proveedor. <em>Recomendado para enviar confirmaciones automáticas sin restricciones.</em></li>
+      </ul>
+      <div style="background: #e9ecef; border-radius: 12px; padding: 0.5rem; margin-top: 0.6rem; font-size: 0.75rem;">
+        <i class="fas fa-info-circle"></i> <strong>Nota:</strong> Los precios de suscripción están sujetos a cambios por parte de los proveedores. Dualtec puede asistir en la contratación y configuración inicial sin costo adicional.
+      </div>
+    </div>
+
+    <!-- Alcance detallado -->
+    <div class="scope-box">
+      <div class="scope-title"><i class="fas fa-cubes"></i> 🚀 Alcance del Proyecto (Adaptado a GHL)</div>
+      <ul style="margin-left: 1.2rem; display: flex; flex-direction: column; gap: 0.3rem;">
+        <li><strong>1. Landing Page + Cotizador</strong> – página conversión, menú dinámico.</li>
+        <li><strong>2. Sistema de Pedido (Formulario Inteligente)</strong> – captura + CRM + etiquetado.</li>
+        <li><strong>3. Integración de Pagos</strong> – MercadoPago vía link de pago + automatización.</li>
+        <li><strong>4. Automatización de Confirmaciones</strong> – email / WhatsApp, flujo post-compra.</li>
+        <li><strong>5. Corte Automático simulado</strong> – horarios, mensaje de cierre tras 20:00 hrs.</li>
+        <li><strong>6. Panel de Gestión</strong> – pipeline de pedidos en CRM (oportunidades).</li>
+        <li><strong>7. Exportación de Datos</strong> – Google Sheets (webhook o Zapier/Make).</li>
+      </ul>
+      <div style="margin-top: 0.5rem;"><i class="fas fa-cloud-upload-alt"></i> <strong>Entrega:</strong> Sistema 100% funcional en GoHighLevel, acceso completo al CRM, landing publicada, automatizaciones activas + capacitación básica de uso.</div>
+    </div>
+
+    <!-- Limitaciones técnicas -->
+    <div class="limit-box">
+      <div class="limit-title"><i class="fas fa-exclamation-triangle"></i> ⚠️ Limitaciones Técnicas (Importante)</div>
+      <ul style="margin-left: 1.2rem;">
+        <li>No incluye backend personalizado (como Next.js o Supabase) ni lógica avanzada en tiempo real.</li>
+        <li>Webhooks limitados comparado a desarrollo a medida.</li>
+        <li>Ideal para MVP, validación o automatización comercial.</li>
+      </ul>
+    </div>
+
+    <!-- Valor estratégico -->
+    <div class="value-box">
+      <div class="value-title"><i class="fas fa-fire"></i> 🔥 Valor Estratégico</div>
+      <p>Este sistema permite lanzar rápidamente un canal de ventas digital automatizado, reduciendo costos de desarrollo y validando el modelo de negocio antes de escalar a una solución más avanzada si es necesario. Perfecto para operar con rapidez y sin fricción técnica.</p>
+    </div>
+
+    <!-- Condiciones generales resumidas -->
+    <div class="terms">
+      <div><i class="fas fa-clock"></i> Forma de pago: 50% anticipo, 25% demo, 25% final · Plazo: 2-3 semanas desde el anticipo</div>
+      <div><i class="fas fa-check-circle"></i> Garantía 60 días por bugs · Incluye capacitación básica · Soporte 1 mes gratis</div>
+      <div><i class="fas fa-file-signature"></i> Cotización válida por 15 días · Precios no incluyen pasarela, dominio externo ni suscripciones mensuales.</div>
+    </div>
+
+    <!-- Botones compartir / copiar / print -->
+    <div class="buttons">
+      <button class="btn btn-outline" id="copyLinkBtn"><i class="fas fa-link"></i> Copiar enlace</button>
+      <button class="btn btn-outline" id="printBtn"><i class="fas fa-print"></i> Imprimir / PDF</button>
+      <button class="btn btn-primary" id="shareBtn"><i class="fas fa-share-alt"></i> Compartir cotización</button>
+    </div>
+    <div id="toastMessage" style="position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: #1e6f5c; color: white; padding: 8px 24px; border-radius: 40px; font-size: 0.8rem; z-index: 1000; opacity: 0; transition: opacity 0.2s; pointer-events: none;"></div>
+  </div>
+
+  <footer>
+    Dualtec E.I.R.L · Automatización & Desarrollo Digital · contacto@goclientes.com · +56 9 6357 1251 · Cotización válida hasta 14 de mayo 2026
+  </footer>
+</div>
+
+<script>
+  const copyBtn = document.getElementById('copyLinkBtn');
+  const printBtn = document.getElementById('printBtn');
+  const shareBtn = document.getElementById('shareBtn');
+  const toast = document.getElementById('toastMessage');
+
+  function showMessage(text, isError = false) {
+    toast.style.backgroundColor = isError ? '#b13e3e' : '#1e6f5c';
+    toast.textContent = text;
+    toast.style.opacity = '1';
+    setTimeout(() => { toast.style.opacity = '0'; }, 2800);
+  }
+
+  copyBtn.addEventListener('click', () => {
+    const currentUrl = window.location.href;
+    if (currentUrl.startsWith('file://')) {
+      showMessage('⚠️ Vista local. Para compartir el link, súbela a un hosting (Netlify/GitHub Pages) o envía el archivo HTML.', true);
+      navigator.clipboard.writeText(currentUrl).catch(() => showMessage('No se pudo copiar', true));
+    } else {
+      navigator.clipboard.writeText(currentUrl).then(() => showMessage('✅ Enlace copiado. ¡Puedes enviarlo por WhatsApp o email!', false))
+        .catch(() => showMessage('Error al copiar', true));
+    }
+  });
+
+  printBtn.addEventListener('click', () => { window.print(); });
+
+  shareBtn.addEventListener('click', async () => {
+    const shareData = {
+      title: 'Cotización Dualtec - Sistema Pedidos GHL (GoHighLevel)',
+      text: 'Maca Lama, tu cotización para el sistema de pedidos de almuerzo con GoHighLevel ya está disponible. Total implementación $690.000 CLP + IVA, más costos recurrentes mensuales.',
+      url: window.location.href,
+    };
+    if (navigator.share && !window.location.href.startsWith('file://')) {
+      try {
+        await navigator.share(shareData);
+        showMessage('Compartido correctamente');
+      } catch (err) {
+        if (err.name !== 'AbortError') showMessage('No se pudo compartir', true);
+      }
+    } else {
+      if (window.location.href.startsWith('file://')) {
+        showMessage('Para compartir, sube el archivo a un hosting (Vercel/Netlify) o envía el .html', true);
+      } else {
+        navigator.clipboard.writeText(window.location.href).then(() => showMessage('Enlace copiado al portapapeles, listo para compartir', false))
+          .catch(() => showMessage('Error al copiar', true));
+      }
+    }
+  });
+
+  if (window.location.href.startsWith('file://')) {
+    setTimeout(() => showMessage('📁 Vista local. Para enviar un link público, súbela a un hosting (ej: Netlify, Vercel).', false), 600);
+  }
+</script>
+</body>
+</html>
