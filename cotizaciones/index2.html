@@ -16,25 +16,108 @@
     }
 
     body {
-      background: linear-gradient(145deg, #eef2f8 0%, #e0e8f2 100%);
+      background: linear-gradient(135deg, #fdf4f0 0%, #ffe6df 50%, #fce8e0 100%);
+      background-attachment: fixed;
       font-family: 'Inter', sans-serif;
       padding: 2rem 1.5rem;
-      color: #1a2c3e;
+      color: #2d2a2a;
+      animation: gradientShift 15s ease infinite;
+      background-size: 200% 200%;
     }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 0%; }
+      50% { background-position: 100% 100%; }
+      100% { background-position: 0% 0%; }
+    }
+
+    /* ---------- ANIMACIONES TIPO DIAPOSITIVA (PowerPoint) ---------- */
+    @keyframes fadeInUpSlide {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInLeftSlide {
+      from {
+        opacity: 0;
+        transform: translateX(-40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes fadeInRightSlide {
+      from {
+        opacity: 0;
+        transform: translateX(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes zoomIn {
+      from {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    /* Clases de animación que se activan con JavaScript o directamente en CSS */
+    .animate-up {
+      animation: fadeInUpSlide 0.6s ease forwards;
+      opacity: 0; /* para que espere la animación */
+    }
+    .animate-left {
+      animation: fadeInLeftSlide 0.6s ease forwards;
+      opacity: 0;
+    }
+    .animate-right {
+      animation: fadeInRightSlide 0.6s ease forwards;
+      opacity: 0;
+    }
+    .animate-zoom {
+      animation: zoomIn 0.5s ease forwards;
+      opacity: 0;
+    }
+
+    /* Retrasos escalonados estilo diapositivas */
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.2s; }
+    .delay-3 { animation-delay: 0.3s; }
+    .delay-4 { animation-delay: 0.4s; }
+    .delay-5 { animation-delay: 0.5s; }
+    .delay-6 { animation-delay: 0.6s; }
+    .delay-7 { animation-delay: 0.7s; }
 
     .quote-container {
       max-width: 1280px;
       margin: 0 auto;
-      background: white;
+      background: rgba(255, 248, 245, 0.94);
+      backdrop-filter: blur(12px);
       border-radius: 2rem;
       box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.25), 0 8px 18px rgba(0, 0, 0, 0.05);
       overflow: hidden;
+      border: 1px solid rgba(255, 215, 200, 0.6);
     }
 
-    /* Header corporativo */
+    /* Header corporativo - solo Dualtec */
     .quote-header {
-      background: #0b2b3b;
-      background-image: linear-gradient(135deg, #0f2f3f 0%, #154757 100%);
+      background: #b23c1c;
+      background-image: linear-gradient(135deg, #c24b2a 0%, #a13215 100%);
       padding: 1.8rem 2.5rem;
       color: white;
       display: flex;
@@ -68,12 +151,13 @@
     }
 
     .badge {
-      background: rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.2);
       backdrop-filter: blur(4px);
       padding: 0.5rem 1.2rem;
       border-radius: 60px;
       font-weight: 600;
       font-size: 0.9rem;
+      border: 1px solid rgba(255,255,255,0.3);
     }
 
     .quote-number {
@@ -82,7 +166,6 @@
       opacity: 0.8;
     }
 
-    /* cuerpo */
     .quote-body {
       padding: 2rem 2.5rem;
     }
@@ -93,11 +176,18 @@
       flex-wrap: wrap;
       gap: 1.8rem;
       justify-content: space-between;
-      background: #f8fafd;
+      background: rgba(255, 245, 240, 0.8);
+      backdrop-filter: blur(5px);
       padding: 1.2rem 1.5rem;
       border-radius: 1.5rem;
       margin-bottom: 2rem;
-      border: 1px solid #e6edf4;
+      border: 1px solid rgba(255, 200, 180, 0.6);
+      transition: all 0.3s ease;
+    }
+    .info-row:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.08);
+      background: rgba(255, 245, 240, 0.95);
     }
 
     .info-card {
@@ -110,18 +200,18 @@
       text-transform: uppercase;
       letter-spacing: 0.5px;
       font-weight: 700;
-      color: #54708f;
+      color: #b23c1c;
       margin-bottom: 0.5rem;
     }
 
     .info-card .value {
       font-size: 1rem;
       font-weight: 700;
-      color: #0b2b3b;
+      color: #2d2a2a;
     }
     .info-card .sub {
       font-size: 0.8rem;
-      color: #4a6f8f;
+      color: #7a5a4a;
       margin-top: 0.2rem;
     }
 
@@ -138,13 +228,13 @@
       font-weight: 700;
       font-size: 0.8rem;
       text-transform: uppercase;
-      color: #4f6f8f;
-      border-bottom: 2px solid #e2e8f0;
+      color: #b23c1c;
+      border-bottom: 2px solid rgba(200, 120, 80, 0.3);
     }
 
     .services-table td {
       padding: 1rem 0.5rem 1rem 0;
-      border-bottom: 1px solid #eef3fa;
+      border-bottom: 1px solid rgba(200, 120, 80, 0.2);
       vertical-align: top;
     }
 
@@ -155,12 +245,19 @@
     .service-name {
       font-weight: 700;
       font-size: 0.95rem;
-      color: #1e3b4c;
+      color: #3a2a24;
+    }
+
+    .service-detail {
+      font-size: 0.7rem;
+      color: #8a6a5a;
+      margin-top: 0.2rem;
+      line-height: 1.3;
     }
 
     .amount-cell {
       font-weight: 800;
-      color: #1a4e6b;
+      color: #b23c1c;
       white-space: nowrap;
     }
 
@@ -170,7 +267,7 @@
       align-items: flex-end;
       margin: 1rem 0 1.5rem;
       padding-top: 0.8rem;
-      border-top: 2px dashed #cbdde9;
+      border-top: 2px dashed rgba(200, 120, 80, 0.4);
     }
 
     .total-line {
@@ -183,75 +280,102 @@
       font-size: 0.95rem;
     }
 
+    .total-line span:first-child {
+      font-weight: 500;
+      color: #5a3a2a;
+    }
+
     .total-line.grand-total {
       font-size: 1.3rem;
       font-weight: 800;
-      color: #0b2b3b;
+      color: #2d2a2a;
       margin-top: 0.5rem;
       padding-top: 0.5rem;
-      border-top: 2px solid #cad9e8;
+      border-top: 2px solid rgba(178, 60, 28, 0.6);
     }
     .grand-total span:last-child {
-      color: #126e5e;
+      background: linear-gradient(135deg, #b23c1c, #e07a5a);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
     }
 
     .proposal-text {
-      background: #fefce8;
-      border-left: 5px solid #e0b043;
+      background: linear-gradient(135deg, rgba(255, 240, 230, 0.9), rgba(255, 245, 235, 0.8));
+      border-left: 5px solid #e07a5a;
       padding: 1rem 1.5rem;
       border-radius: 1rem;
       margin: 1.8rem 0 1rem;
       font-size: 0.85rem;
-      color: #5f4c2c;
+      color: #5a3a2a;
       line-height: 1.45;
+      backdrop-filter: blur(4px);
+      transition: all 0.3s ease;
+    }
+    .proposal-text:hover {
+      transform: translateX(8px);
     }
 
-    .scope-box, .limit-box, .value-box, .recurrent-box {
-      background: #f7f9fc;
-      border-radius: 1rem;
-      padding: 1rem 1.5rem;
-      margin: 1rem 0;
-      font-size: 0.8rem;
-      border: 1px solid #e2edf7;
-    }
-    .scope-title, .limit-title, .value-title, .recurrent-title {
-      font-weight: 800;
-      margin-bottom: 0.6rem;
-      color: #1e6f5c;
-      font-size: 0.85rem;
-    }
-    .limit-box {
-      background: #fff5f0;
-      border-left: 4px solid #e67e22;
-    }
-    .value-box {
-      background: #eafaf5;
-      border-left: 4px solid #2ecc71;
-    }
-    .recurrent-box {
-      background: #eef2fa;
-      border-left: 4px solid #3b82f6;
-    }
     .hours-badge {
-      background: #e0e7ff;
+      background: rgba(224, 122, 90, 0.2);
       display: inline-block;
       padding: 0.2rem 0.8rem;
       border-radius: 40px;
       font-weight: 600;
       font-size: 0.75rem;
       margin-left: 0.5rem;
+      color: #b23c1c;
     }
+
+    /* Bloques generales */
+    .scope-box, .limit-box, .value-box, .recurrent-box, .extra-costs-box {
+      background: rgba(255, 245, 240, 0.7);
+      backdrop-filter: blur(5px);
+      border-radius: 1rem;
+      padding: 1rem 1.5rem;
+      margin: 1rem 0;
+      font-size: 0.8rem;
+      border: 1px solid rgba(224, 122, 90, 0.3);
+      transition: all 0.3s ease;
+    }
+    .scope-box:hover, .limit-box:hover, .value-box:hover, .recurrent-box:hover, .extra-costs-box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 20px rgba(0, 0, 0, 0.05);
+      background: rgba(255, 245, 240, 0.9);
+    }
+
+    .scope-title, .limit-title, .value-title, .recurrent-title, .extra-title {
+      font-weight: 800;
+      margin-bottom: 0.6rem;
+      color: #b23c1c;
+      font-size: 0.85rem;
+    }
+    .limit-box {
+      border-left: 4px solid #e67e22;
+    }
+    .value-box {
+      border-left: 4px solid #2ecc71;
+    }
+    .recurrent-box {
+      border-left: 4px solid #3b82f6;
+    }
+    .extra-costs-box {
+      border-left: 4px solid #f39c12;
+      background: rgba(253, 245, 230, 0.85);
+    }
+
     .terms {
       margin-top: 1.8rem;
       font-size: 0.73rem;
-      color: #5b7895;
-      border-top: 1px solid #e2edf7;
+      color: #8a6a5a;
+      border-top: 1px solid rgba(200, 120, 80, 0.3);
       padding-top: 1rem;
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
       gap: 0.8rem;
     }
+
     .buttons {
       display: flex;
       gap: 1rem;
@@ -264,39 +388,43 @@
       font-weight: 500;
       font-size: 0.85rem;
       cursor: pointer;
-      transition: 0.2s;
+      transition: all 0.3s ease;
       border: none;
-      background: white;
+      background: rgba(255, 250, 245, 0.9);
+      backdrop-filter: blur(4px);
       font-family: inherit;
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      border: 1px solid rgba(224, 122, 90, 0.4);
+      color: #b23c1c;
     }
     .btn-primary {
-      background: #1e6f5c;
+      background: linear-gradient(135deg, #b23c1c, #e07a5a);
       color: white;
-      border: 1px solid #1e6f5c;
+      border: none;
+      box-shadow: 0 4px 12px rgba(178, 60, 28, 0.3);
     }
     .btn-primary:hover {
-      background: #0e5a49;
-      transform: translateY(-2px);
-    }
-    .btn-outline {
-      border: 1px solid #bdd3e8;
-      background: white;
-      color: #2c5a74;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(178, 60, 28, 0.4);
+      filter: brightness(1.05);
     }
     .btn-outline:hover {
-      background: #eef4fa;
+      transform: translateY(-2px);
+      background: rgba(224, 122, 90, 0.2);
+      border-color: #e07a5a;
     }
+
     footer {
-      background: #f4f8fe;
+      background: linear-gradient(145deg, rgba(255, 240, 230, 0.9), rgba(255, 235, 225, 0.8));
       text-align: center;
       padding: 1rem;
       font-size: 0.7rem;
-      color: #6b8bad;
+      color: #8a6a5a;
+      backdrop-filter: blur(4px);
     }
+
     @media (max-width: 750px) {
       body { padding: 1rem; }
       .quote-header, .quote-body { padding: 1.2rem; }
@@ -307,9 +435,10 @@
       .btn { justify-content: center; }
     }
     @media print {
-      body { background: white; padding: 0; }
-      .quote-container { box-shadow: none; border-radius: 0; }
+      body { background: white; padding: 0; animation: none; }
+      .quote-container { box-shadow: none; border-radius: 0; backdrop-filter: none; background: white; }
       .buttons { display: none; }
+      .animate-up, .animate-left, .animate-right, .animate-zoom { animation: none; opacity: 1; }
     }
   </style>
 </head>
@@ -317,7 +446,7 @@
 <div class="quote-container">
   <div class="quote-header">
     <div class="brand">
-      <h1>DUALTEC E.I.R.L</h1>
+      <h1>DUALTEC</h1>
       <div class="company-details">
         <i class="fas fa-cogs"></i> Automatización & Desarrollo Digital<br>
         <i class="fas fa-envelope"></i> contacto@goclientes.com · <i class="fas fa-phone-alt"></i> +56 9 6357 1251
@@ -330,57 +459,68 @@
   </div>
 
   <div class="quote-body">
-    <!-- Datos cliente -->
-    <div class="info-row">
-      <div class="info-card"><div class="label">CLIENTE</div><div class="value">Maca Lama</div><div class="sub">Empresa: Nueva Dominica</div></div>
+    <!-- Animación tipo diapositiva: cada bloque aparece escalonadamente -->
+    <div class="info-row animate-left delay-1">
+      <div class="info-card"><div class="label">SOLICITADA POR</div><div class="value">Nueva Dominica</div><div class="sub">Maca Lamas · Contacto principal</div></div>
       <div class="info-card"><div class="label">PROYECTO</div><div class="value">Sistema de Pedidos de Almuerzo</div><div class="sub">Implementado con GoHighLevel (GHL)</div></div>
       <div class="info-card"><div class="label">VIGENCIA</div><div class="value">Fecha: 29 abril 2026</div><div class="sub">Validez oferta: 15 días hábiles</div></div>
     </div>
 
-    <!-- Propuesta general + horas -->
-    <div class="proposal-text">
+    <!-- Propuesta general -->
+    <div class="proposal-text animate-up delay-2">
       <i class="fas fa-bullhorn" style="margin-right: 8px;"></i> <strong>🧩 Propuesta General</strong><br>
       Se propone el desarrollo de un sistema de pedidos de almuerzo utilizando la plataforma <strong>GoHighLevel</strong>, enfocado en automatización, captación de pedidos y gestión eficiente sin necesidad de desarrollo backend complejo. El sistema permitirá a los usuarios seleccionar su almuerzo desde una landing optimizada, registrar sus datos, realizar pedidos y recibir confirmaciones automáticas mediante flujos inteligentes. A diferencia de un desarrollo a medida, esta solución prioriza rapidez de implementación, escalabilidad comercial y automatización de procesos.
-      <div style="margin-top: 10px; background: #e9ecef; border-radius: 40px; display: inline-block; padding: 0.2rem 1rem;"><i class="far fa-clock"></i> Carga de trabajo estimada: <strong>58 horas profesionales</strong> <span class="hours-badge">implementación + configuración + pruebas</span></div>
+      <div style="margin-top: 10px; background: rgba(224, 122, 90, 0.15); border-radius: 40px; display: inline-block; padding: 0.2rem 1rem;"><i class="far fa-clock"></i> Carga de trabajo estimada: <strong>58 horas profesionales</strong> <span class="hours-badge">implementación + configuración + pruebas</span></div>
     </div>
 
-    <!-- Tabla de items (costos únicos) -->
-    <table class="services-table">
+    <!-- Tabla de items (animación zoom) -->
+    <table class="services-table animate-zoom delay-3">
       <thead><tr><th>Módulo / Servicio</th><th>Precio</th></tr></thead>
       <tbody>
-        <tr><td><div class="service-name">🚀 Landing Page + Diseño UI / Cotizador de Almuerzos</div><div class="service-detail">Página optimizada para conversión, selección de menú (4 opciones), precios dinámicos, diseño mobile-first.</div></td><td class="amount-cell">$120.000</td></tr>
-        <tr><td><div class="service-name">📋 Sistema de Pedido (Formulario Inteligente + CRM)</div><div class="service-detail">Formulario avanzado con selección de productos, captura automática, etiquetado de clientes según pedido.</div></td><td class="amount-cell">$150.000</td></tr>
-        <tr><td><div class="service-name">💳 Integración de Pagos (link de pago + flujo)</div><div class="service-detail">Integración con MercadoPago vía link de pago, redirección o botón, automatización posterior al pago.</div></td><td class="amount-cell">$90.000</td></tr>
-        <tr><td><div class="service-name">✉️ Automatizaciones (email/WhatsApp)</div><div class="service-detail">Confirmación automática por email o WhatsApp, mensaje de pedido recibido, flujo post-compra.</div></td><td class="amount-cell">$120.000</td></tr>
-        <tr><td><div class="service-name">⏱️ Corte horario simulado + restricción de pedidos</div><div class="service-detail">Restricción mediante horarios del formulario y automatizaciones, mensaje de cierre después de las 20:00 hrs.</div></td><td class="amount-cell">$50.000</td></tr>
-        <tr><td><div class="service-name">📊 Panel de Gestión (Pipeline CRM GHL)</div><div class="service-detail">Visualización como oportunidades: Pendiente → Pagado → En preparación → Entregado, gestión sin desarrollo.</div></td><td class="amount-cell">$90.000</td></tr>
-        <tr><td><div class="service-name">📎 Integración Google Sheets (webhook/Zapier)</div><div class="service-detail">Exportación automática de pedidos diarios a Google Sheets.</div></td><td class="amount-cell">$70.000</td></tr>
+        <tr><td><div class="service-name">🚀 Landing Page + Diseño UI / Cotizador de Almuerzos</div><div class="service-detail">Página optimizada para conversión, selección de menú (4 opciones), precios dinámicos, diseño mobile-first.</div></td><td class="amount-cell">$78.400</td></tr>
+        <tr><td><div class="service-name">📋 Sistema de Pedido (Formulario Inteligente + CRM)</div><div class="service-detail">Formulario avanzado con selección de productos, captura automática, etiquetado de clientes según pedido.</div></td><td class="amount-cell">$95.000</td></tr>
+        <tr><td><div class="service-name">💳 Integración de Pagos (link de pago + flujo)</div><div class="service-detail">Integración con MercadoPago vía link de pago, redirección o botón, automatización posterior al pago.</div></td><td class="amount-cell">$58.000</td></tr>
+        <tr><td><div class="service-name">✉️ Automatizaciones (email/WhatsApp)</div><div class="service-detail">Confirmación automática por email o WhatsApp, mensaje de pedido recibido, flujo post-compra.</div></td><td class="amount-cell">$78.000</td></tr>
+        <tr><td><div class="service-name">⏱️ Corte horario simulado + restricción de pedidos</div><div class="service-detail">Restricción mediante horarios del formulario y automatizaciones, mensaje de cierre después de las 20:00 hrs.</div></td><td class="amount-cell">$32.000</td></tr>
+        <tr><td><div class="service-name">📊 Panel de Gestión (Pipeline CRM GHL)</div><div class="service-detail">Visualización como oportunidades: Pendiente → Pagado → En preparación → Entregado, gestión sin desarrollo.</div></td><td class="amount-cell">$58.000</td></tr>
+        <tr><td><div class="service-name">📎 Integración Google Sheets (webhook/Zapier)</div><div class="service-detail">Exportación automática de pedidos diarios a Google Sheets.</div></td><td class="amount-cell">$51.860</td></tr>
       </tbody>
     </table>
 
-    <!-- Totales (solo implementación) -->
-    <div class="totals">
-      <div class="total-line"><span>Subtotal servicios</span><span>$690.000</span></div>
-      <div class="total-line"><span>IVA (19%)</span><span>$131.100</span></div>
-      <div class="total-line grand-total"><span>TOTAL IMPLEMENTACIÓN (incluido IVA)</span><span>$821.100</span></div>
+    <!-- Totales -->
+    <div class="totals animate-right delay-4">
+      <div class="total-line"><span>Subtotal servicios</span><span>$451.260</span></div>
+      <div class="total-line"><span>IVA (19%)</span><span>$85.740</span></div>
+      <div class="total-line grand-total"><span>TOTAL IMPLEMENTACIÓN (incluido IVA)</span><span>$537.000</span></div>
       <div style="font-size:0.7rem; margin-top:6px;">* Valores expresados en pesos chilenos (CLP). Pago único por puesta en marcha.</div>
     </div>
 
-    <!-- NUEVO BLOQUE: Gastos recurrentes mensuales (GHL + WhatsApp) -->
-    <div class="recurrent-box">
+    <!-- Gastos recurrentes mensuales (GHL + WhatsApp) -->
+    <div class="recurrent-box animate-left delay-5">
       <div class="recurrent-title"><i class="fas fa-calendar-alt"></i> 💰 Gastos operacionales recurrentes (mensuales) - No incluidos en el proyecto</div>
       <p>Para el correcto funcionamiento del sistema, se requiere mantener activa una suscripción a GoHighLevel y, opcionalmente, un canal oficial de WhatsApp Business. Estos costos son asumidos directamente por el cliente y no forman parte de la cotización de implementación.</p>
       <ul style="margin-left: 1.2rem; margin-top: 0.5rem;">
         <li><strong>Cuenta GoHighLevel (plan Starter o Superior):</strong> USD 97 / mes + impuestos aplicables en Chile (IVA 19% si aplica según facturación). Valor aproximado en CLP: <strong>$95.000 + IVA</strong> (considerando tipo de cambio referencial 1 USD = 980 CLP).</li>
         <li><strong>WhatsApp Business API (canal oficial o proveedor):</strong> desde USD 15 / mes (aproximadamente $14.700 CLP + IVA) dependiendo del uso y proveedor. <em>Recomendado para enviar confirmaciones automáticas sin restricciones.</em></li>
       </ul>
-      <div style="background: #e9ecef; border-radius: 12px; padding: 0.5rem; margin-top: 0.6rem; font-size: 0.75rem;">
-        <i class="fas fa-info-circle"></i> <strong>Nota:</strong> Los precios de suscripción están sujetos a cambios por parte de los proveedores. Dualtec puede asistir en la contratación y configuración inicial sin costo adicional.
+    </div>
+
+    <!-- NUEVO BLOQUE: Otros costos adicionales a considerar (soporte, dominio, comisiones, límites) -->
+    <div class="extra-costs-box animate-up delay-6">
+      <div class="extra-title"><i class="fas fa-coins"></i> 📌 Otros costos a considerar (no incluidos)</div>
+      <ul style="margin-left: 1.2rem;">
+        <li><strong>Soporte/mantenimiento después del primer mes:</strong> Desde $50.000 CLP + IVA / mes (opcional, incluye respaldo, ajustes menores y monitoreo).</li>
+        <li><strong>Dominio personalizado:</strong> El cliente puede adquirirlo por separado (desde $10.000 CLP/año). Dualtec lo configura sin costo adicional.</li>
+        <li><strong>Comisiones de MercadoPago por transacción:</strong> Aprox. 3,49% + monto fijo por cada pago. Son asumidas por el cliente.</li>
+        <li><strong>Límites del plan GoHighLevel:</strong> Revise los topes de contactos y envíos del plan Starter según su volumen esperado. Si los supera, deberá migrar a un plan superior (costo adicional).</li>
+      </ul>
+      <div style="margin-top: 0.6rem; font-size: 0.75rem; background: rgba(243, 156, 18, 0.15); padding: 0.4rem; border-radius: 8px;">
+        <i class="fas fa-info-circle"></i> <strong>Nota:</strong> Todo lo anterior son costos operacionales que no están incluidos en el precio único de implementación de $537.000 CLP.
       </div>
     </div>
 
     <!-- Alcance detallado -->
-    <div class="scope-box">
+    <div class="scope-box animate-right delay-7">
       <div class="scope-title"><i class="fas fa-cubes"></i> 🚀 Alcance del Proyecto (Adaptado a GHL)</div>
       <ul style="margin-left: 1.2rem; display: flex; flex-direction: column; gap: 0.3rem;">
         <li><strong>1. Landing Page + Cotizador</strong> – página conversión, menú dinámico.</li>
@@ -395,7 +535,7 @@
     </div>
 
     <!-- Limitaciones técnicas -->
-    <div class="limit-box">
+    <div class="limit-box animate-left delay-8">
       <div class="limit-title"><i class="fas fa-exclamation-triangle"></i> ⚠️ Limitaciones Técnicas (Importante)</div>
       <ul style="margin-left: 1.2rem;">
         <li>No incluye backend personalizado (como Next.js o Supabase) ni lógica avanzada en tiempo real.</li>
@@ -405,29 +545,29 @@
     </div>
 
     <!-- Valor estratégico -->
-    <div class="value-box">
+    <div class="value-box animate-up delay-9">
       <div class="value-title"><i class="fas fa-fire"></i> 🔥 Valor Estratégico</div>
       <p>Este sistema permite lanzar rápidamente un canal de ventas digital automatizado, reduciendo costos de desarrollo y validando el modelo de negocio antes de escalar a una solución más avanzada si es necesario. Perfecto para operar con rapidez y sin fricción técnica.</p>
     </div>
 
     <!-- Condiciones generales resumidas -->
-    <div class="terms">
+    <div class="terms animate-right delay-10">
       <div><i class="fas fa-clock"></i> Forma de pago: 50% anticipo, 25% demo, 25% final · Plazo: 2-3 semanas desde el anticipo</div>
       <div><i class="fas fa-check-circle"></i> Garantía 60 días por bugs · Incluye capacitación básica · Soporte 1 mes gratis</div>
       <div><i class="fas fa-file-signature"></i> Cotización válida por 15 días · Precios no incluyen pasarela, dominio externo ni suscripciones mensuales.</div>
     </div>
 
-    <!-- Botones compartir / copiar / print -->
-    <div class="buttons">
+    <!-- Botones compartir -->
+    <div class="buttons animate-zoom delay-11">
       <button class="btn btn-outline" id="copyLinkBtn"><i class="fas fa-link"></i> Copiar enlace</button>
       <button class="btn btn-outline" id="printBtn"><i class="fas fa-print"></i> Imprimir / PDF</button>
       <button class="btn btn-primary" id="shareBtn"><i class="fas fa-share-alt"></i> Compartir cotización</button>
     </div>
-    <div id="toastMessage" style="position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: #1e6f5c; color: white; padding: 8px 24px; border-radius: 40px; font-size: 0.8rem; z-index: 1000; opacity: 0; transition: opacity 0.2s; pointer-events: none;"></div>
+    <div id="toastMessage" style="position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: #b23c1c; color: white; padding: 8px 24px; border-radius: 40px; font-size: 0.8rem; z-index: 1000; opacity: 0; transition: opacity 0.2s; pointer-events: none; box-shadow: 0 4px 12px rgba(0,0,0,0.2);"></div>
   </div>
 
   <footer>
-    Dualtec E.I.R.L · Automatización & Desarrollo Digital · contacto@goclientes.com · +56 9 6357 1251 · Cotización válida hasta 14 de mayo 2026
+    Dualtec · Automatización & Desarrollo Digital · contacto@goclientes.com · +56 9 6357 1251 · Cotización válida hasta 14 de mayo 2026
   </footer>
 </div>
 
@@ -438,7 +578,7 @@
   const toast = document.getElementById('toastMessage');
 
   function showMessage(text, isError = false) {
-    toast.style.backgroundColor = isError ? '#b13e3e' : '#1e6f5c';
+    toast.style.backgroundColor = isError ? '#b13e3e' : '#b23c1c';
     toast.textContent = text;
     toast.style.opacity = '1';
     setTimeout(() => { toast.style.opacity = '0'; }, 2800);
@@ -460,7 +600,7 @@
   shareBtn.addEventListener('click', async () => {
     const shareData = {
       title: 'Cotización Dualtec - Sistema Pedidos GHL (GoHighLevel)',
-      text: 'Maca Lama, tu cotización para el sistema de pedidos de almuerzo con GoHighLevel ya está disponible. Total implementación $690.000 CLP + IVA, más costos recurrentes mensuales.',
+      text: 'Maca Lamas, tu cotización para el sistema de pedidos de almuerzo con GoHighLevel ya está disponible. Total implementación $537.000 CLP (incluido IVA), más costos recurrentes mensuales.',
       url: window.location.href,
     };
     if (navigator.share && !window.location.href.startsWith('file://')) {
