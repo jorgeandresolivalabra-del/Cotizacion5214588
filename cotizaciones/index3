@@ -1,1 +1,502 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Cotización 01251 | Dualtec · Sistema de Pedidos de Almuerzo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
+    body {
+      background: linear-gradient(145deg, #eef2f7 0%, #e0e6ef 100%);
+      font-family: 'Inter', sans-serif;
+      padding: 2rem 1.5rem;
+      color: #1a2c3e;
+    }
+
+    .quote-container {
+      max-width: 1300px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 2rem;
+      box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.2), 0 8px 18px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+    }
+
+    /* Header corporativo */
+    .quote-header {
+      background: #0b2b3b;
+      background-image: linear-gradient(135deg, #0f2f3f 0%, #154757 100%);
+      padding: 1.8rem 2.5rem;
+      color: white;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1.2rem;
+    }
+
+    .brand h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 0.2rem;
+    }
+
+    .brand .company-details {
+      font-size: 0.8rem;
+      opacity: 0.85;
+      line-height: 1.4;
+      margin-top: 0.3rem;
+      font-weight: 400;
+    }
+
+    .brand .company-details i {
+      width: 1.2rem;
+      margin-right: 0.2rem;
+    }
+
+    .quote-badge {
+      text-align: right;
+    }
+
+    .badge {
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(4px);
+      padding: 0.5rem 1.2rem;
+      border-radius: 60px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      display: inline-block;
+    }
+
+    .quote-number {
+      font-size: 0.8rem;
+      margin-top: 0.6rem;
+      opacity: 0.8;
+    }
+
+    /* cuerpo */
+    .quote-body {
+      padding: 2rem 2.5rem;
+    }
+
+    /* fila de datos cliente/emisor */
+    .info-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.8rem;
+      justify-content: space-between;
+      background: #f8fafd;
+      padding: 1.2rem 1.5rem;
+      border-radius: 1.5rem;
+      margin-bottom: 2rem;
+      border: 1px solid #e6edf4;
+    }
+
+    .info-card {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .info-card .label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-weight: 700;
+      color: #54708f;
+      margin-bottom: 0.5rem;
+    }
+
+    .info-card .value {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #0b2b3b;
+      word-break: break-word;
+    }
+
+    .info-card .sub {
+      font-size: 0.8rem;
+      color: #4a6f8f;
+      margin-top: 0.2rem;
+    }
+
+    .info-card a {
+      color: #1e6f5c;
+      text-decoration: none;
+    }
+
+    .info-card a:hover {
+      text-decoration: underline;
+    }
+
+    /* tabla items */
+    .services-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 1.8rem;
+    }
+
+    .services-table th {
+      text-align: left;
+      padding: 0.8rem 0.5rem 0.7rem 0;
+      font-weight: 600;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #4f6f8f;
+      border-bottom: 2px solid #e2e8f0;
+    }
+
+    .services-table td {
+      padding: 1rem 0.5rem 1rem 0;
+      border-bottom: 1px solid #eef3fa;
+      vertical-align: top;
+    }
+
+    .services-table th:last-child, .services-table td:last-child {
+      text-align: right;
+    }
+
+    .service-name {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: #1e3b4c;
+    }
+
+    .service-detail {
+      font-size: 0.7rem;
+      color: #5e7e9e;
+      font-weight: 400;
+      margin-top: 0.2rem;
+      line-height: 1.3;
+    }
+
+    .amount-cell {
+      font-weight: 700;
+      color: #1a4e6b;
+      white-space: nowrap;
+    }
+
+    .totals {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      margin: 1rem 0 1.5rem;
+      padding-top: 0.8rem;
+      border-top: 2px dashed #cbdde9;
+    }
+
+    .total-line {
+      display: flex;
+      gap: 2rem;
+      justify-content: flex-end;
+      width: 100%;
+      max-width: 320px;
+      margin-bottom: 0.4rem;
+      font-size: 0.95rem;
+    }
+
+    .total-line span:first-child {
+      font-weight: 500;
+      color: #2c4a6e;
+    }
+
+    .total-line.grand-total {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: #0b2b3b;
+      margin-top: 0.5rem;
+      padding-top: 0.6rem;
+      border-top: 2px solid #cad9e8;
+    }
+
+    .grand-total span:last-child {
+      color: #126e5e;
+      font-size: 1.35rem;
+    }
+
+    .proposal-text {
+      background: #fefce8;
+      border-left: 5px solid #e0b043;
+      padding: 1rem 1.5rem;
+      border-radius: 1rem;
+      margin: 1.8rem 0 1rem;
+      font-size: 0.85rem;
+      color: #5f4c2c;
+      line-height: 1.45;
+    }
+
+    .scope-box {
+      background: #f7f9fc;
+      border-radius: 1rem;
+      padding: 1rem 1.5rem;
+      margin: 1rem 0;
+      font-size: 0.8rem;
+      border: 1px solid #e2edf7;
+    }
+
+    .scope-title {
+      font-weight: 700;
+      margin-bottom: 0.6rem;
+      color: #1e6f5c;
+      font-size: 0.85rem;
+    }
+
+    .terms {
+      margin-top: 1.8rem;
+      font-size: 0.73rem;
+      color: #5b7895;
+      border-top: 1px solid #e2edf7;
+      padding-top: 1.2rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .hours-badge {
+      background: #eef2fa;
+      padding: 0.2rem 0.8rem;
+      border-radius: 40px;
+      font-weight: 500;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+      justify-content: flex-end;
+    }
+
+    .btn {
+      padding: 0.6rem 1.5rem;
+      border-radius: 2rem;
+      font-weight: 500;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: 0.2s;
+      border: none;
+      background: white;
+      font-family: inherit;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+
+    .btn-primary {
+      background: #1e6f5c;
+      color: white;
+      border: 1px solid #1e6f5c;
+    }
+
+    .btn-primary:hover {
+      background: #0e5a49;
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      border: 1px solid #bdd3e8;
+      background: white;
+      color: #2c5a74;
+    }
+
+    .btn-outline:hover {
+      background: #eef4fa;
+    }
+
+    footer {
+      background: #f4f8fe;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.7rem;
+      color: #6b8bad;
+    }
+
+    @media (max-width: 750px) {
+      body { padding: 1rem; }
+      .quote-header, .quote-body { padding: 1.2rem; }
+      .info-row { flex-direction: column; gap: 0.8rem; }
+      .services-table th, .services-table td { font-size: 0.75rem; }
+      .total-line { max-width: 100%; }
+      .buttons { flex-direction: column; align-items: stretch; }
+      .btn { justify-content: center; }
+    }
+
+    @media print {
+      body { background: white; padding: 0; }
+      .quote-container { box-shadow: none; border-radius: 0; }
+      .buttons { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="quote-container">
+  <div class="quote-header">
+    <div class="brand">
+      <h1>DUALTEC</h1>
+      <div class="company-details">
+        <i class="fas fa-location-dot"></i> TERCERA TRANSVERSAL 6189<br>
+        <i class="fas fa-globe"></i> goclientes.com · <i class="fas fa-user-tie"></i> Jorge Oliva<br>
+        <i class="fas fa-envelope"></i> contacto@goclientes.com · <i class="fas fa-phone-alt"></i> +56 9 6357 1251
+      </div>
+    </div>
+    <div class="quote-badge">
+      <div class="badge"><i class="fas fa-file-invoice-dollar"></i> COTIZACIÓN</div>
+      <div class="quote-number">N° 01251 · CLP · 29-04-2026</div>
+    </div>
+  </div>
+
+  <div class="quote-body">
+    <!-- Datos cliente y proyecto -->
+    <div class="info-row">
+      <div class="info-card">
+        <div class="label"><i class="fas fa-building"></i> SOLICITADA POR</div>
+        <div class="value">Nueva Dominica</div>
+        <div class="sub">TERCERA TRANSVERSAL 6189</div>
+        <div class="sub"><i class="fas fa-globe"></i> <a href="https://gsdeliveryomega.vercel.app/" target="_blank">gsdeliveryomega.vercel.app</a></div>
+      </div>
+      <div class="info-card">
+        <div class="label"><i class="fas fa-user-check"></i> CONTACTO</div>
+        <div class="value">Maca Lamas</div>
+        <div class="sub"><i class="fas fa-envelope"></i> nuevadominica@gmail.com</div>
+        <div class="sub"><i class="fab fa-whatsapp"></i> +56 9 9448 5683</div>
+      </div>
+      <div class="info-card">
+        <div class="label"><i class="far fa-calendar-alt"></i> DETALLES COTIZACIÓN</div>
+        <div class="value">Fecha: 2026-04-29 · Válida 15 días</div>
+        <div class="sub">Forma de pago: Transferencia</div>
+        <div class="sub">Divisa: CLP · Nº 01251</div>
+      </div>
+    </div>
+
+    <!-- Tabla de ítems exactos -->
+    <table class="services-table">
+      <thead>
+        <tr><th>Ítem / Servicio</th><th>Cant.</th><th>Precio unitario</th><th>Total</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><div class="service-name">🍱 Menú dinámico con precios, categorías e imágenes</div><div class="service-detail">Configurable desde panel, soporte de imágenes en Supabase Storage.</div></td><td>1</td><td>$120.000</td><td class="amount-cell">$120.000</td></tr>
+        <tr><td><div class="service-name">🗄️ Sistema de pedidos + Supabase (esquema, RLS, lógica de estado)</div><div class="service-detail">PostgreSQL, relaciones, seguridad a nivel fila, export a Google Sheets opcional.</div></td><td>1</td><td>$160.000</td><td class="amount-cell">$160.000</td></tr>
+        <tr><td><div class="service-name">💳 Integración MercadoPago + webhooks de confirmación de pago</div><div class="service-detail">API oficial, webhook que actualiza estado del pedido automáticamente.</div></td><td>1</td><td>$190.000</td><td class="amount-cell">$190.000</td></tr>
+        <tr><td><div class="service-name">⏱️ Corte automático 8 PM + validación de horario en backend</div><div class="service-detail">Validación en Next.js API Routes, horario configurable desde panel.</div></td><td>1</td><td>$95.000</td><td class="amount-cell">$95.000</td></tr>
+        <tr><td><div class="service-name">📋 Panel de administración (pedidos, producción, menú, resumen)</div><div class="service-detail">Vista de pedidos, estado en tiempo real, gestión de platillos, resumen diario.</div></td><td>1</td><td>$190.000</td><td class="amount-cell">$190.000</td></tr>
+        <tr><td><div class="service-name">🔐 Autenticación y roles (Supabase Auth + middleware Next.js)</div><div class="service-detail">Login email/password, roles Admin/Usuario, rutas protegidas.</div></td><td>1</td><td>$79.000</td><td class="amount-cell">$79.000</td></tr>
+        <tr><td><div class="service-name">🚀 Despliegue Vercel + documentación + repositorio privado</div><div class="service-detail">Dominio, variables de entorno, CI/CD, entrega de código en GitHub.</div></td><td>1</td><td>$87.000</td><td class="amount-cell">$87.000</td></tr>
+      </tbody>
+    </table>
+
+    <!-- Totales exactos -->
+    <div class="totals">
+      <div class="total-line"><span>Subtotal (servicios)</span><span>$921.000</span></div>
+      <div class="total-line"><span>IVA (19%)</span><span>$174.990</span></div>
+      <div class="total-line grand-total"><span>TOTAL COTIZACIÓN</span><span>$1.095.990</span></div>
+    </div>
+
+    <!-- Notas + descripción detallada del proyecto -->
+    <div class="proposal-text">
+      <i class="fas fa-lightbulb" style="margin-right: 6px;"></i> <strong>Propuesta general:</strong> Se propone el desarrollo de un sistema completo de pedidos de almuerzo diseñado como una pequeña plataforma SaaS con lógica de negocio real. El sistema permite a los usuarios seleccionar su almuerzo desde un menú dinámico con precios, pagar en línea, y recibir confirmación automática tras el pago. Incluye backend con Next.js API Routes, Supabase (PostgreSQL), lógica de corte a las 20:00 hrs, webhooks de MercadoPago y panel de administración. Opcionalmente, los pedidos se exportan a Google Sheets en tiempo real.
+    </div>
+
+    <!-- Alcance detallado (layer-group) -->
+    <div class="scope-box">
+      <div class="scope-title"><i class="fas fa-cubes"></i> Alcance del proyecto — Módulos incluidos</div>
+      <ul style="margin-left: 1.2rem; display: flex; flex-wrap: wrap; gap: 0.4rem; flex-direction: column;">
+        <li><strong>1. Menú dinámico</strong> – configurable por día, imágenes, activación/desactivación desde panel.</li>
+        <li><strong>2. Pedidos + Supabase</strong> – esquema relacional, RLS, exportación opcional a Google Sheets.</li>
+        <li><strong>3. MercadoPago</strong> – integración oficial + webhook de confirmación y actualización de estados.</li>
+        <li><strong>4. Corte automático 8 PM</strong> – validación en servidor, horario configurable.</li>
+        <li><strong>5. Panel Admin</strong> – gestión de pedidos (pendiente/pagado/preparación/entregado), resumen diario, edición de menú, Supabase Realtime.</li>
+        <li><strong>6. Autenticación y roles</strong> – Supabase Auth, middleware Next.js, roles usuario/administrador.</li>
+        <li><strong>7. Despliegue Vercel</strong> – dominio, variables de entorno, repositorio privado y documentación completa.</li>
+      </ul>
+      <div style="margin-top: 0.7rem;"><i class="far fa-clock"></i> <strong>Horas estimadas de trabajo:</strong> 58 horas.</div>
+    </div>
+
+    <!-- Condiciones generales -->
+    <div class="terms">
+      <div><i class="fas fa-file-signature"></i> <strong>Condiciones:</strong> Validez 15 días hábiles · Pago: 50% anticipo, 25% demo, 25% final · Plazo 4-6 semanas desde el anticipo</div>
+      <div><i class="fas fa-check-circle"></i> Prueba: 5 días hábiles para aceptación · Garantía 90 días por bugs · Código cedido al pago total</div>
+      <div><i class="fas fa-ban"></i> Cancelación: anticipo no reembolsable · Cambios fuera de alcance cotizan aparte · Hospedaje / dominio por cuenta del cliente · Soporte: 1 mes gratis, luego opcional.</div>
+    </div>
+
+    <!-- Botones de acción (enlace, impresión, compartir) -->
+    <div class="buttons">
+      <button class="btn btn-outline" id="copyLinkBtn"><i class="fas fa-link"></i> Copiar enlace</button>
+      <button class="btn btn-outline" id="printBtn"><i class="fas fa-print"></i> Imprimir / PDF</button>
+      <button class="btn btn-primary" id="shareBtn"><i class="fas fa-share-alt"></i> Compartir cotización</button>
+    </div>
+    <div id="toastMessage" style="position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: #1e6f5c; color: white; padding: 8px 24px; border-radius: 40px; font-size: 0.8rem; z-index: 1000; opacity: 0; transition: opacity 0.2s; pointer-events: none;"></div>
+  </div>
+
+  <footer>
+    Dualtec · Servicios TIC · TERCERA TRANSVERSAL 6189 · contacto@goclientes.com · +56 9 6357 1251 · Cotización válida hasta 14 de Mayo de 2026
+  </footer>
+</div>
+
+<script>
+  const copyBtn = document.getElementById('copyLinkBtn');
+  const printBtn = document.getElementById('printBtn');
+  const shareBtn = document.getElementById('shareBtn');
+  const toast = document.getElementById('toastMessage');
+
+  function showMessage(text, isError = false) {
+    toast.style.backgroundColor = isError ? '#b13e3e' : '#1e6f5c';
+    toast.textContent = text;
+    toast.style.opacity = '1';
+    setTimeout(() => { toast.style.opacity = '0'; }, 2800);
+  }
+
+  copyBtn.addEventListener('click', () => {
+    const currentUrl = window.location.href;
+    if (currentUrl.startsWith('file://')) {
+      showMessage('⚠️ Vista local. Para compartir el link, súbela a un hosting (Netlify/GitHub Pages) o envía el archivo HTML.', true);
+      navigator.clipboard.writeText(currentUrl).catch(() => showMessage('No se pudo copiar', true));
+    } else {
+      navigator.clipboard.writeText(currentUrl).then(() => showMessage('✅ Enlace copiado. ¡Puedes enviarlo por WhatsApp o email!', false))
+        .catch(() => showMessage('Error al copiar', true));
+    }
+  });
+
+  printBtn.addEventListener('click', () => { window.print(); });
+
+  shareBtn.addEventListener('click', async () => {
+    const shareData = {
+      title: 'Cotización Dualtec N°01251 - Sistema de Pedidos de Almuerzo',
+      text: 'Maca Lamas, tu cotización para el proyecto SaaS de pedidos de almuerzo (Next.js + Supabase + MercadoPago) ya está disponible.',
+      url: window.location.href,
+    };
+    if (navigator.share && !window.location.href.startsWith('file://')) {
+      try {
+        await navigator.share(shareData);
+        showMessage('Compartido correctamente');
+      } catch (err) {
+        if (err.name !== 'AbortError') showMessage('No se pudo compartir', true);
+      }
+    } else {
+      if (window.location.href.startsWith('file://')) {
+        showMessage('Para compartir, sube el archivo a un hosting (Vercel/Netlify) o envía el .html', true);
+      } else {
+        navigator.clipboard.writeText(window.location.href).then(() => showMessage('Enlace copiado al portapapeles, listo para compartir', false))
+          .catch(() => showMessage('Error al copiar', true));
+      }
+    }
+  });
+
+  if (window.location.href.startsWith('file://')) {
+    setTimeout(() => showMessage('📁 Estás viendo la cotización local. Para enviar un link público, súbela a un hosting (ej: Vercel, Netlify).', false), 600);
+  }
+</script>
+</body>
+</html>
