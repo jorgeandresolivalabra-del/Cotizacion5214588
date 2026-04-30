@@ -229,13 +229,13 @@
       border-radius: 2rem;
       font-weight: 700;
       font-size: 0.9rem;
-      cursor: pointer;
       transition: 0.2s;
       text-align: center;
       text-decoration: none;
       display: block;
       color: #b23c1c;
       margin-top: auto;
+      cursor: pointer;
     }
 
     .btn-plan:hover {
@@ -265,114 +265,10 @@
       width: auto;
     }
 
-    /* Modal styles */
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 1000;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      overflow: auto;
-      background-color: rgba(0,0,0,0.5);
-      backdrop-filter: blur(5px);
-    }
-    .modal-content {
-      background: rgba(255, 248, 245, 0.98);
-      backdrop-filter: blur(15px);
-      margin: 2rem auto;
-      padding: 0;
-      border-radius: 2rem;
-      width: 90%;
-      max-width: 1100px;
-      border: 1px solid rgba(224, 122, 90, 0.5);
-      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.3);
-      animation: fadeInUp 0.3s ease;
-    }
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .modal-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1.2rem 2rem;
-      background: #b23c1c;
-      color: white;
-      border-radius: 2rem 2rem 0 0;
-    }
-    .modal-header h3 {
-      font-size: 1.5rem;
-      font-weight: 800;
-    }
-    .close {
-      font-size: 2rem;
-      font-weight: bold;
-      cursor: pointer;
-      line-height: 1;
-    }
-    .close:hover { color: #ffe0cc; }
-    .modal-body {
-      padding: 2rem;
-      max-height: 80vh;
-      overflow-y: auto;
-    }
-    /* Estilos internos del modal (similares a cotizaciones) */
-    .quote-inner {
-      font-family: 'Inter', sans-serif;
-    }
-    .info-row-modal {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      background: rgba(255, 245, 240, 0.8);
-      padding: 1rem;
-      border-radius: 1rem;
-      margin-bottom: 1.5rem;
-    }
-    .price-table-modal {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 1rem 0;
-    }
-    .price-table-modal td, .price-table-modal th {
-      padding: 0.6rem 0.3rem;
-      border-bottom: 1px solid rgba(200,120,80,0.2);
-      text-align: left;
-    }
-    .price-table-modal th:last-child, .price-table-modal td:last-child {
-      text-align: right;
-    }
-    .totals-modal {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      margin: 1rem 0;
-      padding-top: 0.5rem;
-      border-top: 2px dashed rgba(200,120,80,0.4);
-    }
-    .total-line-modal {
-      display: flex;
-      gap: 2rem;
-      justify-content: flex-end;
-      width: 100%;
-      max-width: 300px;
-    }
-    .grand-total-modal span:last-child {
-      background: linear-gradient(135deg, #b23c1c, #e07a5a);
-      background-clip: text;
-      -webkit-background-clip: text;
-      color: transparent;
-      font-weight: 800;
-    }
     @media (max-width: 750px) {
       .hero h1 { font-size: 1.8rem; }
       .hero .sub { font-size: 1.1rem; }
       .card-popular { transform: scale(1); }
-      .modal-content { width: 95%; }
-      .modal-body { padding: 1rem; }
     }
 
     .whatsapp-float {
@@ -430,7 +326,7 @@
 
     <div class="cards-grid">
       
-      <!-- PLAN BÁSICO ($397k) -->
+      <!-- PLAN BÁSICO ($397k) -> index1.html -->
       <div class="card">
         <h3>Básico <span class="price">$397k <small>total</small></span></h3>
         <div class="card-desc">Ideal para empezar: pedidos online y registro automático en Google Sheets.</div>
@@ -445,10 +341,10 @@
         <div class="recurrent-cost">
           <i class="fas fa-info-circle"></i> Pago único · Sin mensualidades obligatorias
         </div>
-        <button class="btn-plan" data-modal="modalBasico">Ver detalle →</button>
+        <a href="index1.html" class="btn-plan">Ver detalle →</a>
       </div>
 
-      <!-- PLAN MEDIO / PRO ($537k) – RECOMENDADO -->
+      <!-- PLAN MEDIO / PRO ($537k) – RECOMENDADO -> index2.html -->
       <div class="card card-popular">
         <div class="badge-popular">⭐ RECOMENDADO</div>
         <h3>Medio <span class="price">$537k <small>total</small></span></h3>
@@ -464,10 +360,10 @@
         <div class="recurrent-cost">
           <i class="fas fa-chart-line"></i> Implementación única <strong>$537.000</strong> + <strong>USD 97/mes</strong> (GHL) + WhatsApp API (~$15/mes)
         </div>
-        <button class="btn-plan btn-primary-plan" data-modal="modalPro">Ver detalle →</button>
+        <a href="index2.html" class="btn-plan btn-primary-plan">Ver detalle →</a>
       </div>
 
-      <!-- PLAN PREMIUM ($997k) -->
+      <!-- PLAN PREMIUM ($997k) -> index3.html -->
       <div class="card">
         <h3>Premium <span class="price">$997k <small>total</small></span></h3>
         <div class="card-desc">Sistema completo a medida, panel propio, base de datos y escalabilidad total.</div>
@@ -482,7 +378,7 @@
         <div class="recurrent-cost">
           <i class="fas fa-crown"></i> 58 horas de desarrollo · Hospedaje por cuenta del cliente · Soporte 90 días
         </div>
-        <button class="btn-plan" data-modal="modalPremium">Ver detalle →</button>
+        <a href="index3.html" class="btn-plan">Ver detalle →</a>
       </div>
     </div>
 
@@ -502,98 +398,8 @@
   <i class="fab fa-whatsapp"></i>
 </a>
 
-<!-- MODALES DE COTIZACIONES -->
-<!-- MODAL BÁSICO ($397k) -->
-<div id="modalBasico" class="modal">
-  <div class="modal-content">
-    <div class="modal-header"><h3>Cotización · Plan Básico</h3><span class="close">&times;</span></div>
-    <div class="modal-body quote-inner">
-      <div class="info-row-modal">
-        <div><strong>Cliente:</strong> Nueva Dominica · Maca Lamas</div>
-        <div><strong>Solución:</strong> Pedidos + Google Sheets + Chatwoot</div>
-      </div>
-      <table class="price-table-modal">
-        <tr><th>Concepto</th><th>Valor Neto (CLP)</th></tr>
-        <tr><td>Landing + cotizador menú</td><td>$100.000</td></tr>
-        <tr><td>Integración MercadoPago</td><td>$80.000</td></tr>
-        <tr><td>Registro automático en Google Sheets</td><td>$60.000</td></tr>
-        <tr><td>Automatización Chatwoot + WhatsApp</td><td>$70.000</td></tr>
-        <tr><td>Corte horario + mensajes</td><td>$30.000</td></tr>
-        <tr><td>Optimización para anuncios</td><td>$30.000</td></tr>
-      </table>
-      <div class="totals-modal">
-        <div class="total-line-modal"><span>Subtotal neto</span><span>$370.000</span></div>
-        <div class="total-line-modal"><span>IVA (19%)</span><span>$70.300</span></div>
-        <div class="total-line-modal"><span>Descuento lanzamiento</span><span>-$43.300</span></div>
-        <div class="total-line-modal grand-total-modal"><span>TOTAL COTIZACIÓN (IVA incl.)</span><span><strong>$397.000</strong></span></div>
-      </div>
-      <p><strong>✅ Incluye:</strong> Soporte 30 días, manual básico, 1 hora de capacitación. Costos operativos no incluidos (Chatwoot USD 20/mes, comisiones MercadoPago).</p>
-    </div>
-  </div>
-</div>
-
-<!-- MODAL MEDIO / PRO ($537k) -->
-<div id="modalPro" class="modal">
-  <div class="modal-content">
-    <div class="modal-header"><h3>Cotización · Plan Medio (GoHighLevel)</h3><span class="close">&times;</span></div>
-    <div class="modal-body quote-inner">
-      <div class="info-row-modal">
-        <div><strong>Cliente:</strong> Nueva Dominica · Maca Lamas</div>
-        <div><strong>Solución:</strong> Implementación con GoHighLevel</div>
-      </div>
-      <table class="price-table-modal">
-        <tr><th>Concepto</th><th>Valor Neto (CLP)</th></tr>
-        <tr><td>Landing + cotizador dinámico</td><td>$120.000</td></tr>
-        <tr><td>Sistema de pedido (formulario + CRM)</td><td>$110.000</td></tr>
-        <tr><td>Integración pagos MercadoPago</td><td>$80.000</td></tr>
-        <tr><td>Automatizaciones email/WhatsApp</td><td>$90.000</td></tr>
-        <tr><td>Corte horario simulado</td><td>$40.000</td></tr>
-        <tr><td>Panel de gestión (pipeline)</td><td>$70.000</td></tr>
-        <tr><td>Integración Google Sheets</td><td>$50.000</td></tr>
-      </table>
-      <div class="totals-modal">
-        <div class="total-line-modal"><span>Subtotal neto</span><span>$560.000</span></div>
-        <div class="total-line-modal"><span>IVA (19%)</span><span>$106.400</span></div>
-        <div class="total-line-modal"><span>Descuento lanzamiento</span><span>-$129.400</span></div>
-        <div class="total-line-modal grand-total-modal"><span>TOTAL COTIZACIÓN (IVA incl.)</span><span><strong>$537.000</strong></span></div>
-      </div>
-      <p><strong>📌 Costos mensuales adicionales:</strong> GoHighLevel ~USD 97/mes + WhatsApp API desde USD 15/mes (opcional). <br> <strong>✅ Incluye:</strong> Implementación completa, capacitación básica, soporte 30 días.</p>
-    </div>
-  </div>
-</div>
-
-<!-- MODAL PREMIUM ($997k) -->
-<div id="modalPremium" class="modal">
-  <div class="modal-content">
-    <div class="modal-header"><h3>Cotización · Plan Premium (Desarrollo a medida)</h3><span class="close">&times;</span></div>
-    <div class="modal-body quote-inner">
-      <div class="info-row-modal">
-        <div><strong>Cliente:</strong> Nueva Dominica · Maca Lamas</div>
-        <div><strong>Solución:</strong> Next.js + Supabase + MercadoPago</div>
-      </div>
-      <table class="price-table-modal">
-        <tr><th>Concepto</th><th>Valor Neto (CLP)</th></tr>
-        <tr><td>Menú dinámico + imágenes</td><td>$150.000</td></tr>
-        <tr><td>Sistema pedidos + Supabase (RLS)</td><td>$160.000</td></tr>
-        <tr><td>Integración MercadoPago + webhook</td><td>$200.000</td></tr>
-        <tr><td>Corte automático backend</td><td>$85.000</td></tr>
-        <tr><td>Panel de administración</td><td>$200.000</td></tr>
-        <tr><td>Autenticación y roles</td><td>$75.000</td></tr>
-        <tr><td>Despliegue Vercel + documentación</td><td>$100.000</td></tr>
-      </table>
-      <div class="totals-modal">
-        <div class="total-line-modal"><span>Subtotal neto</span><span>$970.000</span></div>
-        <div class="total-line-modal"><span>IVA (19%)</span><span>$184.300</span></div>
-        <div class="total-line-modal"><span>Descuento lanzamiento</span><span>-$157.300</span></div>
-        <div class="total-line-modal grand-total-modal"><span>TOTAL COTIZACIÓN (IVA incl.)</span><span><strong>$997.000</strong></span></div>
-      </div>
-      <p><strong>✅ Entregables:</strong> Código fuente en repositorio privado, documentación técnica, despliegue en Vercel. <br> <strong>Garantía:</strong> 90 días por bugs. Soporte 1 mes gratis. Hospedaje y dominio por cuenta del cliente.</p>
-    </div>
-  </div>
-</div>
-
 <script>
-  // Scroll suave
+  // Scroll suave a la sección de planes
   const scrollBtn = document.getElementById('scrollToPlans');
   const plansSection = document.getElementById('plans');
   if (scrollBtn && plansSection) {
@@ -601,40 +407,6 @@
       plansSection.scrollIntoView({ behavior: 'smooth' });
     });
   }
-
-  // Modales
-  const modals = document.querySelectorAll('.modal');
-  const openButtons = document.querySelectorAll('[data-modal]');
-  const closeSpans = document.querySelectorAll('.close');
-
-  function openModal(modalId) {
-    const modal = document.getElementById(modalId);
-    if (modal) modal.style.display = 'block';
-  }
-
-  function closeModal(modal) {
-    if (modal) modal.style.display = 'none';
-  }
-
-  openButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const modalId = btn.getAttribute('data-modal');
-      openModal(modalId);
-    });
-  });
-
-  closeSpans.forEach(span => {
-    span.addEventListener('click', () => {
-      const modal = span.closest('.modal');
-      closeModal(modal);
-    });
-  });
-
-  window.addEventListener('click', (e) => {
-    modals.forEach(modal => {
-      if (e.target === modal) closeModal(modal);
-    });
-  });
 </script>
 </body>
 </html>
