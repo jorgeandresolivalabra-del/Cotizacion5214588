@@ -3,12 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Cotización | Sistema de Pedidos de Almuerzo · Dualtec E.I.R.L</title>
+  <title>Cotización | Sistema de Pedidos de Almuerzo · Dualtec</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
+    /* ===== BASE HOMOGÉNEA ===== */
     * {
       margin: 0;
       padding: 0;
@@ -16,24 +17,70 @@
     }
 
     body {
-      background: linear-gradient(145deg, #eef2f8 0%, #e0e8f2 100%);
+      background: linear-gradient(135deg, #fdf4f0 0%, #ffe6df 50%, #fce8e0 100%);
+      background-attachment: fixed;
       font-family: 'Inter', sans-serif;
-      padding: 2rem 1rem;
-      color: #1a2c3e;
+      padding: 2rem 1.5rem;
+      color: #2d2a2a;
+      animation: gradientShift 15s ease infinite;
+      background-size: 200% 200%;
     }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 0%; }
+      50% { background-position: 100% 100%; }
+      100% { background-position: 0% 0%; }
+    }
+
+    /* Animaciones tipo diapositiva */
+    @keyframes fadeInUpSlide {
+      from { opacity: 0; transform: translateY(35px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInLeftSlide {
+      from { opacity: 0; transform: translateX(-35px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes fadeInRightSlide {
+      from { opacity: 0; transform: translateX(35px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes zoomIn {
+      from { opacity: 0; transform: scale(0.96); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .animate-up { animation: fadeInUpSlide 0.55s ease forwards; opacity: 0; }
+    .animate-left { animation: fadeInLeftSlide 0.55s ease forwards; opacity: 0; }
+    .animate-right { animation: fadeInRightSlide 0.55s ease forwards; opacity: 0; }
+    .animate-zoom { animation: zoomIn 0.5s ease forwards; opacity: 0; }
+
+    .delay-1 { animation-delay: 0.05s; }
+    .delay-2 { animation-delay: 0.1s; }
+    .delay-3 { animation-delay: 0.2s; }
+    .delay-4 { animation-delay: 0.3s; }
+    .delay-5 { animation-delay: 0.4s; }
+    .delay-6 { animation-delay: 0.5s; }
+    .delay-7 { animation-delay: 0.6s; }
+    .delay-8 { animation-delay: 0.7s; }
+    .delay-9 { animation-delay: 0.8s; }
+    .delay-10 { animation-delay: 0.9s; }
 
     .quote-container {
       max-width: 1280px;
       margin: 0 auto;
-      background: white;
+      background: rgba(255, 248, 245, 0.94);
+      backdrop-filter: blur(12px);
       border-radius: 2rem;
       box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.25);
       overflow: hidden;
+      border: 1px solid rgba(255, 215, 200, 0.6);
     }
 
+    /* Header cálido */
     .quote-header {
-      background: #0b2b3b;
-      background-image: linear-gradient(135deg, #0f2f3f 0%, #154757 100%);
+      background: #b23c1c;
+      background-image: linear-gradient(135deg, #c24b2a 0%, #a13215 100%);
       padding: 1.8rem 2rem;
       color: white;
       display: flex;
@@ -53,6 +100,7 @@
       font-size: 0.8rem;
       opacity: 0.85;
       margin-top: 0.3rem;
+      line-height: 1.4;
     }
 
     .quote-badge {
@@ -60,135 +108,205 @@
     }
 
     .badge {
-      background: rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.2);
+      backdrop-filter: blur(4px);
       padding: 0.4rem 1rem;
       border-radius: 60px;
       font-weight: 600;
-      font-size: 0.8rem;
+      font-size: 0.9rem;
+      border: 1px solid rgba(255,255,255,0.3);
     }
 
     .quote-number {
-      font-size: 0.7rem;
+      font-size: 0.8rem;
       margin-top: 0.5rem;
-      opacity: 0.8;
+      opacity: 0.9;
     }
 
     .quote-body {
       padding: 2rem;
     }
 
+    /* Tarjeta de información cliente */
     .info-row {
       display: flex;
       flex-wrap: wrap;
-      gap: 1rem;
-      background: #f8fafd;
-      padding: 1rem 1.5rem;
-      border-radius: 1.2rem;
-      margin-bottom: 1.8rem;
-      border: 1px solid #e6edf4;
+      gap: 1.8rem;
+      background: rgba(255, 245, 240, 0.85);
+      backdrop-filter: blur(5px);
+      padding: 1.2rem 1.5rem;
+      border-radius: 1.5rem;
+      margin-bottom: 2rem;
+      border: 1px solid rgba(255, 200, 180, 0.7);
+      transition: all 0.3s ease;
+    }
+    .info-row:hover {
+      transform: translateY(-3px);
+      background: rgba(255, 245, 240, 0.96);
     }
 
     .info-card {
       flex: 1;
+      min-width: 200px;
     }
-
     .info-card .label {
       font-size: 0.7rem;
       text-transform: uppercase;
       font-weight: 700;
-      color: #54708f;
+      color: #b23c1c;
+      margin-bottom: 0.5rem;
     }
-
     .info-card .value {
       font-weight: 700;
       font-size: 1rem;
+      color: #2d2a2a;
+    }
+    .info-card .sub {
+      font-size: 0.8rem;
+      color: #7a5a4a;
+      margin-top: 0.2rem;
     }
 
+    /* Títulos de sección */
     .section-title {
       font-size: 1.4rem;
-      font-weight: 700;
+      font-weight: 800;
       margin: 1.8rem 0 1rem;
-      color: #0b2b3b;
-      border-left: 5px solid #1e6f5c;
+      color: #b23c1c;
+      border-left: 5px solid #e07a5a;
       padding-left: 1rem;
     }
 
+    /* Párrafos y listas */
+    p, li {
+      font-size: 0.95rem;
+      line-height: 1.5;
+      color: #2d2a2a;
+    }
+    ul, .alert-info ul {
+      margin-left: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    li {
+      margin-bottom: 0.3rem;
+    }
+
+    /* Cards de "cómo funciona" */
     .grid-2col {
       display: flex;
       flex-wrap: wrap;
       gap: 1.2rem;
       margin: 1rem 0;
     }
-
     .card {
-      background: #f8fafc;
+      background: rgba(255, 250, 245, 0.85);
+      backdrop-filter: blur(4px);
       border-radius: 1rem;
       padding: 1rem;
       flex: 1;
-      border: 1px solid #e2edf7;
+      border: 1px solid rgba(224, 122, 90, 0.3);
+      transition: all 0.2s;
+      font-size: 0.9rem;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      background: rgba(255, 250, 245, 0.98);
+    }
+    .card strong {
+      display: block;
+      margin-bottom: 0.4rem;
     }
 
-    .comparison-table {
-      width: 100%;
-      border-collapse: collapse;
-      background: white;
-      border-radius: 1rem;
-      overflow: hidden;
-      margin: 1rem 0;
-      font-size: 0.85rem;
-    }
-
-    .comparison-table th, .comparison-table td {
-      border: 1px solid #e2edf7;
-      padding: 0.8rem;
-      text-align: left;
-      vertical-align: top;
-    }
-
-    .comparison-table th {
-      background: #eef2f9;
-      font-weight: 700;
-    }
-
+    /* Tabla de precios con netos */
     .price-table {
       width: 100%;
       border-collapse: collapse;
       margin: 1rem 0;
+      background: rgba(255, 250, 245, 0.7);
+      border-radius: 1rem;
+      font-size: 0.85rem;
     }
-
     .price-table td, .price-table th {
       padding: 0.8rem 0.5rem;
-      border-bottom: 1px solid #eef2f7;
+      border-bottom: 1px solid rgba(200, 120, 80, 0.2);
       text-align: left;
     }
-
     .price-table th:last-child, .price-table td:last-child {
       text-align: right;
     }
-
-    .total-box {
-      background: #eef2fa;
-      padding: 1rem;
-      border-radius: 1rem;
-      text-align: right;
-      margin: 1rem 0;
+    .price-table tr:last-child td {
+      border-bottom: none;
+    }
+    .price-table th {
+      font-weight: 700;
+      color: #b23c1c;
+    }
+    .amount-cell {
+      font-weight: 700;
+      color: #b23c1c;
     }
 
-    .investment-option {
-      background: #f9fafc;
+    /* Totales con IVA (estilo homogéneo) */
+    .totals {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      margin: 1rem 0 1.5rem;
+      padding-top: 0.8rem;
+      border-top: 2px dashed rgba(200, 120, 80, 0.4);
+    }
+    .total-line {
+      display: flex;
+      gap: 2rem;
+      justify-content: flex-end;
+      width: 100%;
+      max-width: 300px;
+      margin-bottom: 0.4rem;
+      font-size: 0.95rem;
+    }
+    .total-line span:first-child {
+      font-weight: 500;
+      color: #5a3a2a;
+    }
+    .total-line.grand-total {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: #2d2a2a;
+      margin-top: 0.5rem;
+      padding-top: 0.5rem;
+      border-top: 2px solid rgba(178, 60, 28, 0.6);
+    }
+    .grand-total span:last-child {
+      background: linear-gradient(135deg, #b23c1c, #e07a5a);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .investment-box {
+      background: rgba(255, 245, 240, 0.85);
+      backdrop-filter: blur(4px);
       border-radius: 1rem;
-      padding: 1rem;
+      padding: 1.2rem;
       margin: 1rem 0;
-      border-left: 4px solid #1e6f5c;
+      border-left: 4px solid #e07a5a;
+      text-align: center;
+    }
+    .investment-amount {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #b23c1c;
+      margin-bottom: 0.5rem;
     }
 
     .roi-badge {
-      background: #e0f2e9;
+      background: rgba(46, 204, 113, 0.2);
       color: #1e6f5c;
       font-weight: 700;
       padding: 0.2rem 0.8rem;
       border-radius: 40px;
       display: inline-block;
+      font-size: 0.8rem;
     }
 
     .alert-info {
@@ -197,9 +315,10 @@
       padding: 0.8rem 1rem;
       border-radius: 0.8rem;
       margin: 1rem 0;
-      font-size: 0.8rem;
+      font-size: 0.85rem;
     }
 
+    /* Botones */
     .buttons {
       display: flex;
       gap: 1rem;
@@ -207,54 +326,61 @@
       justify-content: flex-end;
       flex-wrap: wrap;
     }
-
     .btn {
       padding: 0.6rem 1.5rem;
       border-radius: 2rem;
       font-weight: 500;
-      font-size: 0.85rem;
+      font-size: 0.9rem;
       cursor: pointer;
       border: none;
-      font-family: inherit;
+      font-family: 'Inter', sans-serif;
       display: inline-flex;
       align-items: center;
       gap: 8px;
       transition: 0.2s;
+      background: rgba(255, 250, 245, 0.9);
+      border: 1px solid rgba(224, 122, 90, 0.4);
+      color: #b23c1c;
     }
-
     .btn-primary {
-      background: #1e6f5c;
+      background: linear-gradient(135deg, #b23c1c, #e07a5a);
       color: white;
+      border: none;
+      box-shadow: 0 4px 12px rgba(178, 60, 28, 0.3);
     }
-
     .btn-primary:hover {
-      background: #0e5a49;
-      transform: translateY(-2px);
+      transform: translateY(-3px);
+      filter: brightness(1.05);
     }
-
-    .btn-outline {
-      border: 1px solid #bdd3e8;
-      background: white;
+    .btn-outline:hover {
+      transform: translateY(-2px);
+      background: rgba(224, 122, 90, 0.2);
     }
 
     footer {
-      background: #f4f8fe;
+      background: linear-gradient(145deg, rgba(255, 240, 230, 0.9), rgba(255, 235, 225, 0.8));
       text-align: center;
       padding: 1rem;
-      font-size: 0.7rem;
-      color: #5b7895;
+      font-size: 0.75rem;
+      color: #8a6a5a;
     }
 
     @media (max-width: 750px) {
       body { padding: 1rem; }
       .quote-header, .quote-body { padding: 1rem; }
-      .comparison-table th, .comparison-table td { font-size: 0.7rem; }
       .section-title { font-size: 1.2rem; }
+      .info-row { gap: 1rem; flex-direction: column; }
+      .grid-2col { flex-direction: column; }
+      .buttons { justify-content: center; }
+      .btn { justify-content: center; }
+      .totals { align-items: stretch; }
+      .total-line { max-width: 100%; justify-content: space-between; }
     }
-
     @media print {
-      body { background: white; padding: 0; }
+      body { background: white; padding: 0; animation: none; }
+      .quote-container { box-shadow: none; backdrop-filter: none; background: white; }
       .buttons { display: none; }
+      .animate-up, .animate-left, .animate-right, .animate-zoom { animation: none; opacity: 1; }
     }
   </style>
 </head>
@@ -262,7 +388,7 @@
 <div class="quote-container">
   <div class="quote-header">
     <div class="brand">
-      <h1>DUALTEC E.I.R.L</h1>
+      <h1>DUALTEC</h1>
       <div class="company-details">
         <i class="fas fa-chart-line"></i> Automatización & Ventas Digitales<br>
         <i class="fas fa-envelope"></i> contacto@dualtec.cl · <i class="fab fa-whatsapp"></i> +56 9 6357 1251
@@ -275,107 +401,89 @@
   </div>
 
   <div class="quote-body">
-    <div class="info-row">
-      <div class="info-card"><div class="label">CLIENTE</div><div class="value">Maca Lama</div><div class="sub">Nueva Dominica</div></div>
+    <!-- Fila cliente -->
+    <div class="info-row animate-left delay-1">
+      <div class="info-card"><div class="label">SOLICITADA POR</div><div class="value">Nueva Dominica</div><div class="sub">Maca Lamas · Contacto principal</div></div>
       <div class="info-card"><div class="label">PROYECTO</div><div class="value">Sistema de Pedidos de Almuerzo Automatizado</div><div class="sub">Con pago online y control en Google Sheets</div></div>
-      <div class="info-card"><div class="label">MONEDA</div><div class="value">CLP</div><div class="sub">IVA incluido en opciones</div></div>
+      <div class="info-card"><div class="label">MONEDA</div><div class="value">CLP</div><div class="sub">IVA desglosado</div></div>
     </div>
 
     <!-- Resumen ejecutivo -->
-    <div class="section-title">📌 Resumen ejecutivo</div>
-    <p>Este sistema convierte tu negocio de almuerzos en un canal de ventas <strong>automático 24/7</strong>. Los clientes eligen, pagan online y tú recibes cada pedido en un simple <strong>Google Sheets</strong> (como un Excel compartido). Sin complicaciones técnicas, sin inversión enorme, y con todo el control en tus manos.</p>
-    <p><strong>✅ Resultado:</strong> Más ventas, menos trabajo operativo, y la capacidad de escalar tu negocio sin estrés.</p>
+    <div class="section-title animate-up delay-2">📌 Resumen ejecutivo</div>
+    <p class="animate-up delay-3">Este sistema permite recibir pedidos de almuerzo de forma automatizada, con pago online integrado y registro automático en Google Sheets. Los clientes eligen su menú, pagan y tú ves el pedido al instante en una hoja de cálculo compartida, sin necesidad de anotar manualmente.</p>
+    <p class="animate-up delay-4"><strong>✅ Objetivo:</strong> Simplificar la operación de ventas, reducir el trabajo administrativo y tener un canal digital funcionando con una inversión accesible.</p>
 
     <!-- Alcance del servicio -->
-    <div class="section-title">🎯 Alcance del servicio</div>
-    <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
+    <div class="section-title animate-left delay-5">🎯 Alcance del servicio</div>
+    <ul class="animate-left delay-6">
       <li><strong>🍽️ Landing + Cotizador inteligente</strong> – Menú dinámico, cálculo automático del total, diseño mobile-first.</li>
       <li><strong>💳 Integración de pago online</strong> – Conexión con MercadoPago (pago en un par de clics).</li>
       <li><strong>📊 Registro automático en Google Sheets</strong> – Cada pedido se guarda con nombre, teléfono, pedido, total y fecha.</li>
       <li><strong>🤖 Automatización con Chatwoot + WhatsApp</strong> – Confirmación automática al cliente, bandeja centralizada.</li>
       <li><strong>⏱️ Corte automático a las 20:00 hrs</strong> – Sin pedidos fuera de horario, mensaje de cierre integrado.</li>
-      <li><strong>📢 Optimizada para publicidad</strong> – Estructura lista para Meta Ads, flujo directo a venta.</li>
+      <li><strong>📢 Optimizada para publicidad</strong> – Estructura básica para conectar con Meta Ads si se desea.</li>
     </ul>
 
-    <!-- Cómo funciona (flujo) -->
-    <div class="section-title">⚙️ Cómo funciona</div>
-    <div class="grid-2col">
-      <div class="card"><i class="fas fa-mobile-alt" style="color:#1e6f5c;"></i> <strong>1. Cliente elige su almuerzo</strong><br>Desde el celular, sin necesidad de llamar.</div>
-      <div class="card"><i class="fas fa-credit-card"></i> <strong>2. Paga online</strong><br>MercadoPago – seguro y rápido.</div>
-      <div class="card"><i class="fas fa-table"></i> <strong>3. Pedido se registra automáticamente</strong><br>Aparece en tu Google Sheets en tiempo real.</div>
-      <div class="card"><i class="fab fa-whatsapp"></i> <strong>4. Confirmación automática</strong><br>WhatsApp al cliente + aviso a tu equipo.</div>
+    <!-- Cómo funciona -->
+    <div class="section-title animate-right delay-7">⚙️ Cómo funciona</div>
+    <div class="grid-2col animate-right delay-8">
+      <div class="card"><i class="fas fa-mobile-alt" style="color:#b23c1c;"></i> <strong>1. Cliente elige su almuerzo</strong> Desde el celular, sin necesidad de llamar.</div>
+      <div class="card"><i class="fas fa-credit-card" style="color:#b23c1c;"></i> <strong>2. Paga online</strong> MercadoPago – seguro y rápido.</div>
+      <div class="card"><i class="fas fa-table" style="color:#b23c1c;"></i> <strong>3. Pedido se registra automáticamente</strong> Aparece en tu Google Sheets en tiempo real.</div>
+      <div class="card"><i class="fab fa-whatsapp" style="color:#b23c1c;"></i> <strong>4. Confirmación automática</strong> WhatsApp al cliente + aviso a tu equipo.</div>
     </div>
 
     <!-- Beneficios clave -->
-    <div class="section-title">🔥 Beneficios clave</div>
-    <ul>
-      <li>✔️ <strong>Control total en Google Sheets</strong> – Como un Excel, pero automático. Sabes quién pidió, qué pagó y cuándo.</li>
-      <li>✔️ <strong>Sin necesidad de programador</strong> – Usamos herramientas inteligentes, no código complejo.</li>
-      <li>✔️ <strong>Pago online integrado</strong> – Aumenta la conversión (la gente paga al instante).</li>
-      <li>✔️ <strong>Bajo costo de entrada</strong> – Desde <strong>$297.000 CLP</strong> con opción de pago mensual.</li>
-      <li>✔️ <strong>Preparado para escalar</strong> – Mañana puedes sumar más menús o más comunas.</li>
+    <div class="section-title animate-up delay-9">🔥 Beneficios clave</div>
+    <ul class="animate-up delay-10">
+      <li>✔️ <strong>Control práctico en Google Sheets</strong> – Todos los pedidos en una hoja que ya conoces.</li>
+      <li>✔️ <strong>Sin necesidad de programador</strong> – Usamos herramientas estándar, no desarrollo complejo.</li>
+      <li>✔️ <strong>Pago online integrado</strong> – Facilita que los clientes concreten la compra.</li>
+      <li>✔️ <strong>Inversión única y accesible</strong> – Sin costos mensuales obligatorios.</li>
+      <li>✔️ <strong>Preparado para escalar</strong> – Se puede ampliar fácilmente.</li>
     </ul>
 
-    <!-- Comparación de soluciones (obligatorio) -->
-    <div class="section-title">📊 Comparación de soluciones</div>
-    <table class="comparison-table">
-      <thead><tr><th></th><th>Dualtec (esta solución)</th><th>GoHighLevel</th><th>Desarrollo a medida</th></tr></thead>
-      <tbody>
-        <tr><td>💰 Costo inicial</td><td><strong>$297.000 – $497.000</strong></td><td>~$250.000 + suscripción</td><td>$2.500.000+</td></tr>
-        <tr><td>💵 Costo mensual</td><td>Desde $49.000 (opcional)</td><td>USD 97 (~$95.000) fijo</td><td>$80.000 – $200.000</td></tr>
-        <tr><td>⏱️ Tiempo implementación</td><td><strong>5 – 7 días</strong></td><td>1 – 2 semanas</td><td>6 – 10 semanas</td></tr>
-        <tr><td>⚙️ Complejidad</td><td>Baja / lista para usar</td><td>Media (curva)</td><td>Alta (requiere programador)</td></tr>
-        <tr><td>📈 Control vía Google Sheets</td><td>✅ Sí, nativo</td><td>Limitado (exportaciones)</td><td>Depende del desarrollo</td></tr>
-        <tr><td>🎯 Recomendado para</td><td><strong>Empezar a vender ya, validar, bajo riesgo</strong></td><td>Negocios con mayor presupuesto mensual</td><td>Proyectos muy específicos o gran escala</td></tr>
-      </tbody>
-    </table>
-    <div class="alert-info">
-      <i class="fas fa-lightbulb"></i> <strong>Conclusión inteligente:</strong> Esta solución es el punto de entrada ideal. Con una inversión mínima obtienes un sistema funcional hoy. Si el negocio explota, puedes migrar después sin perder datos.
-    </div>
-
-    <!-- Modelo de inversión (obligatorio) -->
-    <div class="section-title">💰 Modelo de inversión</div>
-    <div class="investment-option">
-      <strong>OPCIÓN 1 – Pago único (recomendada para presupuesto ajustado)</strong><br>
-      <strong>$497.000 CLP</strong> (IVA incluido) – Implementación completa, sin mensualidades. Soporte 30 días gratis.
-    </div>
-    <div class="investment-option">
-      <strong>OPCIÓN 2 – Setup reducido + mensualidad (RECOMENDADA)</strong><br>
-      <strong>Setup inicial: $297.000 CLP</strong> + <strong>$79.000 CLP / mes</strong><br>
-      La mensualidad incluye: soporte continuo, ajustes menores, optimización de conversión y monitoreo básico de la operación.
-    </div>
-    <p><em>¿Por qué la mensualidad? Porque así siempre tendrás el sistema actualizado y funcionando sin preocuparte por cambios en APIs o necesidades nuevas.</em></p>
-
-    <!-- Tabla de precios detallada (opción 1) -->
-    <div class="section-title">📋 Tabla de precios (opción pago único)</div>
-    <table class="price-table">
-      <tr><th>Concepto</th><th>Valor CLP</th></tr>
-      <tr><td>Landing + cotizador menú</td><td>$180.000</td></tr>
-      <tr><td>Integración MercadoPago + flujo de pago</td><td>$120.000</td></tr>
-      <tr><td>Registro automático en Google Sheets</td><td>$70.000</td></tr>
-      <tr><td>Automatización Chatwoot + WhatsApp API</td><td>$90.000</td></tr>
-      <tr><td>Corte horario + mensajes automáticos</td><td>$40.000</td></tr>
-      <tr><td>Optimización para anuncios</td><td>$50.000</td></tr>
-      <tr style="background:#f0f6fa;"><td><strong>Subtotal</strong></td><td>$550.000</td></tr>
-      <tr><td>Descuento lanzamiento</td><td>-$53.000</td></tr>
-      <tr><td><strong>Total (incluye IVA)</strong></td><td><strong>$497.000 CLP</strong></td></tr>
+    <!-- Tabla de precios con valores netos (sin IVA) -->
+    <div class="section-title animate-left delay-1">📋 Tabla de precios (valores netos)</div>
+    <table class="price-table animate-left delay-2">
+      <tr><th>Concepto</th><th>Valor Neto (CLP)</th></tr>
+      <tr><td>Landing + cotizador menú</td><td class="amount-cell">$113.000</td></tr>
+      <tr><td>Integración MercadoPago + flujo de pago</td><td class="amount-cell">$75.000</td></tr>
+      <tr><td>Registro automático en Google Sheets</td><td class="amount-cell">$45.000</td></tr>
+      <tr><td>Automatización Chatwoot + WhatsApp API</td><td class="amount-cell">$53.000</td></tr>
+      <tr><td>Corte horario + mensajes automáticos</td><td class="amount-cell">$22.613</td></tr>
+      <tr><td>Optimización para anuncios</td><td class="amount-cell">$25.000</td></tr>
     </table>
 
-    <!-- Retorno de inversión ROI -->
-    <div class="section-title">📈 Retorno de inversión (ROI)</div>
-    <div class="roi-badge">Ejemplo real</div>
-    <ul style="margin-top: 0.8rem;">
+    <!-- Totales con IVA desglosado (igual a otras cotizaciones) -->
+    <div class="totals animate-right delay-3">
+      <div class="total-line"><span>Subtotal neto</span><span>$333.613</span></div>
+      <div class="total-line"><span>IVA (19%)</span><span>$63.387</span></div>
+      <div class="total-line grand-total"><span>TOTAL COTIZACIÓN</span><span>$397.000</span></div>
+      <div style="font-size:0.7rem; margin-top:6px;">* Valores expresados en pesos chilenos (CLP). Pago único por puesta en marcha.</div>
+    </div>
+
+    <!-- Bloque resumen de inversión -->
+    <div class="investment-box animate-up delay-4">
+      <div class="investment-amount">$397.000 CLP</div>
+      <div>Pago único (IVA incluido) · Implementación completa · Soporte 30 días gratis</div>
+    </div>
+
+    <!-- Retorno de inversión básico -->
+    <div class="section-title animate-left delay-5">📈 Retorno de inversión (referencia)</div>
+    <div class="roi-badge animate-left delay-6">Ejemplo ilustrativo</div>
+    <ul class="animate-left delay-7" style="margin-top: 0.8rem;">
       <li>Precio promedio de almuerzo: <strong>$6.000 CLP</strong></li>
-      <li>Ventas diarias con el sistema: <strong>5 almuerzos</strong> → $30.000 diarios</li>
-      <li>Ventas mensuales (20 días): <strong>$600.000 CLP</strong></li>
-      <li>Costo del sistema: <strong>$497.000 CLP</strong></li>
+      <li>Ventas diarias estimadas con el sistema: <strong>3 a 5 almuerzos</strong> → entre $18.000 y $30.000 diarios</li>
+      <li>Ventas mensuales (20 días): entre <strong>$360.000 y $600.000 CLP</strong></li>
+      <li>Inversión en el sistema: <strong>$397.000 CLP</strong></li>
     </ul>
-    <p><strong>📢 En menos de un mes, el sistema se paga solo.</strong> A partir del día 31, todo es ganancia adicional automatizada.</p>
+    <p class="animate-left delay-8">Con estos números, la inversión puede recuperarse rápidamente, dependiendo del volumen de ventas que genere el canal digital.</p>
 
     <!-- Entregables -->
-    <div class="section-title">📦 Entregables</div>
-    <ul>
-      <li>Landing page funcional con cotizador (dominio .github.io o dominio propio).</li>
+    <div class="section-title animate-right delay-9">📦 Entregables</div>
+    <ul class="animate-right delay-10">
+      <li>Landing page funcional con cotizador (en subdominio gratuito o dominio propio).</li>
       <li>Conexión operativa con MercadoPago (botón de pago).</li>
       <li>Google Sheets en vivo con cada pedido registrado.</li>
       <li>Chatwoot + WhatsApp API configurados y probados.</li>
@@ -383,53 +491,52 @@
       <li>1 hora de capacitación remota.</li>
     </ul>
 
-    <!-- Costos operativos y servicios de terceros -->
-    <div class="section-title">💳 Costos operativos (no incluidos)</div>
-    <div class="alert-info">
-      <ul style="margin-left: 1rem;">
-        <li><strong>Chatwoot (CRM de WhatsApp):</strong> USD $20 / usuario / mes (opcional, pero muy útil).</li>
-        <li><strong>WhatsApp Business API:</strong> cobro por conversación (aprox USD $0.005 por conversación iniciada por negocio). Primeras 1000/mes pueden ser gratuitas.</li>
-        <li><strong>MercadoPago:</strong> comisión por transacción ~3% + fijo.</li>
-        <li><strong>Publicidad (Meta/Google):</strong> sugerido $4.000 – $10.000 CLP diarios para obtener resultados rápidos.</li>
+    <!-- Costos operativos (no incluidos) -->
+    <div class="section-title animate-left delay-1">💳 Costos operativos (no incluidos)</div>
+    <div class="alert-info animate-left delay-2">
+      <ul>
+        <li><strong>Chatwoot (CRM de WhatsApp):</strong> USD $20 / usuario / mes (opcional).</li>
+        <li><strong>WhatsApp Business API:</strong> cobro por conversación (aprox. USD $0.005 por conversación iniciada por negocio). Primeras 1000 conversaciones al mes suelen ser gratuitas.</li>
+        <li><strong>MercadoPago:</strong> comisión por transacción ~3% + monto fijo.</li>
+        <li><strong>Publicidad (Meta/Google):</strong> sugerido desde $4.000 CLP diarios si se desea acelerar resultados.</li>
         <li><strong>Dominio .cl (opcional):</strong> ~$12.000 CLP / año.</li>
-        <li><strong>Herramientas automatización extra (Make/Zapier):</strong> desde USD $20/mes si se requieren integraciones adicionales.</li>
+        <li><strong>Herramientas extra (Make/Zapier):</strong> desde USD $20/mes si se requieren integraciones adicionales.</li>
       </ul>
-      <p><i class="fas fa-info-circle"></i> El cliente administra directamente estos costos. Nosotros ayudamos en la configuración sin cargo adicional.</p>
+      <p><i class="fas fa-info-circle"></i> El cliente gestiona directamente estos costos. Dualtec ayuda en la configuración inicial sin cargo extra.</p>
     </div>
 
-    <!-- Limitaciones (transparencia) -->
-    <div class="section-title">⚠️ Limitaciones de esta versión</div>
-    <ul>
-      <li>No incluye sistema de inventario ni base de datos relacional (los pedidos están en Google Sheets).</li>
-      <li>Automatización de estado de pedido (enviado, entregado) es manual o vía etiquetas en Chatwoot.</li>
-      <li>Ideal para negocios de tamaño pequeño/mediano (hasta 100 pedidos/día).</li>
+    <!-- Limitaciones -->
+    <div class="section-title animate-right delay-3">⚠️ Limitaciones de esta versión</div>
+    <ul class="animate-right delay-4">
+      <li>No incluye sistema de inventario ni base de datos relacional (los pedidos se guardan en Google Sheets).</li>
+      <li>El cambio de estado del pedido (entregado, etc.) es manual o mediante etiquetas en Chatwoot.</li>
+      <li>Ideal para negocios con hasta 100 pedidos diarios.</li>
     </ul>
 
     <!-- Escalabilidad futura -->
-    <div class="section-title">🚀 Escalabilidad futura</div>
-    <p>Cuando tu negocio crezca, podemos:</p>
-    <ul>
-      <li>Sumar más menús o días de la semana sin costo adicional grande.</li>
-      <li>Integrar con sistema de fidelización.</li>
-      <li>Migrar a una versión con base de datos (Next.js + Supabase) solo si lo necesitas.</li>
+    <div class="section-title animate-up delay-5">🚀 Escalabilidad futura</div>
+    <p class="animate-up delay-6">Cuando el negocio crezca, se puede:</p>
+    <ul class="animate-up delay-7">
+      <li>Agregar más menús o días de semana con ajustes menores.</li>
+      <li>Incorporar un sistema de fidelización de clientes.</li>
+      <li>Migrar a una versión con base de datos (Next.js + Supabase) si se requiere mayor robustez.</li>
     </ul>
 
-    <!-- Cierre persuasivo + urgencia -->
-    <div class="section-title">✅ ¿Por qué decidir ahora?</div>
-    <p>Este sistema no es solo una página web: es una <strong>máquina de ventas automatizada</strong> que trabaja para ti mientras duermes. Con el modelo de pago único o la mensualidad baja, no hay excusa para seguir perdiendo ventas por no tener un sistema digital.</p>
-    <p><strong>🎯 Cupos limitados para implementación en Mayo 2026:</strong> Solo 5 proyectos con precio promocional.</p>
-    <p style="margin-top: 1rem;">Atentamente,<br>Jorge Oliva – Director Dualtec E.I.R.L<br><i class="fab fa-whatsapp"></i> +56 9 6357 1251</p>
+    <!-- Cierre -->
+    <div class="section-title animate-left delay-8">✅ Próximos pasos</div>
+    <p class="animate-left delay-9">Si esta propuesta se ajusta a lo que necesitas, podemos coordinar una breve reunión para resolver dudas y definir la puesta en marcha. El proyecto puede comenzar en los próximos días hábiles.</p>
+    <p class="animate-left delay-10" style="margin-top: 1rem;">Atentamente,<br>Jorge Oliva – Director Dualtec<br><i class="fab fa-whatsapp"></i> +56 9 6357 1251</p>
 
-    <!-- Botones de acción -->
-    <div class="buttons">
+    <!-- Botones -->
+    <div class="buttons animate-zoom delay-1">
       <button class="btn btn-outline" id="copyLinkBtn"><i class="fas fa-link"></i> Copiar enlace</button>
       <button class="btn btn-outline" id="printBtn"><i class="fas fa-print"></i> Imprimir / PDF</button>
       <button class="btn btn-primary" id="shareBtn"><i class="fab fa-whatsapp"></i> Compartir cotización</button>
     </div>
-    <div id="toastMessage" style="position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: #1e6f5c; color: white; padding: 8px 24px; border-radius: 40px; font-size: 0.8rem; opacity: 0; transition: opacity 0.2s; pointer-events: none; z-index: 1000;"></div>
+    <div id="toastMessage" style="position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: #b23c1c; color: white; padding: 8px 24px; border-radius: 40px; font-size: 0.8rem; opacity: 0; transition: opacity 0.2s; pointer-events: none; z-index: 1000; box-shadow: 0 4px 12px rgba(0,0,0,0.2);"></div>
   </div>
   <footer>
-    Dualtec E.I.R.L · Automatización de ventas · Cotización válida por 10 días · Precios pueden variar por disponibilidad.
+    Dualtec · Automatización de ventas · Cotización válida por 10 días · Precios pueden variar por disponibilidad.
   </footer>
 </div>
 
@@ -440,7 +547,7 @@
   const toast = document.getElementById('toastMessage');
 
   function showMessage(text, isError = false) {
-    toast.style.backgroundColor = isError ? '#b13e3e' : '#1e6f5c';
+    toast.style.backgroundColor = isError ? '#b13e3e' : '#b23c1c';
     toast.textContent = text;
     toast.style.opacity = '1';
     setTimeout(() => { toast.style.opacity = '0'; }, 2800);
@@ -463,7 +570,7 @@
       try {
         await navigator.share({
           title: 'Cotización Dualtec - Sistema de Pedidos de Almuerzo',
-          text: 'Maca Lama, tu cotización para el sistema automatizado de pedidos de almuerzo con pago online. Desde $297.000 CLP.',
+          text: 'Cotización para sistema de pedidos de almuerzo automatizado con pago online. Inversión única $397.000 CLP (IVA incluido).',
           url: window.location.href,
         });
         showMessage('Compartido correctamente');
