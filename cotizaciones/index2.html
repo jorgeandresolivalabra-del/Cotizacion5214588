@@ -14,7 +14,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
-    /* MISMO ESTILO BASE QUE LA COTIZACIÓN 1 (SE REPITE EL MISMO CSS) */
+    /* EXACTAMENTE EL MISMO ESTILO QUE LA COTIZACIÓN 1 */
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       background: linear-gradient(135deg, #fdf4f0 0%, #ffe6df 50%, #fce8e0 100%);
@@ -41,47 +41,45 @@
     .quote-header {
       background: #b23c1c;
       background-image: linear-gradient(135deg, #c24b2a 0%, #a13215 100%);
-      padding: 1.8rem 2.5rem;
+      padding: 1.5rem 2rem;
       color: white;
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
-      align-items: flex-start;
-      gap: 1.2rem;
+      align-items: center;
+      gap: 1rem;
     }
-    .brand h1 { font-size: 2rem; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 0.2rem; }
-    .brand .company-details { font-size: 0.8rem; opacity: 0.85; line-height: 1.4; margin-top: 0.3rem; }
-    .brand .company-details i { width: 1.2rem; margin-right: 0.2rem; }
+    .brand h1 { font-size: 1.8rem; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 0.2rem; }
+    .brand .company-details { font-size: 0.75rem; opacity: 0.85; line-height: 1.3; }
+    .brand .company-details i { width: 1rem; margin-right: 0.2rem; }
     .quote-badge { text-align: right; }
     .badge {
       background: rgba(255,255,255,0.2);
       backdrop-filter: blur(4px);
-      padding: 0.5rem 1.2rem;
+      padding: 0.4rem 1rem;
       border-radius: 60px;
       font-weight: 600;
-      font-size: 0.9rem;
+      font-size: 0.8rem;
       display: inline-block;
       border: 1px solid rgba(255,255,255,0.3);
     }
-    .quote-number { font-size: 0.8rem; margin-top: 0.6rem; opacity: 0.8; }
-    .quote-body { padding: 2rem 2.5rem; }
+    .quote-number { font-size: 0.7rem; margin-top: 0.4rem; opacity: 0.8; }
+    .quote-body { padding: 2rem 2rem; }
     .info-row {
       display: flex;
       flex-wrap: wrap;
-      gap: 1.8rem;
+      gap: 1.5rem;
       background: rgba(255, 245, 240, 0.8);
       backdrop-filter: blur(5px);
-      padding: 1.2rem 1.5rem;
+      padding: 1rem 1.5rem;
       border-radius: 1.5rem;
       margin-bottom: 2rem;
       border: 1px solid rgba(255, 200, 180, 0.6);
-      transition: all 0.3s ease;
     }
-    .info-row:hover { transform: translateY(-3px); background: rgba(255, 245, 240, 0.95); }
-    .info-card { flex: 1; min-width: 200px; }
-    .info-card .label { font-size: 0.7rem; text-transform: uppercase; font-weight: 700; color: #b23c1c; margin-bottom: 0.5rem; letter-spacing: 0.5px; }
+    .info-card { flex: 1; min-width: 180px; }
+    .info-card .label { font-size: 0.7rem; text-transform: uppercase; font-weight: 700; color: #b23c1c; margin-bottom: 0.3rem; letter-spacing: 0.5px; }
     .info-card .value { font-size: 1rem; font-weight: 700; color: #2d2a2a; }
-    .info-card .sub { font-size: 0.8rem; color: #7a5a4a; margin-top: 0.2rem; }
+    .info-card .sub { font-size: 0.75rem; color: #7a5a4a; margin-top: 0.2rem; }
     .proposal-text {
       background: linear-gradient(135deg, rgba(255, 240, 230, 0.9), rgba(255, 245, 235, 0.8));
       border-left: 5px solid #e07a5a;
@@ -92,138 +90,39 @@
       color: #5a3a2a;
       line-height: 1.45;
     }
-    .services-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 1.2rem 0 1.8rem;
-    }
-    .services-table th {
-      text-align: left;
-      padding: 0.8rem 0.5rem 0.7rem 0;
-      font-weight: 700;
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      color: #b23c1c;
-      border-bottom: 2px solid rgba(200, 120, 80, 0.3);
-    }
-    .services-table td {
-      padding: 1rem 0.5rem 1rem 0;
-      border-bottom: 1px solid rgba(200, 120, 80, 0.2);
-      vertical-align: top;
-    }
+    .services-table { width: 100%; border-collapse: collapse; margin: 1.2rem 0 1.8rem; }
+    .services-table th { text-align: left; padding: 0.8rem 0.5rem 0.7rem 0; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; color: #b23c1c; border-bottom: 2px solid rgba(200, 120, 80, 0.3); }
+    .services-table td { padding: 1rem 0.5rem 1rem 0; border-bottom: 1px solid rgba(200, 120, 80, 0.2); vertical-align: top; }
     .services-table th:last-child, .services-table td:last-child { text-align: right; }
-    .service-name { font-weight: 700; font-size: 0.95rem; color: #3a2a24; }
+    .service-name { font-weight: 700; font-size: 0.9rem; color: #3a2a24; }
     .service-detail { font-size: 0.7rem; color: #8a6a5a; margin-top: 0.2rem; line-height: 1.3; }
     .amount-cell { font-weight: 800; color: #b23c1c; white-space: nowrap; }
-    .totals {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      margin: 1rem 0 1.5rem;
-      padding-top: 0.8rem;
-      border-top: 2px dashed rgba(200, 120, 80, 0.4);
-    }
-    .total-line {
-      display: flex;
-      gap: 2rem;
-      justify-content: flex-end;
-      width: 100%;
-      max-width: 320px;
-      margin-bottom: 0.4rem;
-      font-size: 0.95rem;
-    }
+    .totals { display: flex; flex-direction: column; align-items: flex-end; margin: 1rem 0 1.5rem; padding-top: 0.8rem; border-top: 2px dashed rgba(200, 120, 80, 0.4); }
+    .total-line { display: flex; gap: 2rem; justify-content: flex-end; width: 100%; max-width: 320px; margin-bottom: 0.4rem; font-size: 0.9rem; }
     .total-line span:first-child { font-weight: 500; color: #5a3a2a; }
-    .total-line.grand-total {
-      font-size: 1.25rem;
-      font-weight: 800;
-      margin-top: 0.5rem;
-      padding-top: 0.6rem;
-      border-top: 2px solid rgba(178, 60, 28, 0.6);
-    }
-    .grand-total span:last-child {
-      background: linear-gradient(135deg, #b23c1c, #e07a5a);
-      background-clip: text;
-      -webkit-background-clip: text;
-      color: transparent;
-    }
-    .section-title {
-      font-size: 1.2rem;
-      font-weight: 800;
-      margin: 1.5rem 0 0.8rem;
-      color: #b23c1c;
-      border-left: 5px solid #e07a5a;
-      padding-left: 1rem;
-    }
-    .scope-box, .complementary-box {
-      background: rgba(255, 245, 240, 0.7);
-      backdrop-filter: blur(5px);
-      border-radius: 1rem;
-      padding: 1rem 1.5rem;
-      margin: 1rem 0;
-      border: 1px solid rgba(224, 122, 90, 0.3);
-      transition: all 0.3s ease;
-    }
+    .total-line.grand-total { font-size: 1.2rem; font-weight: 800; margin-top: 0.5rem; padding-top: 0.6rem; border-top: 2px solid rgba(178, 60, 28, 0.6); }
+    .grand-total span:last-child { background: linear-gradient(135deg, #b23c1c, #e07a5a); background-clip: text; -webkit-background-clip: text; color: transparent; }
+    .scope-box, .complementary-box { background: rgba(255, 245, 240, 0.7); backdrop-filter: blur(5px); border-radius: 1rem; padding: 1rem 1.5rem; margin: 1rem 0; border: 1px solid rgba(224, 122, 90, 0.3); transition: all 0.3s ease; }
     .scope-box:hover, .complementary-box:hover { transform: translateY(-3px); background: rgba(255, 245, 240, 0.9); }
-    .scope-title, .complementary-title {
-      font-weight: 800;
-      margin-bottom: 0.6rem;
-      color: #b23c1c;
-      font-size: 0.9rem;
-    }
-    ul, .scope-detailed-list { margin-left: 1.5rem; margin-bottom: 0.5rem; }
+    .scope-title, .complementary-title { font-weight: 800; margin-bottom: 0.6rem; color: #b23c1c; font-size: 0.9rem; }
+    ul { margin-left: 1.5rem; margin-bottom: 0.5rem; }
     li { margin-bottom: 0.3rem; font-size: 0.85rem; line-height: 1.4; }
-    .terms {
-      margin-top: 1.8rem;
-      font-size: 0.73rem;
-      color: #8a6a5a;
-      border-top: 1px solid rgba(200, 120, 80, 0.3);
-      padding-top: 1rem;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      gap: 0.8rem;
-    }
-    .buttons {
-      display: flex;
-      gap: 1rem;
-      margin-top: 2rem;
-      justify-content: flex-end;
-      flex-wrap: wrap;
-    }
-    .btn {
-      padding: 0.6rem 1.5rem;
-      border-radius: 2rem;
-      font-weight: 500;
-      font-size: 0.85rem;
-      cursor: pointer;
-      border: none;
-      font-family: 'Inter', sans-serif;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      transition: 0.2s;
-      background: rgba(255, 250, 245, 0.9);
-      border: 1px solid rgba(224, 122, 90, 0.4);
-      color: #b23c1c;
-    }
-    .btn-primary {
-      background: linear-gradient(135deg, #b23c1c, #e07a5a);
-      color: white;
-      border: none;
-      box-shadow: 0 4px 12px rgba(178, 60, 28, 0.3);
-    }
-    .btn-primary:hover { transform: translateY(-3px); filter: brightness(1.05); }
+    .terms { margin-top: 1.8rem; font-size: 0.7rem; color: #8a6a5a; border-top: 1px solid rgba(200, 120, 80, 0.3); padding-top: 1rem; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.8rem; }
+    .buttons { display: flex; gap: 1rem; margin-top: 2rem; justify-content: flex-end; flex-wrap: wrap; }
+    .btn { padding: 0.5rem 1.2rem; border-radius: 2rem; font-weight: 500; font-size: 0.8rem; cursor: pointer; border: none; font-family: 'Inter', sans-serif; display: inline-flex; align-items: center; gap: 6px; background: rgba(255, 250, 245, 0.9); border: 1px solid rgba(224, 122, 90, 0.4); color: #b23c1c; }
+    .btn-primary { background: linear-gradient(135deg, #b23c1c, #e07a5a); color: white; border: none; box-shadow: 0 4px 12px rgba(178, 60, 28, 0.3); }
+    .btn-primary:hover { transform: translateY(-2px); filter: brightness(1.05); }
     .btn-outline:hover { transform: translateY(-2px); background: rgba(224, 122, 90, 0.2); }
     footer {
       background: linear-gradient(145deg, rgba(255, 240, 230, 0.9), rgba(255, 235, 225, 0.8));
       text-align: center;
-      padding: 1rem;
+      padding: 0.8rem;
       font-size: 0.7rem;
       color: #8a6a5a;
     }
     @media (max-width: 750px) {
       body { padding: 1rem; }
-      .quote-header, .quote-body { padding: 1.2rem; }
+      .quote-header, .quote-body { padding: 1rem; }
       .info-row { flex-direction: column; gap: 0.8rem; }
       .total-line { max-width: 100%; }
       .buttons { flex-direction: column; align-items: stretch; }
@@ -238,35 +137,33 @@
 </head>
 <body>
 <div class="quote-container">
+  <!-- CABECERA UNIFICADA (idéntica a la cotización 1) -->
   <div class="quote-header">
     <div class="brand">
       <h1>DUALTEC</h1>
       <div class="company-details">
-        <i class="fas fa-cogs"></i> Automatización & Desarrollo Digital<br>
+        <i class="fas fa-chart-line"></i> Automatización & Ventas Digitales<br>
         <i class="fas fa-envelope"></i> contacto@dualtec.cl · <i class="fab fa-whatsapp"></i> +56 9 6357 1251
       </div>
     </div>
     <div class="quote-badge">
       <div class="badge"><i class="fas fa-file-invoice-dollar"></i> COTIZACIÓN DE SERVICIOS</div>
-      <div class="quote-number">Folio: cot-jv-2026-010 · CLP · 29 abril 2026</div>
+      <div class="quote-number">Folio: cot-jv-2026-010 · CLP · 29 Abril 2026</div>
     </div>
   </div>
 
   <div class="quote-body">
-    <!-- Datos del cliente y proyecto -->
     <div class="info-row">
       <div class="info-card"><div class="label">SOLICITADA POR</div><div class="value">Nueva Dominica</div><div class="sub">Maca Lamas · Contacto principal</div></div>
       <div class="info-card"><div class="label">PROYECTO</div><div class="value">Sistema de Pedidos de Almuerzo con GoHighLevel</div><div class="sub">Implementado en GHL (CRM + automatización)</div></div>
       <div class="info-card"><div class="label">MONEDA / VIGENCIA</div><div class="value">CLP · Válida 15 días</div><div class="sub">IVA desglosado</div></div>
     </div>
 
-    <!-- Propuesta general -->
     <div class="proposal-text">
       <i class="fas fa-bullhorn" style="margin-right: 6px;"></i> <strong>Propuesta general:</strong> Desarrollo de sistema de pedidos de almuerzo sobre la plataforma GoHighLevel (GHL). Incluye landing con cotizador, formulario inteligente, integración de pagos con MercadoPago, automatizaciones por WhatsApp/email, pipeline de gestión y exportación a Google Sheets. Solución rápida de implementar, sin backend complejo.
       <div style="margin-top:8px;"><i class="far fa-clock"></i> Carga de trabajo estimada: <strong>58 horas profesionales</strong></div>
     </div>
 
-    <!-- Tabla de precios -->
     <table class="services-table">
       <thead><tr><th>Módulo / Servicio</th><th>Valor Neto (CLP)</th></tr></thead>
       <tbody>
@@ -280,7 +177,6 @@
       </tbody>
     </table>
 
-    <!-- Totales -->
     <div class="totals">
       <div class="total-line"><span>Subtotal neto</span><span>$451.260</span></div>
       <div class="total-line"><span>IVA (19%)</span><span>$85.740</span></div>
@@ -288,7 +184,6 @@
       <div style="font-size:0.7rem; margin-top:6px;">* Valores expresados en CLP. Pago único por puesta en marcha.</div>
     </div>
 
-    <!-- Alcance detallado -->
     <div class="scope-box">
       <div class="scope-title"><i class="fas fa-cubes"></i> Alcance del proyecto (en GHL)</div>
       <ul>
@@ -302,7 +197,6 @@
       </ul>
     </div>
 
-    <!-- Costos operativos recurrentes (GHL y otros) -->
     <div class="complementary-box">
       <div class="complementary-title"><i class="fas fa-calendar-alt"></i> Gastos operacionales recurrentes (no incluidos)</div>
       <ul>
@@ -315,7 +209,6 @@
       <div style="margin-top:0.5rem; font-size:0.75rem;"><i class="fas fa-info-circle"></i> Todo lo anterior son costos operacionales no incluidos en el precio único de implementación.</div>
     </div>
 
-    <!-- Limitaciones técnicas -->
     <div class="complementary-box" style="border-left-color:#e67e22;">
       <div class="complementary-title"><i class="fas fa-exclamation-triangle"></i> Limitaciones técnicas</div>
       <ul>
@@ -325,14 +218,12 @@
       </ul>
     </div>
 
-    <!-- Condiciones generales -->
     <div class="terms">
       <div><i class="fas fa-clock"></i> Forma de pago: 50% anticipo, 25% demo, 25% final · Plazo: 2-3 semanas</div>
       <div><i class="fas fa-check-circle"></i> Garantía 60 días por bugs · Incluye capacitación básica · Soporte 1 mes gratis</div>
       <div><i class="fas fa-file-signature"></i> Cotización válida por 15 días · Precios no incluyen suscripciones GHL ni pasarela.</div>
     </div>
 
-    <!-- Botones -->
     <div class="buttons">
       <button class="btn btn-outline" id="copyLinkBtn"><i class="fas fa-link"></i> Copiar enlace</button>
       <button class="btn btn-outline" id="printBtn"><i class="fas fa-print"></i> Imprimir / PDF</button>
@@ -340,8 +231,9 @@
     </div>
     <div id="toastMessage" style="position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: #b23c1c; color: white; padding: 8px 24px; border-radius: 40px; font-size: 0.8rem; opacity: 0; transition: opacity 0.2s; pointer-events: none; z-index: 1000;"></div>
   </div>
+
   <footer>
-    Dualtec · Automatización & Desarrollo Digital · contacto@dualtec.cl · +56 9 6357 1251 · Cotización válida hasta 14 de mayo 2026
+    Dualtec · Automatización de ventas · Cotización válida por 10 días · Precios pueden variar por disponibilidad.
   </footer>
 </div>
 <script>
