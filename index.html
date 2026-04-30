@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Go Clientes · Sistema de Pedidos de Almuerzo Automatizado</title>
+  <title>Go Clientes · Tus cotizaciones para el sistema de pedidos</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -36,10 +36,10 @@
       padding: 0 1.5rem;
     }
 
-    /* HERO */
+    /* Hero */
     .hero {
       text-align: center;
-      padding: 4rem 1rem 3rem;
+      padding: 4rem 1rem 2rem;
       background: rgba(255, 248, 245, 0.7);
       backdrop-filter: blur(8px);
       border-bottom: 1px solid rgba(224, 122, 90, 0.3);
@@ -69,7 +69,7 @@
     .hero p {
       font-size: 1rem;
       color: #7a5a4a;
-      max-width: 600px;
+      max-width: 700px;
       margin: 0.5rem auto 1.5rem;
     }
 
@@ -94,14 +94,45 @@
       transform: translateY(-2px);
     }
 
-    /* Sección planes */
+    /* Sección de métricas (prueba social opcional) */
+    .metrics {
+      padding: 2rem 1rem;
+      text-align: center;
+      background: rgba(255, 248, 245, 0.5);
+    }
+    .metrics-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 1rem;
+    }
+    .metric-item {
+      background: rgba(255, 250, 245, 0.8);
+      backdrop-filter: blur(5px);
+      border-radius: 2rem;
+      padding: 1.2rem 2rem;
+      min-width: 160px;
+      border: 1px solid rgba(224, 122, 90, 0.3);
+    }
+    .metric-number {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #b23c1c;
+    }
+    .metric-label {
+      font-size: 0.8rem;
+      color: #6a4a3a;
+    }
+
+    /* Sección de planes (cotizaciones) */
     .plans-section {
       padding: 3rem 1rem 5rem;
     }
 
     .section-header {
       text-align: center;
-      margin-bottom: 3rem;
+      margin-bottom: 2rem;
     }
 
     .section-header h2 {
@@ -122,7 +153,6 @@
       gap: 2rem;
     }
 
-    /* Tarjetas estilo glassmorphism */
     .card {
       background: rgba(255, 248, 245, 0.85);
       backdrop-filter: blur(10px);
@@ -253,9 +283,30 @@
       background: #a13215;
     }
 
+    .cta-bottom {
+      text-align: center;
+      margin-top: 3rem;
+    }
+    .btn-large {
+      background: linear-gradient(135deg, #b23c1c, #e07a5a);
+      color: white;
+      padding: 0.9rem 2rem;
+      border-radius: 3rem;
+      font-weight: 700;
+      font-size: 1.1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: 0.2s;
+      box-shadow: 0 6px 14px rgba(178,60,28,0.3);
+    }
+    .btn-large:hover {
+      transform: translateY(-3px);
+      filter: brightness(1.05);
+    }
+
     .microcopy {
       text-align: center;
-      margin-top: 2.5rem;
+      margin-top: 2rem;
       font-size: 0.85rem;
       color: #b23c1c;
       background: rgba(224, 122, 90, 0.15);
@@ -269,6 +320,8 @@
       .hero h1 { font-size: 1.8rem; }
       .hero .sub { font-size: 1.1rem; }
       .card-popular { transform: scale(1); }
+      .metric-item { padding: 0.8rem 1rem; min-width: 120px; }
+      .metric-number { font-size: 1.6rem; }
     }
 
     .whatsapp-float {
@@ -306,85 +359,100 @@
 </head>
 <body>
 
-<!-- HERO -->
+<!-- HERO con mensaje de entrega de cotizaciones -->
 <section class="hero">
   <div class="container">
-    <h1>Automatiza tus pedidos de almuerzo y vende todos los días sin desorden</h1>
-    <div class="sub">Sistema completo con pedidos, pago online y control en tiempo real</div>
-    <p>Elige la opción que mejor se adapte a tu negocio. Desde pago único hasta desarrollo a medida.</p>
-    <button class="btn-scroll" id="scrollToPlans"><i class="fas fa-arrow-down"></i> Ver opciones</button>
+    <h1>📄 Maca, aquí tienes las tres cotizaciones que preparamos para ti</h1>
+    <div class="sub">Sistema de pedidos de almuerzo · Automatización y ventas 24/7</div>
+    <p>Revisa cada opción y elige la que mejor se adapte al momento de tu negocio. Todas incluyen pago online, control en tiempo real y soporte inicial.</p>
+    <button class="btn-scroll" id="scrollToPlans"><i class="fas fa-arrow-down"></i> Ver cotizaciones</button>
   </div>
 </section>
 
-<!-- SECCIÓN DE PLANES -->
+<!-- métricas suaves (prueba social pero sin testimonios) -->
+<div class="metrics">
+  <div class="container">
+    <div class="metrics-grid">
+      <div class="metric-item"><div class="metric-number">+150%</div><div class="metric-label">Aumento promedio de ventas</div></div>
+      <div class="metric-item"><div class="metric-number">30+</div><div class="metric-label">Negocios activos</div></div>
+      <div class="metric-item"><div class="metric-number">98%</div><div class="metric-label">Clientes satisfechos</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- SECCIÓN DE PLANES (tres cotizaciones) -->
 <section class="plans-section" id="plans">
   <div class="container">
     <div class="section-header">
-      <h2>Planes pensados para vender más</h2>
-      <p>Soluciones 100% funcionales, sin letra chica</p>
+      <h2>Elige el nivel de automatización para tu negocio</h2>
+      <p>Cada opción tiene su cotización detallada haz clic en "Ver cotización completa"</p>
     </div>
 
     <div class="cards-grid">
       
-      <!-- PLAN BÁSICO ($397k) -> cotizaciones/index1.html -->
+      <!-- Cotización 1: Básico ($397k) -->
       <div class="card">
         <h3>Básico <span class="price">$397k <small>total</small></span></h3>
-        <div class="card-desc">Ideal para empezar: pedidos online y registro automático en Google Sheets.</div>
+        <div class="card-desc">Para empezar a vender online sin complicaciones: Google Sheets automático + WhatsApp.</div>
         <ul class="features">
           <li><i class="fas fa-check-circle"></i> Landing + cotizador inteligente</li>
-          <li><i class="fas fa-check-circle"></i> Pago online con MercadoPago</li>
-          <li><i class="fas fa-check-circle"></i> <strong>Registro automático en Google Sheets</strong></li>
-          <li><i class="fas fa-check-circle"></i> WhatsApp + Chatwoot (bandeja CRM)</li>
+          <li><i class="fas fa-check-circle"></i> Pago con MercadoPago</li>
+          <li><i class="fas fa-check-circle"></i> Registro automático en Google Sheets</li>
+          <li><i class="fas fa-check-circle"></i> Chatwoot + WhatsApp CRM</li>
           <li><i class="fas fa-check-circle"></i> Corte horario a las 20:00 hrs</li>
           <li><i class="fas fa-check-circle"></i> Soporte 30 días gratis</li>
         </ul>
         <div class="recurrent-cost">
           <i class="fas fa-info-circle"></i> Pago único · Sin mensualidades obligatorias
         </div>
-        <a href="cotizaciones/index1.html" class="btn-plan">Ver detalle →</a>
+        <a href="cotizaciones/index1.html" class="btn-plan">Ver cotización completa →</a>
       </div>
 
-      <!-- PLAN MEDIO / PRO ($537k) – RECOMENDADO -> cotizaciones/index2.html -->
+      <!-- Cotización 2: Medio ($537k) – Recomendada -->
       <div class="card card-popular">
-        <div class="badge-popular">⭐ RECOMENDADO</div>
+        <div class="badge-popular">⭐ RECOMENDADA PARA ESCALAR</div>
         <h3>Medio <span class="price">$537k <small>total</small></span></h3>
-        <div class="card-desc">Automatización avanzada con GoHighLevel, CRM y flujos inteligentes.</div>
+        <div class="card-desc">Automatización profesional con GoHighLevel: CRM, flujos y pipeline de pedidos.</div>
         <ul class="features">
           <li><i class="fas fa-check-circle"></i> Landing + cotizador dinámico</li>
           <li><i class="fas fa-check-circle"></i> Pago online + flujo automatizado</li>
           <li><i class="fas fa-check-circle"></i> Pipeline de pedidos (oportunidades)</li>
           <li><i class="fas fa-check-circle"></i> Automatizaciones WhatsApp / email</li>
           <li><i class="fas fa-check-circle"></i> Corte horario simulado + restricción</li>
-          <li><i class="fas fa-check-circle"></i> Exportación a Google Sheets (Zapier)</li>
+          <li><i class="fas fa-check-circle"></i> Exportación a Google Sheets</li>
         </ul>
         <div class="recurrent-cost">
-          <i class="fas fa-chart-line"></i> Implementación única <strong>$537.000</strong> + <strong>USD 97/mes</strong> (GHL) + WhatsApp API (~$15/mes)
+          <i class="fas fa-chart-line"></i> Implementación $537k + GHL (USD 97/mes) + WhatsApp API (opcional)
         </div>
-        <a href="cotizaciones/index2.html" class="btn-plan btn-primary-plan">Ver detalle →</a>
+        <a href="cotizaciones/index2.html" class="btn-plan btn-primary-plan">Ver cotización completa →</a>
       </div>
 
-      <!-- PLAN PREMIUM ($997k) -> cotizaciones/index3.html -->
+      <!-- Cotización 3: Premium ($997k) -->
       <div class="card">
         <h3>Premium <span class="price">$997k <small>total</small></span></h3>
-        <div class="card-desc">Sistema completo a medida, panel propio, base de datos y escalabilidad total.</div>
+        <div class="card-desc">Desarrollo a medida con Next.js, Supabase y panel de control propio. Escalabilidad total.</div>
         <ul class="features">
           <li><i class="fas fa-check-circle"></i> Backend con Next.js + Supabase</li>
           <li><i class="fas fa-check-circle"></i> Panel de administración personalizado</li>
-          <li><i class="fas fa-check-circle"></i> Webhooks MercadoPago + confirmación real</li>
+          <li><i class="fas fa-check-circle"></i> Webhooks MercadoPago (confirmación real)</li>
           <li><i class="fas fa-check-circle"></i> Autenticación y roles (Admin/Usuario)</li>
           <li><i class="fas fa-check-circle"></i> Corte automático real (backend)</li>
           <li><i class="fas fa-check-circle"></i> Código fuente entregado · Repositorio privado</li>
         </ul>
         <div class="recurrent-cost">
-          <i class="fas fa-crown"></i> 58 horas de desarrollo · Hospedaje por cuenta del cliente · Soporte 90 días
+          <i class="fas fa-crown"></i> 58 horas de desarrollo · Hospedaje por cuenta del cliente · Garantía 90 días
         </div>
-        <a href="cotizaciones/index3.html" class="btn-plan">Ver detalle →</a>
+        <a href="cotizaciones/index3.html" class="btn-plan">Ver cotización completa →</a>
       </div>
     </div>
 
-    <div style="display: flex; justify-content: center; margin-top: 2rem;">
+    <!-- CTA final -->
+    <div class="cta-bottom">
+      <a href="#plans" class="btn-large" id="scrollToPlansAgain"><i class="fas fa-file-invoice"></i> Volver a ver las cotizaciones</a>
+    </div>
+    <div style="display: flex; justify-content: center; margin-top: 1.5rem;">
       <div class="microcopy">
-        <i class="fas fa-chart-line"></i> La mayoría de nuestros clientes elige el plan MEDIO por su equilibrio entre costo, velocidad y automatización.
+        <i class="fas fa-chart-line"></i> ¿Necesitas ayuda para decidir? Escríbeme por WhatsApp y conversamos.
       </div>
     </div>
   </div>
@@ -394,16 +462,23 @@
   goclientes.com · Automatización & Desarrollo Digital · contacto@goclientes.com · +56 9 6357 1251
 </footer>
 
-<a href="https://wa.me/56963571251?text=Hola%2C%20quiero%20más%20información%20sobre%20los%20planes%20de%20pedidos%20de%20almuerzo" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
+<a href="https://wa.me/56963571251?text=Hola%2C%20quiero%20más%20información%20sobre%20las%20cotizaciones%20de%20pedidos%20de%20almuerzo" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
   <i class="fab fa-whatsapp"></i>
 </a>
 
 <script>
   // Scroll suave a la sección de planes
   const scrollBtn = document.getElementById('scrollToPlans');
+  const scrollBtnAgain = document.getElementById('scrollToPlansAgain');
   const plansSection = document.getElementById('plans');
   if (scrollBtn && plansSection) {
     scrollBtn.addEventListener('click', () => {
+      plansSection.scrollIntoView({ behavior: 'smooth' });
+    });
+  }
+  if (scrollBtnAgain && plansSection) {
+    scrollBtnAgain.addEventListener('click', (e) => {
+      e.preventDefault();
       plansSection.scrollIntoView({ behavior: 'smooth' });
     });
   }
