@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Dualtec · Sistema de Pedidos de Almuerzo Automatizado</title>
+  <title>Go Clientes · Sistema de Pedidos de Almuerzo Automatizado</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -135,6 +135,7 @@
       border: 1px solid rgba(224, 122, 90, 0.4);
       display: flex;
       flex-direction: column;
+      position: relative;
     }
 
     .card:hover {
@@ -160,10 +161,6 @@
       font-size: 0.7rem;
       font-weight: 800;
       z-index: 2;
-    }
-
-    .card {
-      position: relative;
     }
 
     .card h3 {
@@ -433,9 +430,9 @@
 
     <div class="cards-grid">
       
-      <!-- PLAN BÁSICO (Google Sheets + Chatwoot) -->
+      <!-- PLAN BÁSICO ($397k) -->
       <div class="card">
-        <h3>Básico <span class="price">$297k <small>total</small></span></h3>
+        <h3>Básico <span class="price">$397k <small>total</small></span></h3>
         <div class="card-desc">Ideal para empezar: pedidos online y registro automático en Google Sheets.</div>
         <ul class="features">
           <li><i class="fas fa-check-circle"></i> Landing + cotizador inteligente</li>
@@ -451,10 +448,10 @@
         <button class="btn-plan" data-modal="modalBasico">Ver detalle →</button>
       </div>
 
-      <!-- PLAN PRO (GoHighLevel) – RECOMENDADO -->
+      <!-- PLAN MEDIO / PRO ($537k) – RECOMENDADO -->
       <div class="card card-popular">
         <div class="badge-popular">⭐ RECOMENDADO</div>
-        <h3>Pro <span class="price">$397k <small>total</small></span></h3>
+        <h3>Medio <span class="price">$537k <small>total</small></span></h3>
         <div class="card-desc">Automatización avanzada con GoHighLevel, CRM y flujos inteligentes.</div>
         <ul class="features">
           <li><i class="fas fa-check-circle"></i> Landing + cotizador dinámico</li>
@@ -465,12 +462,12 @@
           <li><i class="fas fa-check-circle"></i> Exportación a Google Sheets (Zapier)</li>
         </ul>
         <div class="recurrent-cost">
-          <i class="fas fa-chart-line"></i> Implementación única <strong>$397.000</strong> + <strong>USD 97/mes</strong> (GHL) + WhatsApp API (~$15/mes)
+          <i class="fas fa-chart-line"></i> Implementación única <strong>$537.000</strong> + <strong>USD 97/mes</strong> (GHL) + WhatsApp API (~$15/mes)
         </div>
         <button class="btn-plan btn-primary-plan" data-modal="modalPro">Ver detalle →</button>
       </div>
 
-      <!-- PLAN PREMIUM (Desarrollo a medida) -->
+      <!-- PLAN PREMIUM ($997k) -->
       <div class="card">
         <h3>Premium <span class="price">$997k <small>total</small></span></h3>
         <div class="card-desc">Sistema completo a medida, panel propio, base de datos y escalabilidad total.</div>
@@ -491,14 +488,14 @@
 
     <div style="display: flex; justify-content: center; margin-top: 2rem;">
       <div class="microcopy">
-        <i class="fas fa-chart-line"></i> La mayoría de nuestros clientes elige el plan PRO por su equilibrio entre costo, velocidad y automatización.
+        <i class="fas fa-chart-line"></i> La mayoría de nuestros clientes elige el plan MEDIO por su equilibrio entre costo, velocidad y automatización.
       </div>
     </div>
   </div>
 </section>
 
 <footer>
-  Dualtec · Automatización & Desarrollo Digital · Tercera Transversal 6189 · contacto@goclientes.com · +56 9 6357 1251
+  goclientes.com · Automatización & Desarrollo Digital · contacto@goclientes.com · +56 9 6357 1251
 </footer>
 
 <a href="https://wa.me/56963571251?text=Hola%2C%20quiero%20más%20información%20sobre%20los%20planes%20de%20pedidos%20de%20almuerzo" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
@@ -506,7 +503,7 @@
 </a>
 
 <!-- MODALES DE COTIZACIONES -->
-<!-- MODAL BÁSICO -->
+<!-- MODAL BÁSICO ($397k) -->
 <div id="modalBasico" class="modal">
   <div class="modal-content">
     <div class="modal-header"><h3>Cotización · Plan Básico</h3><span class="close">&times;</span></div>
@@ -517,27 +514,28 @@
       </div>
       <table class="price-table-modal">
         <tr><th>Concepto</th><th>Valor Neto (CLP)</th></tr>
-        <tr><td>Landing + cotizador menú</td><td>$90.000</td></tr>
-        <tr><td>Integración MercadoPago</td><td>$60.000</td></tr>
-        <tr><td>Registro automático en Google Sheets</td><td>$50.000</td></tr>
+        <tr><td>Landing + cotizador menú</td><td>$100.000</td></tr>
+        <tr><td>Integración MercadoPago</td><td>$80.000</td></tr>
+        <tr><td>Registro automático en Google Sheets</td><td>$60.000</td></tr>
         <tr><td>Automatización Chatwoot + WhatsApp</td><td>$70.000</td></tr>
         <tr><td>Corte horario + mensajes</td><td>$30.000</td></tr>
-        <tr><td>Optimización para anuncios</td><td>$20.000</td></tr>
+        <tr><td>Optimización para anuncios</td><td>$30.000</td></tr>
       </table>
       <div class="totals-modal">
-        <div class="total-line-modal"><span>Subtotal neto</span><span>$320.000</span></div>
-        <div class="total-line-modal"><span>IVA (19%)</span><span>$60.800</span></div>
-        <div class="total-line-modal grand-total-modal"><span>TOTAL COTIZACIÓN</span><span><strong>$380.800</strong> → <strong style="color:#b23c1c;">$297.000</strong> (descuento lanzamiento)</span></div>
+        <div class="total-line-modal"><span>Subtotal neto</span><span>$370.000</span></div>
+        <div class="total-line-modal"><span>IVA (19%)</span><span>$70.300</span></div>
+        <div class="total-line-modal"><span>Descuento lanzamiento</span><span>-$43.300</span></div>
+        <div class="total-line-modal grand-total-modal"><span>TOTAL COTIZACIÓN (IVA incl.)</span><span><strong>$397.000</strong></span></div>
       </div>
       <p><strong>✅ Incluye:</strong> Soporte 30 días, manual básico, 1 hora de capacitación. Costos operativos no incluidos (Chatwoot USD 20/mes, comisiones MercadoPago).</p>
     </div>
   </div>
 </div>
 
-<!-- MODAL PRO (GHL) -->
+<!-- MODAL MEDIO / PRO ($537k) -->
 <div id="modalPro" class="modal">
   <div class="modal-content">
-    <div class="modal-header"><h3>Cotización · Plan Pro (GoHighLevel)</h3><span class="close">&times;</span></div>
+    <div class="modal-header"><h3>Cotización · Plan Medio (GoHighLevel)</h3><span class="close">&times;</span></div>
     <div class="modal-body quote-inner">
       <div class="info-row-modal">
         <div><strong>Cliente:</strong> Nueva Dominica · Maca Lamas</div>
@@ -545,26 +543,26 @@
       </div>
       <table class="price-table-modal">
         <tr><th>Concepto</th><th>Valor Neto (CLP)</th></tr>
-        <tr><td>Landing + cotizador dinámico</td><td>$95.000</td></tr>
-        <tr><td>Sistema de pedido (formulario + CRM)</td><td>$80.000</td></tr>
-        <tr><td>Integración pagos MercadoPago</td><td>$60.000</td></tr>
-        <tr><td>Automatizaciones email/WhatsApp</td><td>$70.000</td></tr>
-        <tr><td>Corte horario simulado</td><td>$25.000</td></tr>
-        <tr><td>Panel de gestión (pipeline)</td><td>$50.000</td></tr>
-        <tr><td>Integración Google Sheets</td><td>$40.000</td></tr>
+        <tr><td>Landing + cotizador dinámico</td><td>$120.000</td></tr>
+        <tr><td>Sistema de pedido (formulario + CRM)</td><td>$110.000</td></tr>
+        <tr><td>Integración pagos MercadoPago</td><td>$80.000</td></tr>
+        <tr><td>Automatizaciones email/WhatsApp</td><td>$90.000</td></tr>
+        <tr><td>Corte horario simulado</td><td>$40.000</td></tr>
+        <tr><td>Panel de gestión (pipeline)</td><td>$70.000</td></tr>
+        <tr><td>Integración Google Sheets</td><td>$50.000</td></tr>
       </table>
       <div class="totals-modal">
-        <div class="total-line-modal"><span>Subtotal neto</span><span>$420.000</span></div>
-        <div class="total-line-modal"><span>IVA (19%)</span><span>$79.800</span></div>
-        <div class="total-line-modal"><span>Descuento lanzamiento</span><span>-$102.800</span></div>
-        <div class="total-line-modal grand-total-modal"><span>TOTAL COTIZACIÓN (IVA incl.)</span><span><strong>$397.000</strong></span></div>
+        <div class="total-line-modal"><span>Subtotal neto</span><span>$560.000</span></div>
+        <div class="total-line-modal"><span>IVA (19%)</span><span>$106.400</span></div>
+        <div class="total-line-modal"><span>Descuento lanzamiento</span><span>-$129.400</span></div>
+        <div class="total-line-modal grand-total-modal"><span>TOTAL COTIZACIÓN (IVA incl.)</span><span><strong>$537.000</strong></span></div>
       </div>
       <p><strong>📌 Costos mensuales adicionales:</strong> GoHighLevel ~USD 97/mes + WhatsApp API desde USD 15/mes (opcional). <br> <strong>✅ Incluye:</strong> Implementación completa, capacitación básica, soporte 30 días.</p>
     </div>
   </div>
 </div>
 
-<!-- MODAL PREMIUM (Desarrollo a medida) -->
+<!-- MODAL PREMIUM ($997k) -->
 <div id="modalPremium" class="modal">
   <div class="modal-content">
     <div class="modal-header"><h3>Cotización · Plan Premium (Desarrollo a medida)</h3><span class="close">&times;</span></div>
@@ -575,18 +573,18 @@
       </div>
       <table class="price-table-modal">
         <tr><th>Concepto</th><th>Valor Neto (CLP)</th></tr>
-        <tr><td>Menú dinámico + imágenes</td><td>$130.000</td></tr>
-        <tr><td>Sistema pedidos + Supabase (RLS)</td><td>$150.000</td></tr>
-        <tr><td>Integración MercadoPago + webhook</td><td>$180.000</td></tr>
-        <tr><td>Corte automático backend</td><td>$80.000</td></tr>
-        <tr><td>Panel de administración</td><td>$180.000</td></tr>
-        <tr><td>Autenticación y roles</td><td>$70.000</td></tr>
-        <tr><td>Despliegue Vercel + documentación</td><td>$95.000</td></tr>
+        <tr><td>Menú dinámico + imágenes</td><td>$150.000</td></tr>
+        <tr><td>Sistema pedidos + Supabase (RLS)</td><td>$160.000</td></tr>
+        <tr><td>Integración MercadoPago + webhook</td><td>$200.000</td></tr>
+        <tr><td>Corte automático backend</td><td>$85.000</td></tr>
+        <tr><td>Panel de administración</td><td>$200.000</td></tr>
+        <tr><td>Autenticación y roles</td><td>$75.000</td></tr>
+        <tr><td>Despliegue Vercel + documentación</td><td>$100.000</td></tr>
       </table>
       <div class="totals-modal">
-        <div class="total-line-modal"><span>Subtotal neto</span><span>$885.000</span></div>
-        <div class="total-line-modal"><span>IVA (19%)</span><span>$168.150</span></div>
-        <div class="total-line-modal"><span>Descuento lanzamiento</span><span>-$56.150</span></div>
+        <div class="total-line-modal"><span>Subtotal neto</span><span>$970.000</span></div>
+        <div class="total-line-modal"><span>IVA (19%)</span><span>$184.300</span></div>
+        <div class="total-line-modal"><span>Descuento lanzamiento</span><span>-$157.300</span></div>
         <div class="total-line-modal grand-total-modal"><span>TOTAL COTIZACIÓN (IVA incl.)</span><span><strong>$997.000</strong></span></div>
       </div>
       <p><strong>✅ Entregables:</strong> Código fuente en repositorio privado, documentación técnica, despliegue en Vercel. <br> <strong>Garantía:</strong> 90 días por bugs. Soporte 1 mes gratis. Hospedaje y dominio por cuenta del cliente.</p>
