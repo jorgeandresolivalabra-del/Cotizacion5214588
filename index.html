@@ -16,10 +16,18 @@
     }
 
     body {
+      background: linear-gradient(135deg, #fdf4f0 0%, #ffe6df 50%, #fce8e0 100%);
+      background-attachment: fixed;
       font-family: 'Inter', sans-serif;
-      background: #ffffff;
-      color: #1e2a3a;
-      line-height: 1.4;
+      color: #2d2a2a;
+      animation: gradientShift 15s ease infinite;
+      background-size: 200% 200%;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 0%; }
+      50% { background-position: 100% 100%; }
+      100% { background-position: 0% 0%; }
     }
 
     .container {
@@ -28,18 +36,20 @@
       padding: 0 1.5rem;
     }
 
-    /* HEADER / HERO */
+    /* HERO */
     .hero {
       text-align: center;
       padding: 4rem 1rem 3rem;
-      background: linear-gradient(145deg, #ffffff 0%, #fef9e6 100%);
+      background: rgba(255, 248, 245, 0.7);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(224, 122, 90, 0.3);
     }
 
     .hero h1 {
       font-size: 2.6rem;
       font-weight: 800;
       letter-spacing: -0.02em;
-      background: linear-gradient(135deg, #1e2a3a, #f5b042);
+      background: linear-gradient(135deg, #b23c1c, #e07a5a);
       background-clip: text;
       -webkit-background-clip: text;
       color: transparent;
@@ -51,20 +61,20 @@
 
     .hero .sub {
       font-size: 1.3rem;
-      font-weight: 500;
-      color: #2c4c6c;
+      font-weight: 600;
+      color: #b23c1c;
       margin-bottom: 0.5rem;
     }
 
     .hero p {
       font-size: 1rem;
-      color: #4a627a;
+      color: #7a5a4a;
       max-width: 600px;
       margin: 0.5rem auto 1.5rem;
     }
 
     .btn-scroll {
-      background: #1e6f5c;
+      background: #b23c1c;
       color: white;
       padding: 0.7rem 1.8rem;
       border-radius: 40px;
@@ -76,18 +86,17 @@
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      box-shadow: 0 4px 12px rgba(30,111,92,0.3);
+      box-shadow: 0 4px 12px rgba(178, 60, 28, 0.3);
     }
 
     .btn-scroll:hover {
-      background: #0e5a49;
+      background: #a13215;
       transform: translateY(-2px);
     }
 
     /* Sección planes */
     .plans-section {
       padding: 3rem 1rem 5rem;
-      background: white;
     }
 
     .section-header {
@@ -97,12 +106,12 @@
 
     .section-header h2 {
       font-size: 2rem;
-      font-weight: 700;
-      color: #0b2b3b;
+      font-weight: 800;
+      color: #b23c1c;
     }
 
     .section-header p {
-      color: #5b7895;
+      color: #8a6a5a;
       margin-top: 0.5rem;
     }
 
@@ -113,31 +122,30 @@
       gap: 2rem;
     }
 
-    /* Tarjetas */
+    /* Tarjetas estilo glassmorphism */
     .card {
-      background: white;
+      background: rgba(255, 248, 245, 0.85);
+      backdrop-filter: blur(10px);
       border-radius: 2rem;
       padding: 1.8rem;
       width: 100%;
       max-width: 360px;
       transition: all 0.25s ease;
-      box-shadow: 0 15px 35px -12px rgba(0, 0, 0, 0.08);
-      border: 1px solid #edf2f7;
-      position: relative;
+      box-shadow: 0 15px 35px -12px rgba(0, 0, 0, 0.1);
+      border: 1px solid rgba(224, 122, 90, 0.4);
       display: flex;
       flex-direction: column;
     }
 
     .card:hover {
       transform: translateY(-6px);
-      box-shadow: 0 25px 40px -12px rgba(0, 0, 0, 0.15);
-      border-color: #f5b04240;
+      background: rgba(255, 248, 245, 0.95);
+      border-color: #e07a5a;
     }
 
     .card-popular {
-      border: 2px solid #f5b042;
-      background: #ffffff;
-      box-shadow: 0 20px 35px -10px rgba(245,176,66,0.2);
+      border: 2px solid #e07a5a;
+      box-shadow: 0 20px 35px -10px rgba(224, 122, 90, 0.3);
       transform: scale(1.02);
     }
 
@@ -145,8 +153,8 @@
       position: absolute;
       top: -12px;
       left: 20px;
-      background: #f5b042;
-      color: #1e2a3a;
+      background: #e07a5a;
+      color: white;
       padding: 0.3rem 1rem;
       border-radius: 40px;
       font-size: 0.7rem;
@@ -154,9 +162,13 @@
       z-index: 2;
     }
 
+    .card {
+      position: relative;
+    }
+
     .card h3 {
       font-size: 1.8rem;
-      font-weight: 700;
+      font-weight: 800;
       margin-bottom: 0.2rem;
       display: flex;
       justify-content: space-between;
@@ -167,17 +179,17 @@
     .price {
       font-size: 1.8rem;
       font-weight: 800;
-      color: #1e6f5c;
+      color: #b23c1c;
     }
 
     .price small {
       font-size: 0.7rem;
       font-weight: 400;
-      color: #6c86a3;
+      color: #8a6a5a;
     }
 
     .card-desc {
-      color: #4b6b8a;
+      color: #6a4a3a;
       margin: 1rem 0;
       font-size: 0.9rem;
       line-height: 1.4;
@@ -195,27 +207,27 @@
       display: flex;
       align-items: center;
       gap: 0.6rem;
-      color: #2c3e50;
+      color: #3a2a24;
     }
 
     .features i {
       width: 1.2rem;
-      color: #f5b042;
+      color: #e07a5a;
     }
 
     .recurrent-cost {
-      background: #f8fafc;
+      background: rgba(224, 122, 90, 0.15);
       border-radius: 0.8rem;
       padding: 0.6rem;
       margin: 0.8rem 0;
       font-size: 0.7rem;
-      color: #2c5a74;
+      color: #b23c1c;
       text-align: center;
     }
 
     .btn-plan {
-      background: #f1f5f9;
-      border: none;
+      background: rgba(255, 250, 245, 0.9);
+      border: 1px solid rgba(224, 122, 90, 0.4);
       padding: 0.8rem;
       border-radius: 2rem;
       font-weight: 700;
@@ -225,34 +237,145 @@
       text-align: center;
       text-decoration: none;
       display: block;
-      color: #1e2a3a;
+      color: #b23c1c;
       margin-top: auto;
     }
 
     .btn-plan:hover {
-      background: #1e6f5c;
+      background: #b23c1c;
       color: white;
+      border-color: #b23c1c;
     }
 
     .btn-primary-plan {
-      background: #1e6f5c;
+      background: #b23c1c;
       color: white;
     }
 
     .btn-primary-plan:hover {
-      background: #0e5a49;
+      background: #a13215;
     }
 
     .microcopy {
       text-align: center;
       margin-top: 2.5rem;
       font-size: 0.85rem;
-      color: #7c5e2e;
-      background: #fef5e8;
+      color: #b23c1c;
+      background: rgba(224, 122, 90, 0.15);
       display: inline-block;
       padding: 0.5rem 1.5rem;
       border-radius: 40px;
       width: auto;
+    }
+
+    /* Modal styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.5);
+      backdrop-filter: blur(5px);
+    }
+    .modal-content {
+      background: rgba(255, 248, 245, 0.98);
+      backdrop-filter: blur(15px);
+      margin: 2rem auto;
+      padding: 0;
+      border-radius: 2rem;
+      width: 90%;
+      max-width: 1100px;
+      border: 1px solid rgba(224, 122, 90, 0.5);
+      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.3);
+      animation: fadeInUp 0.3s ease;
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 2rem;
+      background: #b23c1c;
+      color: white;
+      border-radius: 2rem 2rem 0 0;
+    }
+    .modal-header h3 {
+      font-size: 1.5rem;
+      font-weight: 800;
+    }
+    .close {
+      font-size: 2rem;
+      font-weight: bold;
+      cursor: pointer;
+      line-height: 1;
+    }
+    .close:hover { color: #ffe0cc; }
+    .modal-body {
+      padding: 2rem;
+      max-height: 80vh;
+      overflow-y: auto;
+    }
+    /* Estilos internos del modal (similares a cotizaciones) */
+    .quote-inner {
+      font-family: 'Inter', sans-serif;
+    }
+    .info-row-modal {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      background: rgba(255, 245, 240, 0.8);
+      padding: 1rem;
+      border-radius: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .price-table-modal {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+    }
+    .price-table-modal td, .price-table-modal th {
+      padding: 0.6rem 0.3rem;
+      border-bottom: 1px solid rgba(200,120,80,0.2);
+      text-align: left;
+    }
+    .price-table-modal th:last-child, .price-table-modal td:last-child {
+      text-align: right;
+    }
+    .totals-modal {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      margin: 1rem 0;
+      padding-top: 0.5rem;
+      border-top: 2px dashed rgba(200,120,80,0.4);
+    }
+    .total-line-modal {
+      display: flex;
+      gap: 2rem;
+      justify-content: flex-end;
+      width: 100%;
+      max-width: 300px;
+    }
+    .grand-total-modal span:last-child {
+      background: linear-gradient(135deg, #b23c1c, #e07a5a);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      font-weight: 800;
+    }
+    @media (max-width: 750px) {
+      .hero h1 { font-size: 1.8rem; }
+      .hero .sub { font-size: 1.1rem; }
+      .card-popular { transform: scale(1); }
+      .modal-content { width: 95%; }
+      .modal-body { padding: 1rem; }
     }
 
     .whatsapp-float {
@@ -273,7 +396,6 @@
       z-index: 100;
       text-decoration: none;
     }
-
     .whatsapp-float:hover {
       transform: scale(1.05);
       background: #20b859;
@@ -282,18 +404,10 @@
     footer {
       text-align: center;
       padding: 2rem;
-      background: #f8fafc;
+      background: rgba(255, 240, 230, 0.8);
       font-size: 0.75rem;
-      color: #6b8bad;
-      border-top: 1px solid #ecf3f9;
-    }
-
-    @media (max-width: 750px) {
-      .hero h1 { font-size: 1.8rem; }
-      .hero .sub { font-size: 1.1rem; }
-      .cards-grid { gap: 1.5rem; }
-      .card { max-width: 100%; }
-      .card-popular { transform: scale(1); }
+      color: #8a6a5a;
+      border-top: 1px solid rgba(224,122,90,0.3);
     }
   </style>
 </head>
@@ -309,7 +423,7 @@
   </div>
 </section>
 
-<!-- SECCIÓN DE PLANES CON PRECIOS REALES -->
+<!-- SECCIÓN DE PLANES -->
 <section class="plans-section" id="plans">
   <div class="container">
     <div class="section-header">
@@ -319,10 +433,10 @@
 
     <div class="cards-grid">
       
-      <!-- PLAN BÁSICO: Solución optimizada (Google Sheets + Chatwoot) -->
+      <!-- PLAN BÁSICO (Google Sheets + Chatwoot) -->
       <div class="card">
-        <h3>Básico <span class="price">$497k <small>+ IVA</small></span></h3>
-        <div class="card-desc">Ideal para empezar con pedidos online y control en Excel automático.</div>
+        <h3>Básico <span class="price">$297k <small>total</small></span></h3>
+        <div class="card-desc">Ideal para empezar: pedidos online y registro automático en Google Sheets.</div>
         <ul class="features">
           <li><i class="fas fa-check-circle"></i> Landing + cotizador inteligente</li>
           <li><i class="fas fa-check-circle"></i> Pago online con MercadoPago</li>
@@ -334,13 +448,13 @@
         <div class="recurrent-cost">
           <i class="fas fa-info-circle"></i> Pago único · Sin mensualidades obligatorias
         </div>
-        <a href="/basico.html" class="btn-plan">Ver detalle →</a>
+        <button class="btn-plan" data-modal="modalBasico">Ver detalle →</button>
       </div>
 
-      <!-- PLAN PRO (RECOMENDADO): GoHighLevel -->
+      <!-- PLAN PRO (GoHighLevel) – RECOMENDADO -->
       <div class="card card-popular">
         <div class="badge-popular">⭐ RECOMENDADO</div>
-        <h3>Pro <span class="price">$821k <small>+ IVA</small></span></h3>
+        <h3>Pro <span class="price">$397k <small>total</small></span></h3>
         <div class="card-desc">Automatización avanzada con GoHighLevel, CRM y flujos inteligentes.</div>
         <ul class="features">
           <li><i class="fas fa-check-circle"></i> Landing + cotizador dinámico</li>
@@ -351,14 +465,14 @@
           <li><i class="fas fa-check-circle"></i> Exportación a Google Sheets (Zapier)</li>
         </ul>
         <div class="recurrent-cost">
-          <i class="fas fa-chart-line"></i> Implementación única <strong>$821.100</strong> + <strong>USD 97/mes</strong> (GHL) + WhatsApp API (~$15/mes)
+          <i class="fas fa-chart-line"></i> Implementación única <strong>$397.000</strong> + <strong>USD 97/mes</strong> (GHL) + WhatsApp API (~$15/mes)
         </div>
-        <a href="/pro.html" class="btn-plan btn-primary-plan">Ver detalle →</a>
+        <button class="btn-plan btn-primary-plan" data-modal="modalPro">Ver detalle →</button>
       </div>
 
-      <!-- PLAN PREMIUM: Desarrollo a medida (Next.js + Supabase) -->
+      <!-- PLAN PREMIUM (Desarrollo a medida) -->
       <div class="card">
-        <h3>Premium <span class="price">$1.095k <small>+ IVA</small></span></h3>
+        <h3>Premium <span class="price">$997k <small>total</small></span></h3>
         <div class="card-desc">Sistema completo a medida, panel propio, base de datos y escalabilidad total.</div>
         <ul class="features">
           <li><i class="fas fa-check-circle"></i> Backend con Next.js + Supabase</li>
@@ -371,11 +485,10 @@
         <div class="recurrent-cost">
           <i class="fas fa-crown"></i> 58 horas de desarrollo · Hospedaje por cuenta del cliente · Soporte 90 días
         </div>
-        <a href="/premium.html" class="btn-plan">Ver detalle →</a>
+        <button class="btn-plan" data-modal="modalPremium">Ver detalle →</button>
       </div>
     </div>
 
-    <!-- microcopy persuasivo -->
     <div style="display: flex; justify-content: center; margin-top: 2rem;">
       <div class="microcopy">
         <i class="fas fa-chart-line"></i> La mayoría de nuestros clientes elige el plan PRO por su equilibrio entre costo, velocidad y automatización.
@@ -385,15 +498,104 @@
 </section>
 
 <footer>
-  Dualtec E.I.R.L · Automatización & Desarrollo Digital · Tercera Transversal 6189 · contacto@goclientes.com · +56 9 6357 1251
+  Dualtec · Automatización & Desarrollo Digital · Tercera Transversal 6189 · contacto@goclientes.com · +56 9 6357 1251
 </footer>
 
-<!-- WhatsApp flotante -->
 <a href="https://wa.me/56963571251?text=Hola%2C%20quiero%20más%20información%20sobre%20los%20planes%20de%20pedidos%20de%20almuerzo" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
   <i class="fab fa-whatsapp"></i>
 </a>
 
+<!-- MODALES DE COTIZACIONES -->
+<!-- MODAL BÁSICO -->
+<div id="modalBasico" class="modal">
+  <div class="modal-content">
+    <div class="modal-header"><h3>Cotización · Plan Básico</h3><span class="close">&times;</span></div>
+    <div class="modal-body quote-inner">
+      <div class="info-row-modal">
+        <div><strong>Cliente:</strong> Nueva Dominica · Maca Lamas</div>
+        <div><strong>Solución:</strong> Pedidos + Google Sheets + Chatwoot</div>
+      </div>
+      <table class="price-table-modal">
+        <tr><th>Concepto</th><th>Valor Neto (CLP)</th></tr>
+        <tr><td>Landing + cotizador menú</td><td>$90.000</td></tr>
+        <tr><td>Integración MercadoPago</td><td>$60.000</td></tr>
+        <tr><td>Registro automático en Google Sheets</td><td>$50.000</td></tr>
+        <tr><td>Automatización Chatwoot + WhatsApp</td><td>$70.000</td></tr>
+        <tr><td>Corte horario + mensajes</td><td>$30.000</td></tr>
+        <tr><td>Optimización para anuncios</td><td>$20.000</td></tr>
+      </table>
+      <div class="totals-modal">
+        <div class="total-line-modal"><span>Subtotal neto</span><span>$320.000</span></div>
+        <div class="total-line-modal"><span>IVA (19%)</span><span>$60.800</span></div>
+        <div class="total-line-modal grand-total-modal"><span>TOTAL COTIZACIÓN</span><span><strong>$380.800</strong> → <strong style="color:#b23c1c;">$297.000</strong> (descuento lanzamiento)</span></div>
+      </div>
+      <p><strong>✅ Incluye:</strong> Soporte 30 días, manual básico, 1 hora de capacitación. Costos operativos no incluidos (Chatwoot USD 20/mes, comisiones MercadoPago).</p>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL PRO (GHL) -->
+<div id="modalPro" class="modal">
+  <div class="modal-content">
+    <div class="modal-header"><h3>Cotización · Plan Pro (GoHighLevel)</h3><span class="close">&times;</span></div>
+    <div class="modal-body quote-inner">
+      <div class="info-row-modal">
+        <div><strong>Cliente:</strong> Nueva Dominica · Maca Lamas</div>
+        <div><strong>Solución:</strong> Implementación con GoHighLevel</div>
+      </div>
+      <table class="price-table-modal">
+        <tr><th>Concepto</th><th>Valor Neto (CLP)</th></tr>
+        <tr><td>Landing + cotizador dinámico</td><td>$95.000</td></tr>
+        <tr><td>Sistema de pedido (formulario + CRM)</td><td>$80.000</td></tr>
+        <tr><td>Integración pagos MercadoPago</td><td>$60.000</td></tr>
+        <tr><td>Automatizaciones email/WhatsApp</td><td>$70.000</td></tr>
+        <tr><td>Corte horario simulado</td><td>$25.000</td></tr>
+        <tr><td>Panel de gestión (pipeline)</td><td>$50.000</td></tr>
+        <tr><td>Integración Google Sheets</td><td>$40.000</td></tr>
+      </table>
+      <div class="totals-modal">
+        <div class="total-line-modal"><span>Subtotal neto</span><span>$420.000</span></div>
+        <div class="total-line-modal"><span>IVA (19%)</span><span>$79.800</span></div>
+        <div class="total-line-modal"><span>Descuento lanzamiento</span><span>-$102.800</span></div>
+        <div class="total-line-modal grand-total-modal"><span>TOTAL COTIZACIÓN (IVA incl.)</span><span><strong>$397.000</strong></span></div>
+      </div>
+      <p><strong>📌 Costos mensuales adicionales:</strong> GoHighLevel ~USD 97/mes + WhatsApp API desde USD 15/mes (opcional). <br> <strong>✅ Incluye:</strong> Implementación completa, capacitación básica, soporte 30 días.</p>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL PREMIUM (Desarrollo a medida) -->
+<div id="modalPremium" class="modal">
+  <div class="modal-content">
+    <div class="modal-header"><h3>Cotización · Plan Premium (Desarrollo a medida)</h3><span class="close">&times;</span></div>
+    <div class="modal-body quote-inner">
+      <div class="info-row-modal">
+        <div><strong>Cliente:</strong> Nueva Dominica · Maca Lamas</div>
+        <div><strong>Solución:</strong> Next.js + Supabase + MercadoPago</div>
+      </div>
+      <table class="price-table-modal">
+        <tr><th>Concepto</th><th>Valor Neto (CLP)</th></tr>
+        <tr><td>Menú dinámico + imágenes</td><td>$130.000</td></tr>
+        <tr><td>Sistema pedidos + Supabase (RLS)</td><td>$150.000</td></tr>
+        <tr><td>Integración MercadoPago + webhook</td><td>$180.000</td></tr>
+        <tr><td>Corte automático backend</td><td>$80.000</td></tr>
+        <tr><td>Panel de administración</td><td>$180.000</td></tr>
+        <tr><td>Autenticación y roles</td><td>$70.000</td></tr>
+        <tr><td>Despliegue Vercel + documentación</td><td>$95.000</td></tr>
+      </table>
+      <div class="totals-modal">
+        <div class="total-line-modal"><span>Subtotal neto</span><span>$885.000</span></div>
+        <div class="total-line-modal"><span>IVA (19%)</span><span>$168.150</span></div>
+        <div class="total-line-modal"><span>Descuento lanzamiento</span><span>-$56.150</span></div>
+        <div class="total-line-modal grand-total-modal"><span>TOTAL COTIZACIÓN (IVA incl.)</span><span><strong>$997.000</strong></span></div>
+      </div>
+      <p><strong>✅ Entregables:</strong> Código fuente en repositorio privado, documentación técnica, despliegue en Vercel. <br> <strong>Garantía:</strong> 90 días por bugs. Soporte 1 mes gratis. Hospedaje y dominio por cuenta del cliente.</p>
+    </div>
+  </div>
+</div>
+
 <script>
+  // Scroll suave
   const scrollBtn = document.getElementById('scrollToPlans');
   const plansSection = document.getElementById('plans');
   if (scrollBtn && plansSection) {
@@ -401,6 +603,40 @@
       plansSection.scrollIntoView({ behavior: 'smooth' });
     });
   }
+
+  // Modales
+  const modals = document.querySelectorAll('.modal');
+  const openButtons = document.querySelectorAll('[data-modal]');
+  const closeSpans = document.querySelectorAll('.close');
+
+  function openModal(modalId) {
+    const modal = document.getElementById(modalId);
+    if (modal) modal.style.display = 'block';
+  }
+
+  function closeModal(modal) {
+    if (modal) modal.style.display = 'none';
+  }
+
+  openButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const modalId = btn.getAttribute('data-modal');
+      openModal(modalId);
+    });
+  });
+
+  closeSpans.forEach(span => {
+    span.addEventListener('click', () => {
+      const modal = span.closest('.modal');
+      closeModal(modal);
+    });
+  });
+
+  window.addEventListener('click', (e) => {
+    modals.forEach(modal => {
+      if (e.target === modal) closeModal(modal);
+    });
+  });
 </script>
 </body>
 </html>
